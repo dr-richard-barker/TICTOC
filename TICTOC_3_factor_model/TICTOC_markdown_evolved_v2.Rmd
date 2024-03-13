@@ -1,0 +1,655 @@
+---
+title: 'TICTOC R Markdown v3'
+author:  Dr Richard Barker adapted from iDEP 0.95 
+date: Fri Oct 21 2022  
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=6, fig.height=5, fig.align = 'center') 
+``` 
+This R markdown file aims to provide insight into Cotton
+
+
+## 1. Read data  
+First we set up the working directory to where the files are saved.    
+```{r, message=FALSE} 
+setwd('/Users/drbhomeoffice/Downloads/TICTOC_3_factor_model')   # Needs to be changed  
+```
+R packages and iDEP core Functions. 
+
+```{r, message=FALSE  }  
+if(file.exists('iDEP_core_functions.R'))
+  source('iDEP_core_functions.R') else 
+    source('https://raw.githubusercontent.com/iDEP-SDSU/idep/master/shinyapps/idep/iDEP_core_functions.R') 
+```  
+We are using the downloaded gene expression file where gene IDs has been converted to Ensembl gene IDs. T
+```{r, message=FALSE  }  
+inputFile <- 'Downloaded_Converted_Data.csv'  # Expression matrix
+sampleInfoFile <- 'TICTOC_target_v5.csv' # Experiment design file 
+geneInfoFile <- 'Cotton__ghirsutum_eg_gene_GeneInfo.csv' #Gene symbols, location etc. 
+geneSetFile <- 'Cotton__ghirsutum_eg_gene.db'  # pathway database in SQL; can be GMT format 
+STRING10_speciesFile <- 'https://raw.githubusercontent.com/iDEP-SDSU/idep/master/shinyapps/idep/STRING10_species.csv' 
+``` 
+Parameters for reading data  
+```{r, message=FALSE  } 
+input_missingValue <- 'geneMedianInGroup'	#Missing values imputation method
+input_dataFileFormat <- 1	#1- read counts, 2 FKPM/RPKM or DNA microarray
+input_minCounts <- 0.5	#Min counts
+input_NminSamples <- 1	#Minimum number of samples 
+input_countsLogStart <- 4	#Pseudo count for log CPM
+input_CountsTransform <- 3	#Methods for data transformation of counts. 1-EdgeR's logCPM 2-VST, 3-rlog 
+```
+```{r, message=FALSE  }  
+
+readData.out <- readData(inputFile) 
+library(knitr)   #  install if needed. for showing tables with kable 
+kable( head(readData.out$data) )    # show the first few rows of data 
+```
+```{r, message=FALSE  }  
+readSampleInfo.out <- readSampleInfo(sampleInfoFile) 
+kable( readSampleInfo.out )  
+```
+```{r, message=FALSE  }  
+input_selectOrg ="NEW" 
+input_selectGO <- 'All'	#Gene set category 
+input_noIDConversion = TRUE  
+allGeneInfo.out <- geneInfo(geneInfoFile) 
+converted.out = NULL 
+convertedData.out <- convertedData()	 
+nGenesFilter()  
+convertedCounts.out <- convertedCounts()  # converted counts, just for compatibility 
+```
+
+## 2. Pre-process 
+```{r, message=FALSE  }  
+# Read counts per library 
+parDefault = par() 
+par(mar=c(12,4,2,2)) 
+# barplot of total read counts
+x <- readData.out$rawCounts
+groups = as.factor( detectGroups(colnames(x ) ) )
+if(nlevels(groups)<=1 | nlevels(groups) >20 )  
+  col1 = 'green'  else
+    col1 = rainbow(nlevels(groups))[ groups ]				
+
+barplot( colSums(x)/1e6, 
+         col=col1,las=3, main="Total read counts (millions)")  
+readCountsBias()  # detecting bias in sequencing depth 
+```
+```{r, message=FALSE  }  
+
+# Box plot 
+x = readData.out$data 
+boxplot(x, las = 2, col=col1,
+        ylab='Transformed expression levels',
+        main='Distribution of transformed data') 
+```
+```{r, message=FALSE  }  
+
+#Density plot 
+par(parDefault) 
+densityPlot()       
+```
+```{r, message=FALSE  }  
+
+# Scatter plot of the first two samples 
+plot(x[,1:2],xlab=colnames(x)[1],ylab=colnames(x)[2], 
+     main='Scatter plot of first two samples') 
+```
+```{r, message=FALSE  }  
+
+####plot gene or gene family
+input_selectOrg ="BestMatch" 
+input_geneSearch <- 'HOXA1;e2f2;tp53'	#Gene ID for searching 
+genePlot()  
+```
+```{r, message=FALSE  } 
+input_useSD <- 'FALSE'	#Use standard deviation instead of standard error in error bar? 
+geneBarPlotError()       
+```
+
+## 3. Heatmap  
+```{r, message=FALSE  }  
+# hierarchical clustering tree
+x <- readData.out$data
+maxGene <- apply(x,1,max)
+# remove bottom 25% lowly expressed genes, which inflate the PPC
+x <- x[which(maxGene > quantile(maxGene)[1] ) ,] 
+plot(as.dendrogram(hclust2( dist2(t(x)))), ylab="1 - Pearson C.C.", type = "rectangle") 
+```
+```{r, message=FALSE  }  
+#Correlation matrix
+input_labelPCC <- TRUE	#Show correlation coefficient? 
+correlationMatrix() 
+```
+```{r, message=FALSE  }  
+
+# Parameters for heatmap
+input_nGenes <- 100	#Top genes for heatmap
+input_geneCentering <- TRUE	#centering genes ?
+input_sampleCentering <- TRUE	#Center by sample?
+input_geneNormalize <- TRUE	#Normalize by gene?
+input_sampleNormalize <- TRUE	#Normalize by sample?
+input_noSampleClustering <- FALSE	#Use original sample order
+input_heatmapCutoff <- 4	#Remove outliers beyond number of SDs 
+input_distFunctions <- 2	#which distant funciton to use
+input_hclustFunctions <- 1	#Linkage type
+input_heatColors1 <- 2	#Colors
+input_selectFactorsHeatmap <- 'Sample_Name'	#Sample coloring factors 
+png('heatmap.png', width = 10, height = 15, units = 'in', res = 300) 
+staticHeatmap() 
+dev.off()  
+```
+![heatmap] (heatmap.png)   
+```{r, message=FALSE  }  
+heatmapPlotly() # interactive heatmap using Plotly 
+```
+
+## 4. K-means clustering   
+```{r, message=FALSE  } 
+input_nGenesKNN <- 2000	#Number of genes fro k-Means
+input_nClusters <- 4	#Number of clusters 
+maxGeneClustering = 12000
+input_kmeansNormalization <- 'geneMean'	#Normalization
+input_KmeansReRun <- 0	#Random seed 
+
+distributionSD()  #Distribution of standard deviations 
+```     
+```{r, message=FALSE  }  
+KmeansNclusters()  #Number of clusters 
+```     
+```{r, message=FALSE  }  
+
+Kmeans.out = Kmeans()   #Running K-means 
+KmeansHeatmap()   #Heatmap for k-Means 
+
+```     
+```{r, message=FALSE  }  
+
+#Read gene sets for enrichment analysis 
+sqlite  <- dbDriver('SQLite')
+input_selectGO3 <- 'GOBP'	#Gene set category
+input_minSetSize <- 15	#Min gene set size
+input_maxSetSize <- 2000	#Max gene set size 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO3,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  )  
+# Alternatively, users can use their own GMT files by
+#GeneSets.out <- readGMTRobust('somefile.GMT')  
+results <- KmeansGO()  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  } 
+input_seedTSNE <- 0	#Random seed for t-SNE
+input_colorGenes <- TRUE	#Color genes in t-SNE plot? 
+tSNEgenePlot()  #Plot genes using t-SNE 
+```
+
+## 5. PCA and beyond   
+```{r, message=FALSE  } 
+input_selectFactors <- 'Tissue'	#Factor coded by color
+input_selectFactors2 <- 'Sample_Name'	#Factor coded by shape
+input_tsneSeed2 <- 0	#Random seed for t-SNE 
+#PCA, MDS and t-SNE plots
+PCAplot()  
+```     
+```{r, message=FALSE  }  
+MDSplot() 
+```     
+```{r, message=FALSE  }  
+tSNEplot()  
+```     
+```{r, message=FALSE  }  
+
+#Read gene sets for pathway analysis using PGSEA on principal components
+input_selectGO6 <- 'All'	#Gene set category 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO6,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  )  
+PCApathway() # Run PGSEA analysis 
+```     
+```{r, message=FALSE  }  
+cat( PCA2factor() )   #The correlation between PCs with factors 
+```
+
+## 6. DEG1   
+```{r, message=FALSE  } 
+input_CountsDEGMethod <- 3	#DESeq2= 3,limma-voom=2,limma-trend=1 
+input_limmaPval <- 0.1	#FDR cutoff
+input_limmaFC <- 2	#Fold-change cutoff
+input_selectModelComprions <- c('Treatment: Flight vs. Ground','Treatment: Ground vs. Flight','Genotype: A68 vs. D130','Genotype: A68 vs. WT','Genotype: D130 vs. A68','Genotype: D130 vs. WT','Tissue: Root vs. Shoot','Tissue: Shoot vs. Root')	#Selected comparisons
+input_selectFactorsModel <- c('Treatment','Genotype','Tissue')	#Selected comparisons
+input_selectInteractions <- c('Treatment:Genotype','Treatment:Tissue','Genotype:Tissue')	#Selected comparisons
+input_selectBlockFactorsModel <- NULL 	#Selected comparisons
+factorReferenceLevels.out <- c('Treatment:Ground','Genotype:WT','Tissue:Root') 
+
+limma.out <- limma()
+DEG.data.out <- DEG.data()
+limma.out$comparisons 
+```     
+```{r, message=FALSE  } 
+input_selectComparisonsVenn <- c('Flight-Ground','A68-D130','A68-WT','D130-WT','Root-Shoot')	#Selected comparisons for Venn diagram
+input_UpDownRegulated <- FALSE	#Split up and down regulated genes 
+vennPlot() # Venn diagram 
+```     
+```{r, message=FALSE  }  
+sigGeneStats() # number of DEGs as figure 
+```     
+```{r, message=FALSE  }  
+sigGeneStatsTable() # number of DEGs as table 
+```
+
+## 7. DEG2   
+```{r, message=FALSE  } 
+input_selectContrast <- 'Flight-Ground'	#Selected comparisons 
+selectedHeatmap.data.out <- selectedHeatmap.data()
+selectedHeatmap()   # heatmap for DEGs in selected comparison
+
+# Save gene lists and data into files
+write.csv( selectedHeatmap.data()$genes, 'heatmap.data.csv') 
+write.csv(DEG.data(),'DEG.data.csv' )
+write(AllGeneListsGMT() ,'AllGeneListsGMT.gmt')
+
+```     
+```{r, message=FALSE  } 
+input_selectGO2 <- 'All'	#Gene set category 
+geneListData.out <- geneListData()  
+volcanoPlot()  
+```     
+```{r, message=FALSE  }  
+scatterPlot()  
+```     
+```{r, message=FALSE  }  
+MAplot()  
+```     
+```{r, message=FALSE  }  
+geneListGOTable.out <- geneListGOTable()  
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO2,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  ) 
+input_removeRedudantSets <- TRUE	#Remove highly redundant gene sets? 
+results <- geneListGO()  #Enrichment analysis
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```
+
+## 7. DEG2 .2  Genotype: D130 vs. WT
+```{r, message=FALSE  } 
+input_selectContrast <- 'D130-WT'	#Selected comparisons 
+selectedHeatmap.data.out <- selectedHeatmap.data()
+selectedHeatmap()   # heatmap for DEGs in selected comparison
+
+# Save gene lists and data into files
+write.csv( selectedHeatmap.data()$genes, 'heatmap.data.csv') 
+write.csv(DEG.data(),'DEG.data.csv' )
+write(AllGeneListsGMT() ,'AllGeneListsGMT.gmt')
+
+```     
+```{r, message=FALSE  } 
+input_selectGO2 <- 'All'	#Gene set category 
+geneListData.out <- geneListData()  
+volcanoPlot()  
+```     
+```{r, message=FALSE  }  
+scatterPlot()  
+```     
+```{r, message=FALSE  }  
+MAplot()  
+```     
+#```{r, message=FALSE  }  
+#geneListGOTable.out <- geneListGOTable()  
+## Read pathway data again 
+#GeneSets.out <-readGeneSets( geneSetFile,
+#                             convertedData.out, input_selectGO2,input_selectOrg,
+#                             c(input_minSetSize, input_maxSetSize)  ) 
+#input_removeRedudantSets <- TRUE	#Remove highly redundant gene sets? 
+#results <- geneListGO()  #Enrichment analysis
+#results$adj.Pval <- format( results$adj.Pval,digits=3 )
+#kable( results, row.names=FALSE) 
+#```
+## 7. DEG2 .3 Genotype: A68 vs. D130
+```{r, message=FALSE  } 
+input_selectContrast3 <- 'A68-D130'	#Selected comparisons 
+selectedHeatmap.data.out <- selectedHeatmap.data()
+selectedHeatmap()   # heatmap for DEGs in selected comparison
+
+# Save gene lists and data into files
+write.csv( selectedHeatmap.data()$genes, 'heatmap.data.csv') 
+write.csv(DEG.data(),'DEG.data.csv' )
+write(AllGeneListsGMT() ,'AllGeneListsGMT.gmt')
+
+```     
+```{r, message=FALSE  } 
+input_selectGO2 <- 'All'	#Gene set category 
+geneListData.out <- geneListData()  
+volcanoPlot()  
+```     
+```{r, message=FALSE  }  
+scatterPlot()  
+```     
+```{r, message=FALSE  }  
+MAplot()  
+```     
+#```{r, message=FALSE  }  
+#geneListGOTable.out <- geneListGOTable()  
+## Read pathway data again 
+#GeneSets.out <-readGeneSets( geneSetFile,
+#                             convertedData.out, input_selectGO2,input_selectOrg,
+#                             c(input_minSetSize, input_maxSetSize)  ) 
+#input_removeRedudantSets <- TRUE	#Remove highly redundant gene sets? 
+#results <- geneListGO()  #Enrichment analysis
+#results$adj.Pval <- format( results$adj.Pval,digits=3 )
+#kable( results, row.names=FALSE) 
+#```
+
+## 8. Pathway analysis 1   
+```{r, message=FALSE  } 
+input_selectContrast1 <- 'Flight-Ground'	#select Comparison 
+#input_selectContrast1 = limma.out$comparisons[3] # manually set
+input_selectGO <- 'All'	#Gene set category 
+#input_selectGO='custom' # if custom gmt file
+input_minSetSize <- 15	#Min size for gene set
+input_maxSetSize <- 2000	#Max size for gene set 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  ) 
+input_pathwayPvalCutoff <- 0.2	#FDR cutoff
+input_nPathwayShow <- 30	#Top pathways to show
+input_absoluteFold <- FALSE	#Use absolute values of fold-change?
+input_GenePvalCutoff <- 1	#FDR to remove genes 
+
+input_pathwayMethod = 1  # 1  GAGE
+gagePathwayData.out <- gagePathwayData()  # pathway analysis using GAGE  
+
+results <- gagePathwayData.out  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  }  
+pathwayListData.out = pathwayListData() 
+enrichmentPlot(pathwayListData.out, 25  ) 
+```     
+```{r, message=FALSE  }  
+enrichmentNetwork(pathwayListData.out )  
+```     
+```{r, message=FALSE  }  
+enrichmentNetworkPlotly(pathwayListData.out) 
+```     
+```{r, message=FALSE  }  
+
+input_pathwayMethod = 3  # 1  fgsea 
+fgseaPathwayData.out <- fgseaPathwayData() #Pathway analysis using fgsea 
+results <- fgseaPathwayData.out  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  }  
+pathwayListData.out = pathwayListData() 
+enrichmentPlot(pathwayListData.out, 25  ) 
+```     
+```{r, message=FALSE  }  
+enrichmentNetwork(pathwayListData.out )  
+```     
+```{r, message=FALSE  }  
+enrichmentNetworkPlotly(pathwayListData.out) 
+```     
+```{r, message=FALSE,fig.width=9, fig.height=8  }  
+PGSEAplot() # pathway analysis using PGSEA 
+```
+
+
+## 8. Pathway analysis 2   
+```{r, message=FALSE  } 
+input_selectContrast1 <- 'D130-WT'	#select Comparison 
+#input_selectContrast1 = limma.out$comparisons[3] # manually set
+input_selectGO <- 'All'	#Gene set category 
+#input_selectGO='custom' # if custom gmt file
+input_minSetSize <- 15	#Min size for gene set
+input_maxSetSize <- 2000	#Max size for gene set 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  ) 
+input_pathwayPvalCutoff <- 0.2	#FDR cutoff
+input_nPathwayShow <- 30	#Top pathways to show
+input_absoluteFold <- FALSE	#Use absolute values of fold-change?
+input_GenePvalCutoff <- 1	#FDR to remove genes 
+
+input_pathwayMethod = 1  # 1  GAGE
+gagePathwayData.out <- gagePathwayData()  # pathway analysis using GAGE  
+
+results <- gagePathwayData.out  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  }  
+pathwayListData.out = pathwayListData() 
+enrichmentPlot(pathwayListData.out, 25  ) 
+```     
+```{r, message=FALSE  }  
+enrichmentNetwork(pathwayListData.out )  
+```     
+```{r, message=FALSE  }  
+enrichmentNetworkPlotly(pathwayListData.out) 
+```     
+```{r, message=FALSE  }  
+
+input_pathwayMethod = 3  # 1  fgsea 
+fgseaPathwayData.out <- fgseaPathwayData() #Pathway analysis using fgsea 
+results <- fgseaPathwayData.out  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  }  
+pathwayListData.out = pathwayListData() 
+enrichmentPlot(pathwayListData.out, 25  ) 
+```     
+```{r, message=FALSE  }  
+enrichmentNetwork(pathwayListData.out )  
+```     
+```{r, message=FALSE  }  
+enrichmentNetworkPlotly(pathwayListData.out) 
+```     
+```{r, message=FALSE,fig.width=9, fig.height=8  }  
+PGSEAplot() # pathway analysis using PGSEA 
+```
+
+## 8. Pathway analysis 3   
+```{r, message=FALSE  } 
+input_selectContrast1 <- 'A68-D130'	#select Comparison 
+#input_selectContrast1 = limma.out$comparisons[3] # manually set
+input_selectGO <- 'All'	#Gene set category 
+#input_selectGO='custom' # if custom gmt file
+input_minSetSize <- 15	#Min size for gene set
+input_maxSetSize <- 2000	#Max size for gene set 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  ) 
+input_pathwayPvalCutoff <- 0.2	#FDR cutoff
+input_nPathwayShow <- 30	#Top pathways to show
+input_absoluteFold <- FALSE	#Use absolute values of fold-change?
+input_GenePvalCutoff <- 1	#FDR to remove genes 
+
+input_pathwayMethod = 1  # 1  GAGE
+gagePathwayData.out <- gagePathwayData()  # pathway analysis using GAGE  
+
+results <- gagePathwayData.out  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  }  
+pathwayListData.out = pathwayListData() 
+enrichmentPlot(pathwayListData.out, 25  ) 
+```     
+```{r, message=FALSE  }  
+enrichmentNetwork(pathwayListData.out )  
+```     
+```{r, message=FALSE  }  
+enrichmentNetworkPlotly(pathwayListData.out) 
+```     
+```{r, message=FALSE  }  
+
+input_pathwayMethod = 3  # 1  fgsea 
+fgseaPathwayData.out <- fgseaPathwayData() #Pathway analysis using fgsea 
+results <- fgseaPathwayData.out  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```     
+```{r, message=FALSE  }  
+pathwayListData.out = pathwayListData() 
+enrichmentPlot(pathwayListData.out, 25  ) 
+```     
+```{r, message=FALSE  }  
+enrichmentNetwork(pathwayListData.out )  
+```     
+```{r, message=FALSE  }  
+enrichmentNetworkPlotly(pathwayListData.out) 
+```     
+```{r, message=FALSE,fig.width=9, fig.height=8  }  
+PGSEAplot() # pathway analysis using PGSEA 
+```
+
+## 9. Chromosome   1
+```{r, message=FALSE  } 
+input_selectContrast2 <- 'Flight-Ground'	#select Comparison 
+#input_selectContrast2 = limma.out$comparisons[3] # manually set
+input_limmaPvalViz <- 0.1	#FDR to filter genes
+input_limmaFCViz <- 2	#FDR to filter genes 
+genomePlotly() # shows fold-changes on the genome 
+```
+
+## 9. Chromosome   2
+```{r, message=FALSE  } 
+input_selectContrast2 <- 'D130-WT'	#select Comparison 
+#input_selectContrast2 = limma.out$comparisons[3] # manually set
+input_limmaPvalViz <- 0.1	#FDR to filter genes
+input_limmaFCViz <- 2	#FDR to filter genes 
+genomePlotly() # shows fold-changes on the genome 
+```
+## 9. Chromosome   3
+```{r, message=FALSE  } 
+input_selectContrast2 <- 'A68-D130'	#select Comparison 
+#input_selectContrast2 = limma.out$comparisons[3] # manually set
+input_limmaPvalViz <- 0.1	#FDR to filter genes
+input_limmaFCViz <- 2	#FDR to filter genes 
+genomePlotly() # shows fold-changes on the genome 
+```
+
+## 10. Biclustering   
+```{r, message=FALSE  } 
+input_nGenesBiclust <- 1000	#Top genes for biclustering
+input_biclustMethod <- 'BCCC()'	#Method: 'BCCC', 'QUBIC', 'runibic' ... 
+biclustering.out = biclustering()  # run analysis
+
+input_selectBicluster <- 1	#select a cluster 
+biclustHeatmap()   # heatmap for selected cluster 
+```     
+```{r, message=FALSE  } 
+input_selectGO4 <- 'All'	#Gene set category 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO4,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  )  
+results <- geneListBclustGO()  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```
+
+## 10. Biclustering 2  
+```{r, message=FALSE  } 
+input_nGenesBiclust <- 1000	#Top genes for biclustering
+input_biclustMethod <- 'BCCC()'	#Method: 'BCCC', 'QUBIC', 'runibic' ... 
+biclustering.out = biclustering()  # run analysis
+
+input_selectBicluster <- 2	#select a cluster 
+biclustHeatmap()   # heatmap for selected cluster 
+```     
+```{r, message=FALSE  } 
+input_selectGO4 <- 'All'	#Gene set category 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO4,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  )  
+results <- geneListBclustGO()  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```
+
+## 10. Biclustering 3  
+```{r, message=FALSE  } 
+input_nGenesBiclust <- 1000	#Top genes for biclustering
+input_biclustMethod <- 'BCCC()'	#Method: 'BCCC', 'QUBIC', 'runibic' ... 
+biclustering.out = biclustering()  # run analysis
+
+input_selectBicluster <- 3	#select a cluster 
+biclustHeatmap()   # heatmap for selected cluster 
+```     
+```{r, message=FALSE  } 
+input_selectGO4 <- 'All'	#Gene set category 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO4,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  )  
+results <- geneListBclustGO()  #Enrichment analysis for k-Means clusters	
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```
+
+## 11. Co-expression network    
+```{r, message=FALSE  } 
+input_mySoftPower <- 25	#SoftPower to cutoff
+input_nGenesNetwork <- 1000	#Number of top genes
+input_minModuleSize <- 20	#Module size minimum 
+wgcna.out = wgcna()   # run WGCNA  
+```     
+```{r, message=FALSE  }  
+softPower()  # soft power curve 
+```     
+```{r, message=FALSE  }  
+modulePlot()  # plot modules  
+listWGCNA.Modules.out = listWGCNA.Modules() #modules
+
+```     
+```{r, message=FALSE  } 
+input_selectGO5 <- 'All'	#Gene set category 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO5,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  ) 
+input_selectWGCNA.Module <- '3. brown (198 genes)'	#Select a module
+input_topGenesNetwork <- 10	#SoftPower to cutoff
+input_edgeThreshold <- 0.4	#Number of top genes 
+moduleNetwork()	# show network of top genes in selected module
+
+```     
+```{r, message=FALSE  } 
+input_removeRedudantSets <- TRUE	#Remove redundant gene sets 
+results <- networkModuleGO()  #Enrichment analysis of selected module
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```   
+
+WGCNA GO2
+```{r, message=FALSE  } 
+input_selectGO5 <- 'All'	#Gene set category 
+# Read pathway data again 
+GeneSets.out <-readGeneSets( geneSetFile,
+                             convertedData.out, input_selectGO5,input_selectOrg,
+                             c(input_minSetSize, input_maxSetSize)  ) 
+input_selectWGCNA.Module <- '2. blue (260 genes)'	#Select a module
+input_topGenesNetwork <- 10	#SoftPower to cutoff
+input_edgeThreshold <- 0.4	#Number of top genes 
+moduleNetwork()	# show network of top genes in selected module
+
+```     
+```{r, message=FALSE  } 
+input_removeRedudantSets <- TRUE	#Remove redundant gene sets 
+results <- networkModuleGO()  #Enrichment analysis of selected module
+results$adj.Pval <- format( results$adj.Pval,digits=3 )
+kable( results, row.names=FALSE) 
+```   
