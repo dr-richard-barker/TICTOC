@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rsml xmlns:po='http://www.plantontology.org/xml-dtd/po.dtd'>
+	<metadata>
+		<version>1</version>
+		<unit>inch</unit>
+		<resolution>37.888332</resolution>
+		<last-modified>today</last-modified>
+		<software>smartroot</software>
+		<user>globet</user>
+		<file-key>myimage</file-key>
+		<property-definitions>
+			<property-definition>
+		    	<label>diameter</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>length</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>angle</label>
+		        <type>float</type>
+		        <unit>degree</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>insertion</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>lauz</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>lbuz</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>node-orientation</label>
+		        <type>float</type>
+		        <unit>radian</unit>
+			</property-definition>
+		</property-definitions>
+		<image>
+			<captured>today</captured>
+			<label>WT_c3_GC_3_DSC_0419_clarity_enhanced_300dpi</label>
+		</image>
+	</metadata>
+	<scene>
+		<plant>
+			<root ID='aa828e5b-e388-4dc2-9f68-ca59073b4f12' label='root_0' po:accession='PO:0009005'>
+				<properties>
+  <rulerAtOrigin>0.0</rulerAtOrigin>
+					<length>65.963646</length>
+					<orientation>4.6485453</orientation>
+				</properties>
+				<geometry>
+					<polyline>
+						<point x='745.74097' y='1845.2606'/>
+						<point x='715.09406' y='2011.8254'/>
+						<point x='713.36865' y='2083.5327'/>
+						<point x='699.647' y='2185.5752'/>
+						<point x='696.9713' y='2299.1228'/>
+						<point x='691.59607' y='2445.7886'/>
+						<point x='695.3252' y='2584.135'/>
+						<point x='692.2032' y='2689.8992'/>
+						<point x='677.5708' y='2824.4636'/>
+					</polyline>
+				</geometry>
+				<functions>
+					<function name='diameter' domain='polyline'>
+						<sample>70.9507</sample>
+						<sample>45.948906</sample>
+						<sample>26.32595</sample>
+						<sample>26.74282</sample>
+						<sample>28.499279</sample>
+						<sample>25.499903</sample>
+						<sample>21.000116</sample>
+						<sample>18.499432</sample>
+						<sample>9.500264</sample>
+					</function>
+					<function name='orientation' domain='polyline'>
+						<sample>4.5304303</sample>
+						<sample>4.688332</sample>
+						<sample>4.5787206</sample>
+						<sample>4.688829</sample>
+						<sample>4.675756</sample>
+						<sample>4.7393374</sample>
+						<sample>4.682879</sample>
+						<sample>4.604076</sample>
+						<sample>0.0</sample>
+					</function>
+				</functions>
+				<annotations>
+				</annotations>
+ </root>
+		</plant>
+	</scene>
+</rsml>
