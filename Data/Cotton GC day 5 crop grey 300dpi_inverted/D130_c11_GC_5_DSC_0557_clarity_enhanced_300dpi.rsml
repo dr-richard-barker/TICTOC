@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rsml xmlns:po='http://www.plantontology.org/xml-dtd/po.dtd'>
+	<metadata>
+		<version>1</version>
+		<unit>inch</unit>
+		<resolution>37.888332</resolution>
+		<last-modified>today</last-modified>
+		<software>smartroot</software>
+		<user>globet</user>
+		<file-key>myimage</file-key>
+		<property-definitions>
+			<property-definition>
+		    	<label>diameter</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>length</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>angle</label>
+		        <type>float</type>
+		        <unit>degree</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>insertion</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>lauz</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>lbuz</label>
+		        <type>float</type>
+		        <unit>cm</unit>
+			</property-definition>
+			<property-definition>
+		    	<label>node-orientation</label>
+		        <type>float</type>
+		        <unit>radian</unit>
+			</property-definition>
+		</property-definitions>
+		<image>
+			<captured>today</captured>
+			<label>D130_c11_GC_5_DSC_0557_clarity_enhanced_300dpi</label>
+		</image>
+	</metadata>
+	<scene>
+		<plant>
+			<root ID='aa828e5b-e388-4dc2-9f68-ca59073b4f12' label='root_0' po:accession='PO:0009005'>
+				<properties>
+  <rulerAtOrigin>0.0</rulerAtOrigin>
+					<length>100.18475</length>
+					<orientation>4.72083</orientation>
+				</properties>
+				<geometry>
+					<polyline>
+						<point x='914.7516' y='1713.374'/>
+						<point x='917.9911' y='1822.1328'/>
+						<point x='912.76294' y='1901.32'/>
+						<point x='893.921' y='1971.8569'/>
+						<point x='886.6399' y='2038.3989'/>
+						<point x='892.2866' y='2098.2712'/>
+						<point x='898.1667' y='2136.1667'/>
+						<point x='900.93494' y='2153.1807'/>
+						<point x='904.2352' y='2175.5798'/>
+						<point x='907.2936' y='2201.359'/>
+						<point x='908.609' y='2235.632'/>
+						<point x='892.6669' y='2313.4722'/>
+						<point x='866.48535' y='2383.1306'/>
+						<point x='839.52563' y='2484.2075'/>
+						<point x='836.13684' y='2559.7695'/>
+						<point x='958.8788' y='2856.2017'/>
+						<point x='984.1046' y='3002.1736'/>
+						<point x='1007.23157' y='3165.1284'/>
+					</polyline>
+				</geometry>
+				<functions>
+					<function name='diameter' domain='polyline'>
+						<sample>87.78944</sample>
+						<sample>29.269493</sample>
+						<sample>37.256733</sample>
+						<sample>24.492384</sample>
+						<sample>19.493933</sample>
+						<sample>17.45155</sample>
+						<sample>21.500288</sample>
+						<sample>17.908413</sample>
+						<sample>18.407839</sample>
+						<sample>23.000217</sample>
+						<sample>16.501123</sample>
+						<sample>15.500837</sample>
+						<sample>15.500621</sample>
+						<sample>14.472139</sample>
+						<sample>15.489292</sample>
+						<sample>11.966613</sample>
+						<sample>11.000849</sample>
+						<sample>6.9243965</sample>
+					</function>
+					<function name='orientation' domain='polyline'>
+						<sample>4.7421665</sample>
+						<sample>4.646462</sample>
+						<sample>4.451362</sample>
+						<sample>4.603401</sample>
+						<sample>4.8064237</sample>
+						<sample>4.866327</sample>
+						<sample>4.8736806</sample>
+						<sample>4.8586764</sample>
+						<sample>4.830474</sample>
+						<sample>4.750751</sample>
+						<sample>4.5103765</sample>
+						<sample>4.3528686</sample>
+						<sample>4.451732</sample>
+						<sample>4.667571</sample>
+						<sample>5.1049604</sample>
+						<sample>4.8835115</sample>
+						<sample>4.8533697</sample>
+						<sample>5.2605925</sample>
+					</function>
+				</functions>
+				<annotations>
+				</annotations>
+ </root>
+		</plant>
+	</scene>
+</rsml>
