@@ -13,3 +13,7 @@ American Society for Gravitational and Space Research **(ASGSR)**
 {% endembed %}
 
 ![iss\_tictoc\_cotton\_patch01](https://github.com/dr-richard-barker/TICTOC/assets/8679982/0404bd1f-990f-4055-9ba9-f59acc6fcac4)
+
+[Link to edit slide show](https://docs.google.com/presentation/d/1q0PUVGzObdc1jbJnvm9GXY5XsKXQfeaNVgZOhANmCMQ/edit?usp=sharing)
+
+{% embed url="https://docs.google.com/presentation/d/1q0PUVGzObdc1jbJnvm9GXY5XsKXQfeaNVgZOhANmCMQ/edit?usp=sharing" %}

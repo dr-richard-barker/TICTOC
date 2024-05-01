@@ -1,6 +1,10 @@
-# Root Figures
+# SVT Root Results
 
 ### Root Results!
+
+[Link to edit presentation ](https://docs.google.com/presentation/d/1XD-nu5kzFT2Zps5kdvEDr5t\_\_-0yMr9lBTJ1Wucxha4/edit?usp=sharing)
+
+{% embed url="https://docs.google.com/presentation/d/1XD-nu5kzFT2Zps5kdvEDr5t__-0yMr9lBTJ1Wucxha4/edit?usp=sharing" %}
 
 ### Correlation plot showing root phenotypes WT FL vs GC. Root vectors correlate with root length and root surface area and to a lesser extent the root volume.
 
