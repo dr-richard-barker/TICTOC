@@ -1,0 +1,4 @@
+Name,A68ShootFlight,A68ShootFlight,A68ShootFlight,A68ShootFlight,A68ShootGround,A68ShootGround,A68ShootGround,A68ShootGround,D130ShootFlight,D130ShootFlight,D130ShootFlight,D130ShootFlight,D130ShootGround,D130ShootGround,D130ShootGround,D130ShootGround,WTShootFlight,WTShootFlight,WTShootFlight,WTShootFlight,WTShootGround,WTShootGround,WTShootGround,WTShootGround
+Treatment,Flight,Flight,Flight,Flight,Ground,Ground,Ground,Ground,Flight,Flight,Flight,Flight,Ground,Ground,Ground,Ground,Flight,Flight,Flight,Flight,Ground,Ground,Ground,Ground
+Genotype,A68,A68,A68,A68,A68,A68,A68,A68,D130,D130,D130,D130,D130,D130,D130,D130,WT,WT,WT,WT,WT,WT,WT,WT
+Tissue,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot,Shoot
