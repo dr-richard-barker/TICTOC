@@ -26,6 +26,9 @@ Gilroy Lab, University of Wisconsin–Madison · CASIS grant UA-2018-276 · flow
   DEG reports and RSML QC ([`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md)), pinned genome versions.
 - ✅ Drafted the [`manuscript/`](manuscript/) skeleton (npj Microgravity): Results stubs Fig 1–7,
   concrete Methods, and a figure/table plan with draft legends.
+- ✅ **Extracted RSML morphometric traits** ([`morphometrics/`](morphometrics/)) — real per-plant-day
+  table (198 rows) + group means for all 3 genotypes × Flight/Ground × days 3–6. Descriptive pattern:
+  traced total length FL ≫ GC (AVP-OX ratio > WT) — ⚠ **flagged for calibration/artifact check before any claim.**
 
 **Still needs the maintainer:** a live R run of the GO + PhysioSpace scripts; OSDR accession; Zenodo DOI;
 author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the
@@ -74,8 +77,10 @@ TICTOC/
 │   └── Ara_vs_Cotton_biomart_export.txt.zip . ⚠ legacy raimondii map — superseded by crosswalk/
 │
 ├── crosswalk/ ...................... ✅ Gohir→Arabidopsis ortholog map (TSV + builder + README)
+├── morphometrics/ ................. ✅ RSML→traits extraction (rsml_traits.csv + summary + scripts)
 ├── go_analysis/ ................... ✅ clusterProfiler GO/KEGG scaffold (run_go_clusterprofiler.R)
 ├── physiospace/ ................... ✅ PhysioSpace decoding scaffold (run_physiospace.R)
+├── manuscript/ .................... ✅ npj draft skeleton + figure/table plan with legends
 │
 ├── RNA-seq — analysis
 │   └── TICTOC_3_factor_model/ ...... DESeq2/iDEP pipeline + DEG/enrichment outputs (see its README;
@@ -133,7 +138,9 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       shrunken LFCs and padj, as tidy CSVs (one row per gene, columns per contrast).
 - [ ] **4.3 Tissue-specific clustering.** Cluster organ-specific DEGs (WGCNA is already started for
       leaves; extend to root and to a joint set). Annotate modules by eigengene–trait correlation
-      (Flight, genotype, and **root morphometric traits** — length, surface area, volume from RSML).
+      (Flight, genotype, and **root morphometric traits**). ✅ RSML traits now extracted to
+      [`morphometrics/rsml_traits.csv`](morphometrics/rsml_traits.csv) (per plant-day) ready for the
+      module–trait correlation; ⚠ verify FL/GC length calibration first (see `morphometrics/README.md`). *(2026-07-03)*
 - [ ] **4.4 GO / pathway analysis per cluster.** Map `Gohir` → Arabidopsis and run GO/KEGG enrichment on
       each module/DEG set. Standardise on one tool (clusterProfiler recommended for reproducibility over
       the iDEP GAGE outputs). ✅ **Blocker resolved:** built [`crosswalk/gohir_to_arabidopsis.tsv`](crosswalk/gohir_to_arabidopsis.tsv)
