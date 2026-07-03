@@ -150,7 +150,10 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [ ] Clarify licensing: `LICENSE` is CC0. Confirm CC0 (data) + a code license (e.g. MIT) split, or state CC0 covers all.
 
 **Cleanup (the "lots of folders/code/graphs" pass)**
-- [ ] Consolidate DEG models → keep one, archive the rest (§4.1).
+- [~] Consolidate DEG models → keep one, archive the rest (§4.1). ✅ Documented in
+      [`TICTOC_3_factor_model/README.md`](TICTOC_3_factor_model/README.md): canonical source is
+      `TICTOC_markdown_evolved_v2.Rmd` → v3 report; iDEP v2 kept for provenance. Removed a byte-identical
+      duplicate of the v3 report (~17 MB) from the repo root. Full contrast regen still pending (§4.1). *(2026-07-03)*
 - [~] Resolve the mislabeled `TICTOC_cotton_run2_csv/` (holds `run1_allCounts`) — added an explanatory
       `README.md` in the folder; **rename decision pending maintainer** (was there ever a real run 2?).
 - [x] De-duplicate `Leaves/` vs `Leaves/TITCO_leaves_2024/` — removed the two byte-identical DEG-value
