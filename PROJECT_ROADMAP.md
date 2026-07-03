@@ -156,11 +156,12 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [x] De-duplicate `Leaves/` vs `Leaves/TITCO_leaves_2024/` — removed the two byte-identical DEG-value
       zips from the `TITCO_leaves_2024/` data-dump subfolder (~22 MB); canonical copies kept in
       top-level `Leaves/`. *(2026-07-02)*
-- [~] Prune RSML scratch dirs under `Data/` (`test`, `Late`, `Convert late`, `delete me_templates`) and
-      settle on `Final_RSML_format/` as canonical. ✅ QC documented in
-      [`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md) — 198 curated tracings, 53 plants, 44 with the
-      full day-3→6 series; design is unbalanced (A68 smallest). **Scratch-dir deletion still pending
-      maintainer sign-off.** *(2026-07-03)*
+- [x] Prune RSML scratch dirs under `Data/` and settle on `Final_RSML_format/` as canonical. ✅ QC in
+      [`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md) (198 tracings, 53 plants, 44 full day-3→6
+      series; unbalanced design). ✅ Removed 32 blob-SHA-verified redundant files (~35 MB) from the
+      `test/`, `Convert late/`, `delete me_templates/` etc. sub-folders. ⚠ **Kept** 10 unique-content
+      files (~107 MB) that were mislabeled as scratch — a timelapse `.avi` and `A68_2A/2B` day-5 images;
+      see the QC doc for the maintainer decision on those. *(2026-07-03)*
 - [~] Move the large rendered `*.html` reports + slide-deck PDFs to the Zenodo release or Git LFS;
       **added a `.gitignore`** (2026-07-02) for OS/R/Python cruft, with commented patterns ready to
       enable once the existing rendered reports are relocated. Relocation still pending.
