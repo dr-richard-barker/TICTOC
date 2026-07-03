@@ -156,8 +156,11 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [x] De-duplicate `Leaves/` vs `Leaves/TITCO_leaves_2024/` — removed the two byte-identical DEG-value
       zips from the `TITCO_leaves_2024/` data-dump subfolder (~22 MB); canonical copies kept in
       top-level `Leaves/`. *(2026-07-02)*
-- [ ] Prune RSML scratch dirs under `Data/` (`test`, `Late`, `Convert late`, `delete me_templates`) and
-      settle on `Final_RSML_format/` as canonical; document how many plants/day survived QC.
+- [~] Prune RSML scratch dirs under `Data/` (`test`, `Late`, `Convert late`, `delete me_templates`) and
+      settle on `Final_RSML_format/` as canonical. ✅ QC documented in
+      [`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md) — 198 curated tracings, 53 plants, 44 with the
+      full day-3→6 series; design is unbalanced (A68 smallest). **Scratch-dir deletion still pending
+      maintainer sign-off.** *(2026-07-03)*
 - [~] Move the large rendered `*.html` reports + slide-deck PDFs to the Zenodo release or Git LFS;
       **added a `.gitignore`** (2026-07-02) for OS/R/Python cruft, with commented patterns ready to
       enable once the existing rendered reports are relocated. Relocation still pending.
