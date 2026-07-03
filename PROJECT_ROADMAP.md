@@ -120,9 +120,12 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       [`go_analysis/run_go_clusterprofiler.R`](go_analysis/run_go_clusterprofiler.R) runs enrichGO
       (BP/MF/CC) + enrichKEGG over the DEG tables with a proper expressed-gene universe. Needs a first
       run against a live R install to validate. *(2026-07-03)*
-- [ ] **4.5 PhysioSpace stress-pattern decoding.** Project cotton contrasts onto the plant PhysioSpace
+- [~] **4.5 PhysioSpace stress-pattern decoding.** Project cotton contrasts onto the plant PhysioSpace
       stress compendium (Hadizadeh Esfahani et al.) to produce PhysioScores per genotype/tissue.
-      Reuse the OSD-767 `physioworker` scripts as the template; verify the ortholog bridge for cotton.
+      ✅ **Script scaffolded:** [`physiospace/run_physiospace.R`](physiospace/run_physiospace.R) builds
+      VST Flight−Ground contrasts, re-indexes Gohir→AT→Entrez via the crosswalk, and runs
+      `calculatePhysioMap` (GenesRatio=0.05, TTEST=FALSE, ImputationMethod="PCA") — same params as OSD-767.
+      **Needs:** the shared AT reference-space `.rds` files (reuse OSD-767's) + a live R run to validate. *(2026-07-03)*
 - [ ] **4.6 Root morphometrics ↔ transcriptome integration.** Formal stats on RSML traits
       (mixed model: trait ~ Treatment × Genotype, day as time covariate) and correlate trait modules
       with expression modules — the headline integrative figure.
