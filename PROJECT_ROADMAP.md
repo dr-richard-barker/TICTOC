@@ -116,7 +116,10 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       the iDEP GAGE outputs). ✅ **Blocker resolved:** built [`crosswalk/gohir_to_arabidopsis.tsv`](crosswalk/gohir_to_arabidopsis.tsv)
       from the CottonGen *G. hirsutum* v2.1 → Arabidopsis BLASTP best-hit (92.3% count-matrix coverage;
       reproducible via `crosswalk/build_gohir_to_arabidopsis.py`). Use this instead of the *raimondii*
-      `Ara_vs_Cotton_biomart_export`. *(2026-07-03)*
+      `Ara_vs_Cotton_biomart_export`. ✅ **Script scaffolded:**
+      [`go_analysis/run_go_clusterprofiler.R`](go_analysis/run_go_clusterprofiler.R) runs enrichGO
+      (BP/MF/CC) + enrichKEGG over the DEG tables with a proper expressed-gene universe. Needs a first
+      run against a live R install to validate. *(2026-07-03)*
 - [ ] **4.5 PhysioSpace stress-pattern decoding.** Project cotton contrasts onto the plant PhysioSpace
       stress compendium (Hadizadeh Esfahani et al.) to produce PhysioScores per genotype/tissue.
       Reuse the OSD-767 `physioworker` scripts as the template; verify the ortholog bridge for cotton.
