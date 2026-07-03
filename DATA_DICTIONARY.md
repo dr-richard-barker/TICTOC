@@ -164,9 +164,16 @@ Arabidopsis to cotton, used for GO annotation transfer and PhysioSpace mapping. 
 
 ---
 
-## 10. Versions to pin (fill in during cleanup)
+## 10. Versions to pin
 
-- [ ] *G. hirsutum* genome assembly + annotation release (for `Gohir` IDs).
-- [ ] Ensembl Plants / BioMart release used for the ortholog export.
-- [ ] SmartRoot version; DESeq2 / iDEP versions; R version (`sessionInfo`).
+Confirmed:
+- [x] **Genome/annotation:** *G. hirsutum* (AD1) TM-1, **UTX-TM1 v2.1** = Phytozome **Ghirsutum_527_v2.1**
+      (JGI); this is the source of the `Gohir.*` gene IDs (CottonGen / Phytozome).
+- [x] **Gohir→Arabidopsis crosswalk:** CottonGen BLASTP `blastp_G.hirsutum_UTX_v2.1_vs_arabidopsis`
+      (best-hit vs TAIR); see `crosswalk/`. Supersedes the raimondii BioMart export in §9.
+- [x] **RSML tracer:** SmartRoot (per the RSML `<software>` tag; §7).
+
+Still to pin (need the maintainer's environment / accession):
+- [ ] Exact SmartRoot version; DESeq2 / iDEP (≈0.95) versions; R version (`sessionInfo`).
+- [ ] Ensembl Plants / BioMart release behind the legacy `Ara_vs_Cotton_biomart_export` (≈Oct 2022).
 - [ ] OSDR/GeneLab accession number(s).
