@@ -126,7 +126,9 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       ✅ **Script scaffolded:** [`physiospace/run_physiospace.R`](physiospace/run_physiospace.R) builds
       VST Flight−Ground contrasts, re-indexes Gohir→AT→Entrez via the crosswalk, and runs
       `calculatePhysioMap` (GenesRatio=0.05, TTEST=FALSE, ImputationMethod="PCA") — same params as OSD-767.
-      **Needs:** the shared AT reference-space `.rds` files (reuse OSD-767's) + a live R run to validate. *(2026-07-03)*
+      Reference spaces load directly from the **`PlantPhysioSpace`** data package
+      (`AT_Stress_Space` / `_Meta` / `_RNASeq`); no manual `.rds` needed. **Needs:** a live R run to
+      validate (install `PhysioSpaceMethods` + `PlantPhysioSpace` from JRC-COMBINE GitHub). *(2026-07-03)*
 - [ ] **4.6 Root morphometrics ↔ transcriptome integration.** Formal stats on RSML traits
       (mixed model: trait ~ Treatment × Genotype, day as time covariate) and correlate trait modules
       with expression modules — the headline integrative figure.

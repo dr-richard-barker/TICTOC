@@ -7,13 +7,14 @@ roadmap step **4.5** and mirrors the validated OSD-767 tomato pipeline.
 ## Run
 ```bash
 cd physiospace
-Rscript run_physiospace.R --ref-dir /path/to/reference_spaces
+Rscript run_physiospace.R          # loads AT stress spaces from the PlantPhysioSpace package
 ```
 Install (once):
 ```r
-install.packages(c("BiocManager","remotes","pheatmap"))
+install.packages(c("BiocManager","remotes"))
 BiocManager::install(c("DESeq2","org.At.tair.db"))
-remotes::install_github("JRC-COMBINE/PhysioSpaceMethods")
+remotes::install_github("JRC-COMBINE/PhysioSpaceMethods")   # method (calculatePhysioMap, PhysioHeatmap)
+remotes::install_github("JRC-COMBINE/PlantPhysioSpace")     # data: AT/rice/soy/wheat stress spaces
 ```
 
 ## What it does
@@ -26,14 +27,17 @@ remotes::install_github("JRC-COMBINE/PhysioSpaceMethods")
    ImputationMethod = "PCA")` against each reference space — the **same parameters as OSD-767**.
 4. Writes `PhysioScores_<space>.csv` + a heatmap per reference space to `results/`.
 
-## You must supply the reference spaces
-Not committed here (they are the shared Arabidopsis stress compendia from Hadizadeh Esfahani et al.
-2021, the same files used for OSD-767):
+## Reference spaces (from the `PlantPhysioSpace` data package)
+Loaded automatically via `data(<name>, package = "PlantPhysioSpace")` — no manual files needed.
+Default = the three used by OSD-767 (all Arabidopsis, Entrez-indexed):
 
-- `AT_Stress_Space`, `AT_Stress_Space_Meta`, `AT_Stress_Space_RNASeq`
+- `AT_Stress_Space` (22 stress axes, ATH1 microarray compendium, 85 GEO datasets)
+- `AT_Stress_Space_Meta` (meta-grouped stress axes)
+- `AT_Stress_Space_RNASeq` (RNA-seq-derived axes)
 
-Provide them as `.rds` matrices (rownames = Arabidopsis **Entrez** IDs, columns = stress axes) in a
-folder passed via `--ref-dir`. Reuse the OSD-767 copies rather than rebuilding.
+Override with `--spaces "A,B,C"`. Also available in the package: `*_Detailed` variants, and
+non-Arabidopsis spaces `OS_Stress_Space` (rice), `GM_Stress_Space` (soybean), `TA_Stress_Space` (wheat).
+To use local copies instead, pass `--ref-dir /folder` of `<name>.rds` matrices.
 
 ## Caveats
 - Not yet executed against a live R install — validate the printed gene-mapping counts and the
@@ -44,5 +48,13 @@ folder passed via `--ref-dir`. Reuse the OSD-767 copies rather than rebuilding.
   (roadmap §4.1) with shrunken LFCs, swap those in as the input matrix for consistency with the DEG tables.
 
 ## Options
+`--spaces` (default `AT_Stress_Space,AT_Stress_Space_Meta,AT_Stress_Space_RNASeq`),
 `--counts` (default `../TICTOC_run1_filteredCounts_v3.csv`), `--crosswalk`, `--out` (default `results`),
-`--min-pid` (default 30), `--genes-ratio` (default 0.05).
+`--min-pid` (default 30), `--genes-ratio` (default 0.05), `--ref-dir` (optional local `.rds` override).
+
+## References
+- Lenz M. *et al.* (2013) *PhysioSpace: relating gene expression experiments from heterogeneous sources
+  using shared physiological processes.* PLoS ONE 8(10):e77627. doi:10.1371/journal.pone.0077627
+- Hadizadeh Esfahani A. *et al.* (2021) *Plant PhysioSpace: transferring stress-response knowledge across
+  species.* Plant Physiology 187(3):1795. (PMC8566250)
+- Packages: `PhysioSpaceMethods` and `PlantPhysioSpace` (JRC-COMBINE), GNU GPLv3.

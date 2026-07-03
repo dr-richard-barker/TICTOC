@@ -15,21 +15,27 @@
 #      ImputationMethod="PCA") against each reference space.
 #   4. Write PhysioScores + a heatmap per reference space.
 #
-# YOU MUST SUPPLY THE REFERENCE SPACES (not in this repo — same files as OSD-767):
-#   AT_Stress_Space, AT_Stress_Space_Meta, AT_Stress_Space_RNASeq
-#   as .rds matrices (rownames = Arabidopsis Entrez IDs, cols = stress axes).
-#   Point --ref-dir at the folder holding them (see physiospace/README.md).
+# REFERENCE SPACES come from the PlantPhysioSpace data package (Entrez-indexed AT stress spaces).
+#   Default = the three used by OSD-767: AT_Stress_Space, AT_Stress_Space_Meta, AT_Stress_Space_RNASeq.
+#   Override with --spaces "A,B,C" (any data() object in PlantPhysioSpace), or point --ref-dir at a
+#   folder of .rds matrices if you have local copies.
 #
 # Usage:
-#   Rscript run_physiospace.R --ref-dir /path/to/reference_spaces \
-#       [--counts ../TICTOC_run1_filteredCounts_v3.csv] \
-#       [--crosswalk ../crosswalk/gohir_to_arabidopsis.tsv] \
+#   Rscript run_physiospace.R
+#       [--spaces AT_Stress_Space,AT_Stress_Space_Meta,AT_Stress_Space_RNASeq]
+#       [--ref-dir /path/to/local/rds]        # optional: bypass the data package
+#       [--counts ../TICTOC_run1_filteredCounts_v3.csv]
+#       [--crosswalk ../crosswalk/gohir_to_arabidopsis.tsv]
 #       [--out results] [--min-pid 30] [--genes-ratio 0.05]
 #
+# Refs: Lenz et al. 2013 PLoS ONE (10.1371/journal.pone.0077627);
+#       Hadizadeh Esfahani et al. 2021 Plant Physiol. 187:1795 (Plant PhysioSpace).
+#
 # Install (once):
-#   install.packages(c("BiocManager","remotes","pheatmap"))
+#   install.packages(c("BiocManager","remotes"))
 #   BiocManager::install(c("DESeq2","org.At.tair.db"))
-#   remotes::install_github("JRC-COMBINE/PhysioSpaceMethods")
+#   remotes::install_github("JRC-COMBINE/PhysioSpaceMethods")   # method
+#   remotes::install_github("JRC-COMBINE/PlantPhysioSpace")     # data (AT/rice/soy/wheat spaces)
 # =============================================================================
 
 args <- commandArgs(trailingOnly = TRUE)
@@ -41,14 +47,15 @@ HERE <- tryCatch(dirname(sub("^--file=", "",
 if (is.na(HERE) || HERE == "") HERE <- "."
 counts_path <- getopt("--counts",    file.path(HERE, "..", "TICTOC_run1_filteredCounts_v3.csv"))
 cross_path  <- getopt("--crosswalk", file.path(HERE, "..", "crosswalk", "gohir_to_arabidopsis.tsv"))
-ref_dir     <- getopt("--ref-dir",   NA_character_)
+ref_dir     <- getopt("--ref-dir",   NA_character_)   # optional: local .rds override
+spaces_arg  <- getopt("--spaces",    "AT_Stress_Space,AT_Stress_Space_Meta,AT_Stress_Space_RNASeq")
 out_dir     <- getopt("--out",       file.path(HERE, "results"))
 min_pid     <- as.numeric(getopt("--min-pid", "30"))
 genes_ratio <- as.numeric(getopt("--genes-ratio", "0.05"))
-if (is.na(ref_dir)) stop("Provide --ref-dir pointing at the AT stress reference-space .rds files.")
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
 need <- c("DESeq2", "org.At.tair.db", "PhysioSpaceMethods")
+if (is.na(ref_dir)) need <- c(need, "PlantPhysioSpace")   # only needed when loading spaces from the package
 miss <- need[!vapply(need, requireNamespace, logical(1), quietly = TRUE)]
 if (length(miss)) stop("Missing packages: ", paste(miss, collapse = ", "),
                        "\nSee the install block in this script's header.")
@@ -103,21 +110,42 @@ input <- sums / cnts                                           # MEAN across hom
 message(sprintf("Re-indexed to Arabidopsis Entrez: %d genes x %d contrasts",
                 nrow(input), ncol(input)))
 
-# ---- 4. PhysioScores against each reference space ---------------------------
-ref_files <- list.files(ref_dir, pattern = "\\.rds$", full.names = TRUE, ignore.case = TRUE)
-if (!length(ref_files)) stop("No .rds reference spaces found in ", ref_dir)
-for (rf in ref_files) {
-  space <- readRDS(rf); sp_name <- tools::file_path_sans_ext(basename(rf))
+# ---- 4. resolve reference spaces (PlantPhysioSpace package, or local .rds) ---
+space_names <- trimws(strsplit(spaces_arg, ",")[[1]])
+load_space <- function(nm) {
+  if (!is.na(ref_dir)) {                                   # local override
+    f <- file.path(ref_dir, paste0(nm, ".rds"))
+    if (!file.exists(f)) { message("  (no local file ", f, ")"); return(NULL) }
+    return(readRDS(f))
+  }
+  e <- new.env()
+  ok <- tryCatch({ utils::data(list = nm, package = "PlantPhysioSpace", envir = e); TRUE },
+                 error = function(err) FALSE)
+  if (!ok || !exists(nm, envir = e)) { message("  (space '", nm, "' not found in PlantPhysioSpace)"); return(NULL) }
+  get(nm, envir = e)
+}
+
+# ---- 5. PhysioScores against each reference space ---------------------------
+for (sp_name in space_names) {
+  space <- load_space(sp_name); if (is.null(space)) next
+  space <- as.matrix(space)
   message("\n== Reference space: ", sp_name, " (", nrow(space), " genes x ", ncol(space), " axes) ==")
-  shared <- intersect(rownames(input), rownames(space))
-  message("  shared Entrez genes with input: ", length(shared))
+  message("  shared Entrez genes with input: ", length(intersect(rownames(input), rownames(space))))
   scores <- tryCatch(
     calculatePhysioMap(InputData = input, Space = space,
                        GenesRatio = genes_ratio, TTEST = FALSE, ImputationMethod = "PCA"),
     error = function(e) { message("  calculatePhysioMap failed: ", conditionMessage(e)); NULL })
   if (is.null(scores)) next
   write.csv(scores, file.path(out_dir, sprintf("PhysioScores_%s.csv", sp_name)))
-  if (requireNamespace("pheatmap", quietly = TRUE)) tryCatch(
+  # prefer the package's own heatmap; fall back to pheatmap
+  plotted <- FALSE
+  if ("PhysioHeatmap" %in% getNamespaceExports("PhysioSpaceMethods")) tryCatch({
+    pdf(file.path(out_dir, sprintf("PhysioScores_%s.pdf", sp_name)), width = 9, height = 7)
+    PhysioSpaceMethods::PhysioHeatmap(PhysioResults = scores, main = paste("PhysioScores —", sp_name),
+                                      SymmetricColoring = TRUE, SpaceClustering = FALSE)
+    dev.off(); plotted <- TRUE
+  }, error = function(e) { try(dev.off(), silent = TRUE); message("  PhysioHeatmap failed: ", conditionMessage(e)) })
+  if (!plotted && requireNamespace("pheatmap", quietly = TRUE)) tryCatch(
     pheatmap::pheatmap(scores, main = paste("PhysioScores —", sp_name), cluster_cols = FALSE,
                        filename = file.path(out_dir, sprintf("PhysioScores_%s.pdf", sp_name))),
     error = function(e) NULL)
