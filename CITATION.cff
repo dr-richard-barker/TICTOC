@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: "If you use this dataset or code, please cite it as below."
+title: "TICTOC — Targeting Improved Cotton Through Orbital Cultivation"
+abstract: >-
+  Data and analysis for the TIC-TOC spaceflight experiment: AVP1-overexpressing (AVP-OX)
+  cotton (Gossypium hirsutum) grown aboard the ISS versus ground controls, in a full factorial
+  design (Treatment x Genotype x Tissue). Includes bulk RNA-seq, RSML root-architecture tracings,
+  and time-series root photography.
+type: dataset
+authors:
+  - family-names: Barker
+    given-names: Richard
+    affiliation: "Gilroy Life Science Lab, University of Wisconsin–Madison"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # TODO: add ORCID
+  # TODO: add co-authors (name, affiliation, ORCID) before the Zenodo deposit / submission.
+keywords:
+  - spaceflight
+  - microgravity
+  - cotton
+  - Gossypium hirsutum
+  - AVP1
+  - root system architecture
+  - RSML
+  - transcriptomics
+  - RNA-seq
+license: CC0-1.0
+repository-code: "https://github.com/dr-richard-barker/TICTOC"
+# doi: "10.5281/zenodo.XXXXXXX"   # TODO: reserve a Zenodo DOI and add it here (see PROJECT_ROADMAP.md §6)
+# version: "1.0.0"                # TODO: set on tagged release
+# date-released: "YYYY-MM-DD"     # TODO: set on release
+# Funding: CASIS UA-2018-276

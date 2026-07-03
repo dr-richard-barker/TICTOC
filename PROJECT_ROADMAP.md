@@ -158,8 +158,9 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       top-level `Leaves/`. *(2026-07-02)*
 - [ ] Prune RSML scratch dirs under `Data/` (`test`, `Late`, `Convert late`, `delete me_templates`) and
       settle on `Final_RSML_format/` as canonical; document how many plants/day survived QC.
-- [ ] Move the large rendered `*.html` reports + slide-deck PDFs to the Zenodo release or Git LFS;
-      add a `.gitignore` so regenerable artifacts aren't re-committed.
+- [~] Move the large rendered `*.html` reports + slide-deck PDFs to the Zenodo release or Git LFS;
+      **added a `.gitignore`** (2026-07-02) for OS/R/Python cruft, with commented patterns ready to
+      enable once the existing rendered reports are relocated. Relocation still pending.
 - [ ] Replace dead/edit-only Google Slides links in `README.md`/`data-1.md`/`Figures/readme.md` with
       exported static figures committed to `Figures/`.
 
@@ -170,7 +171,8 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [ ] Reserve DOI (Zenodo → "reserve" before publishing) and add badge to `README.md`.
 - [ ] Assemble the release bundle: canonical count matrices, design table, curated RSML set,
       final DEG/GO/PhysioSpace tables, figure source files, and the frozen analysis code.
-- [ ] Write `CITATION.cff` (authors, ORCIDs, title, version) at repo root.
+- [x] Write `CITATION.cff` at repo root *(2026-07-02)* — authors/keywords/license/repo populated;
+      **TODO in-file:** add ORCIDs, co-authors, reserved DOI, and version/date on release.
 - [ ] Fill Zenodo metadata: authors + ORCIDs, funding (**CASIS UA-2018-276**), keywords
       (spaceflight, cotton, AVP1, root architecture, RSML, transcriptomics), related identifiers
       (OSDR accession, manuscript DOI once known).

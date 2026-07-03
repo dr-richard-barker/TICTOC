@@ -1,0 +1,29 @@
+# --- OS / archive cruft ---
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# --- R / RStudio ---
+.Rhistory
+.RData
+.Rproj.user/
+*.Rproj
+.Ruserdata
+
+# --- Python / Jupyter ---
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+env/
+
+# --- Editor / tooling ---
+.vscode/
+*.tmp
+*~
+
+# --- Large regenerable artifacts (keep the source .Rmd; render locally / attach to Zenodo) ---
+# Rendered analysis reports and heavy exports are large and reproducible from the .Rmd.
+# Uncomment to stop re-committing them once existing copies are moved to the Zenodo release:
+# TICTOC_3_factor_model/markdown reports/*.html
+# TICTOC_markdown_v3.html
