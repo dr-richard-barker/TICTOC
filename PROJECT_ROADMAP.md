@@ -7,7 +7,27 @@ Gilroy Lab, University of Wisconsin–Madison · CASIS grant UA-2018-276 · flow
 > preparing the Zenodo deposit + npj Microgravity manuscript. It sits alongside the public GitBook
 > landing page (`README.md`), which is left untouched. Update the checkboxes as items land.
 >
-> Last reviewed: 2026-07-02 · Maintainer: R. Barker
+> Last reviewed: 2026-07-03 · Maintainer: R. Barker
+
+---
+
+## 0. Progress log
+
+**2026-07-03 — FAIR pass + analysis-pipeline scaffold** (this session):
+- ✅ Added this roadmap, [`DATA_DICTIONARY.md`](DATA_DICTIONARY.md), `.gitignore`, `CITATION.cff`;
+  README now links here.
+- ✅ **Built the corrected `Gohir → Arabidopsis` ortholog crosswalk** ([`crosswalk/`](crosswalk/)) —
+  the GO/PhysioSpace blocker. CottonGen BLASTP best-hit, **92.3%** count-matrix coverage, reproducible builder.
+  (The old `Ara_vs_Cotton_biomart_export` was *G. raimondii* and didn't join.)
+- ✅ Scaffolded the analysis pipeline: [`go_analysis/`](go_analysis/) (clusterProfiler GO/KEGG) and
+  [`physiospace/`](physiospace/) (PhysioSpace decoding, wired to the `PlantPhysioSpace` data package).
+- ✅ Cleanup: de-duped leaf zips + duplicate v3 report (~40 MB), pruned 32 redundant RSML scratch files
+  (kept a unique timelapse + `A68_2A/2B` images), de-hardcoded the analysis `.Rmd`, documented the
+  DEG reports and RSML QC ([`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md)), pinned genome versions.
+
+**Still needs the maintainer:** a live R run of the GO + PhysioSpace scripts; OSDR accession; Zenodo DOI;
+author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the
+scientific call on canonical DEG contrasts (§4.1) + whether `A68_2A/2B` belong in the analysis.
 
 ---
 
