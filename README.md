@@ -8,7 +8,15 @@ description: Targeting Improved Cotton through Orbital Cultivation (TIC TOC)
 
 **Abstract:** Introduction/Background: Roots play roles in a host of plant functions that are critical to cotton yields, stress resilience and its impact on the environment, through their activity in processes such as water uptake, nutrient usage, and soil carbon sequestration. Previously, Park et al., (2005) created cotton plants that over-express the vacuolar proton pumping pyrophosphatase (AVP1-OX). These plants show increased salt and drought resistance with more than a 20% increased fiber yield under stressful conditions that normally severely limit cotton productivity. These plants also develop a larger root system that can explore a wider and deeper volume of soil for water and nutrients. Such exploration patterns are inextricably linked to gravity, which directs the growth of the main and lateral roots via modulation of e.g., auxin signalling. Supported by CASIS UA-2018-276.
 
+***
 
+### Repository contents & roadmap
+
+This repository holds three data modalities from the TIC-TOC mission — bulk **RNA-seq** (full factorial: Treatment × Genotype × Tissue, WT/A68/D130, Flight vs Ground, root and shoot), **RSML root-architecture tracings**, and **time-series root photography** (days 3–6). Raw data are archived on NASA OSDR/GeneLab (released on publication).
+
+📋 **[PROJECT\_ROADMAP.md](PROJECT_ROADMAP.md)** — the living tracker for finishing the analysis, making the repo FAIR, and preparing the Zenodo deposit and npj Microgravity manuscript. It contains the repository map, current status, the analysis roadmap (DEG → tissue-specific clustering → GO → PhysioSpace stress decoding), and FAIR/Zenodo/manuscript checklists.
+
+***
 
 American Society for Gravitational and Space Research **(ASGSR)** presentation.
 
