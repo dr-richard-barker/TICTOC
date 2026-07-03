@@ -157,9 +157,10 @@ Arabidopsis to cotton, used for GO annotation transfer and PhysioSpace mapping. 
 
 > ⚠ **ID-space caveat (interoperability):** the cotton IDs in this export are `B456_…` / `Gorai…`
 > (an older *G. raimondii* / JGI annotation), **not** the `Gohir.…` IDs used in the count matrices and
-> DEG tables. A crosswalk (Gohir ↔ Gorai/B456, or a fresh *G. hirsutum*→Arabidopsis BioMart pull) is
-> required before GO/PhysioSpace results will join cleanly to the expression data. Flag this in §4.4 of
-> the roadmap.
+> DEG tables — so this export does **not** join to the expression data. ✅ **Use the corrected crosswalk
+> instead:** [`crosswalk/gohir_to_arabidopsis.tsv`](crosswalk/gohir_to_arabidopsis.tsv) maps `Gohir.` →
+> Arabidopsis directly (CottonGen *G. hirsutum* v2.1 BLASTP best-hit, 92.3% coverage; see `crosswalk/README.md`).
+> This older raimondii export is retained only for provenance.
 
 ---
 

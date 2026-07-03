@@ -113,10 +113,10 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       (Flight, genotype, and **root morphometric traits** — length, surface area, volume from RSML).
 - [ ] **4.4 GO / pathway analysis per cluster.** Map `Gohir` → Arabidopsis and run GO/KEGG enrichment on
       each module/DEG set. Standardise on one tool (clusterProfiler recommended for reproducibility over
-      the iDEP GAGE outputs). ⚠ **Blocker:** the existing `Ara_vs_Cotton_biomart_export` uses `B456_`/
-      `Gorai` (*G. raimondii*) cotton IDs, which do **not** match the `Gohir.` (*G. hirsutum*) IDs in the
-      count matrices — build a `Gohir↔Gorai` crosswalk or pull a fresh *G. hirsutum*→Arabidopsis BioMart
-      map first (see `DATA_DICTIONARY.md` §9).
+      the iDEP GAGE outputs). ✅ **Blocker resolved:** built [`crosswalk/gohir_to_arabidopsis.tsv`](crosswalk/gohir_to_arabidopsis.tsv)
+      from the CottonGen *G. hirsutum* v2.1 → Arabidopsis BLASTP best-hit (92.3% count-matrix coverage;
+      reproducible via `crosswalk/build_gohir_to_arabidopsis.py`). Use this instead of the *raimondii*
+      `Ara_vs_Cotton_biomart_export`. *(2026-07-03)*
 - [ ] **4.5 PhysioSpace stress-pattern decoding.** Project cotton contrasts onto the plant PhysioSpace
       stress compendium (Hadizadeh Esfahani et al.) to produce PhysioScores per genotype/tissue.
       Reuse the OSD-767 `physioworker` scripts as the template; verify the ortholog bridge for cotton.
