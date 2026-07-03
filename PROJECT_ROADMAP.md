@@ -24,6 +24,8 @@ Gilroy Lab, University of Wisconsin–Madison · CASIS grant UA-2018-276 · flow
 - ✅ Cleanup: de-duped leaf zips + duplicate v3 report (~40 MB), pruned 32 redundant RSML scratch files
   (kept a unique timelapse + `A68_2A/2B` images), de-hardcoded the analysis `.Rmd`, documented the
   DEG reports and RSML QC ([`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md)), pinned genome versions.
+- ✅ Drafted the [`manuscript/`](manuscript/) skeleton (npj Microgravity): Results stubs Fig 1–7,
+  concrete Methods, and a figure/table plan with draft legends.
 
 **Still needs the maintainer:** a live R run of the GO + PhysioSpace scripts; OSDR accession; Zenodo DOI;
 author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the
@@ -223,6 +225,9 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 the root-architecture and transcriptomic response to microgravity, and what stress programs does it
 engage? Integrates morphometrics (RSML) + transcriptome (DEG→cluster→GO→PhysioSpace).
 
+- [~] **Skeleton drafted** ([`manuscript/manuscript_tictoc.md`](manuscript/manuscript_tictoc.md)):
+      title, abstract template, intro, Results stubs (Fig 1–7), concrete Methods, data-availability.
+      Figure/table plan with draft legends in [`manuscript/figures_and_tables.md`](manuscript/figures_and_tables.md). *(2026-07-03)*
 - [ ] **Outline & authorship** — author list, affiliations, ORCIDs, contributions, corresponding author.
 - [ ] **Figures** (draft list — refine as analysis lands):
   - [ ] F1. Experiment overview + design schematic (genotype × treatment × tissue × time).
