@@ -42,36 +42,37 @@ systems (Park et al. 2005) — alter their root architecture and transcriptome i
 TICTOC/
 ├── README.md ....................... GitBook public landing page (abstract, ASGSR deck, video)
 ├── PROJECT_ROADMAP.md .............. ← THIS FILE: goals, FAIR & publication tracker
-├── LICENSE ......................... CC0-1.0
+├── DATA_DICTIONARY.md .............. column/file schemas for every dataset
+├── CITATION.cff · .gitignore · LICENSE (CC0-1.0)
 │
 ├── RNA-seq — counts & design
 │   ├── TICTOC_run1_filteredCounts_v3.csv .... filtered count matrix (~59.9k genes × 48)
-│   ├── TICTOC_cotton_run2_csv/
-│   │   └── TICTOC_run1_allCounts.csv ........ UNfiltered counts  ⚠ folder says "run2", file says "run1"
+│   ├── TICTOC_cotton_run2_csv/ ............... UNfiltered counts (+ README: name-mismatch note)
 │   ├── TICTOC_target_v5.csv ................. sample/design table (Treatment×Genotype×Tissue)
-│   └── Ara_vs_Cotton_biomart_export.txt.zip . cotton→Arabidopsis ortholog map (for GO/PhysioSpace)
+│   └── Ara_vs_Cotton_biomart_export.txt.zip . ⚠ legacy raimondii map — superseded by crosswalk/
 │
-├── RNA-seq — analysis (the "many models" to consolidate)
-│   └── TICTOC_3_factor_model/
-│       ├── TICTOC_markdown_evolved_v2.Rmd ... iDEP-derived DESeq2 pipeline (⚠ hard-coded local paths)
-│       ├── AllGeneListsGMT.gmt .............. gene sets for enrichment
-│       ├── *_GAGE/Enriched/Diff_genes_*.csv . DEG + enrichment outputs
-│       └── markdown reports/*.html .......... rendered v2/v3/iDEP reports (large)
+├── crosswalk/ ...................... ✅ Gohir→Arabidopsis ortholog map (TSV + builder + README)
+├── go_analysis/ ................... ✅ clusterProfiler GO/KEGG scaffold (run_go_clusterprofiler.R)
+├── physiospace/ ................... ✅ PhysioSpace decoding scaffold (run_physiospace.R)
+│
+├── RNA-seq — analysis
+│   └── TICTOC_3_factor_model/ ...... DESeq2/iDEP pipeline + DEG/enrichment outputs (see its README;
+│                                     canonical source = TICTOC_markdown_evolved_v2.Rmd → v3 report)
 │
 ├── Root morphometrics (RSML)
 │   └── Data/
-│       ├── Final_RSML_format/ .............. ★ curated RSML set ("outlier removed") — USE THIS
-│       └── Cotton {FL,GC} day{3..6} .../ .... raw per-day TIFFs + multiple tracings (.rsml, .rsml01–04)
-│                                              ⚠ contains scratch dirs: "test", "Late", "delete me_templates"
+│       ├── Final_RSML_format/ ...... ★ curated RSML set ("outlier removed") — USE THIS
+│       ├── RSML_QC_summary.md ...... ✅ QC inventory (198 tracings, 53 plants, 44 full series)
+│       └── Cotton {FL,GC} day{3..6} .../ .... raw per-day TIFFs + tracings (scratch pruned;
+│                                     retains unique timelapse .avi + A68_2A/2B images — see QC doc)
 │
-├── Leaves/ ......................... leaf/shoot DESeq2 (interaction + linear), WGCNA modules, OSD cross-refs
-│   └── TITCO_leaves_2024/ .......... ⚠ duplicates several Leaves/*.zip byte-for-byte
-│
-├── Figures/ ........................ root-phenotype figures (currently just a readme + external links)
+├── Leaves/ ......................... leaf/shoot DESeq2 (interaction + linear), WGCNA, OSD cross-refs
+│                                     (duplicate zips in TITCO_leaves_2024/ removed)
+├── Figures/ ........................ root-phenotype figures (readme + external links)
 └── *.pdf, drbs-*.md, data-1.md ..... ASGSR/CASIS decks & narrative stubs
 ```
 
-A cleaned, canonical map is a FAIR deliverable — see §5 hygiene tasks.
+Analysis pipeline order: `crosswalk/` → DEGs (`TICTOC_3_factor_model/`) → `go_analysis/` → `physiospace/`.
 
 ---
 
