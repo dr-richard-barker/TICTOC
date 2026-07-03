@@ -142,14 +142,17 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 
 **Reusable**
 - [ ] Add an **environment spec** (`renv.lock` or `sessionInfo.txt` + R version) for the pipeline.
-- [ ] De-hard-code paths: `TICTOC_markdown_evolved_v2.Rmd` has `setwd('/Users/drbhomeoffice/...')` and
-      references files not in the repo (`Downloaded_Converted_Data.csv`, `Cotton__ghirsutum_eg_gene.db`,
-      `iDEP_core_functions.R`). Make paths relative and commit or link the missing inputs.
+- [x] De-hard-code paths: removed the absolute `setwd('/Users/drbhomeoffice/...')` from
+      `TICTOC_markdown_evolved_v2.Rmd` (R Markdown knits from the file's own dir) and documented the
+      external inputs it needs (`Downloaded_Converted_Data.csv`, `iDEP_core_functions.R`,
+      `Cotton__ghirsutum_eg_gene_GeneInfo.csv`, `Cotton__ghirsutum_eg_gene.db`). Still to do: commit or
+      link those missing input files. *(2026-07-02)*
 - [ ] Clarify licensing: `LICENSE` is CC0. Confirm CC0 (data) + a code license (e.g. MIT) split, or state CC0 covers all.
 
 **Cleanup (the "lots of folders/code/graphs" pass)**
 - [ ] Consolidate DEG models → keep one, archive the rest (§4.1).
-- [ ] Resolve the mislabeled `TICTOC_cotton_run2_csv/` (holds `run1_allCounts`) — rename or relabel.
+- [~] Resolve the mislabeled `TICTOC_cotton_run2_csv/` (holds `run1_allCounts`) — added an explanatory
+      `README.md` in the folder; **rename decision pending maintainer** (was there ever a real run 2?).
 - [x] De-duplicate `Leaves/` vs `Leaves/TITCO_leaves_2024/` — removed the two byte-identical DEG-value
       zips from the `TITCO_leaves_2024/` data-dump subfolder (~22 MB); canonical copies kept in
       top-level `Leaves/`. *(2026-07-02)*

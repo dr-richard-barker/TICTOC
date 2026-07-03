@@ -12,9 +12,12 @@ This R markdown file aims to provide insight into Cotton
 
 
 ## 1. Read data  
-First we set up the working directory to where the files are saved.    
-```{r, message=FALSE} 
-setwd('/Users/drbhomeoffice/Downloads/TICTOC_3_factor_model')   # Needs to be changed  
+When knitted, R Markdown runs from this file's own directory (`TICTOC_3_factor_model/`), so no
+`setwd()` is needed. Run the analysis with this folder as the working directory. Portable check:
+```{r, message=FALSE}
+# Relative working directory — resolves to TICTOC_3_factor_model/ when knitting or when this
+# repo folder is the R working directory. (Previously a hard-coded absolute path; de-hardcoded for reuse.)
+message("Working directory: ", normalizePath(getwd()))
 ```
 R packages and iDEP core Functions. 
 
@@ -23,8 +26,13 @@ if(file.exists('iDEP_core_functions.R'))
   source('iDEP_core_functions.R') else 
     source('https://raw.githubusercontent.com/iDEP-SDSU/idep/master/shinyapps/idep/iDEP_core_functions.R') 
 ```  
-We are using the downloaded gene expression file where gene IDs has been converted to Ensembl gene IDs. T
-```{r, message=FALSE  }  
+We are using the downloaded gene expression file where gene IDs has been converted to Ensembl gene IDs.
+
+> **Required inputs not committed to the repo** (obtain/regenerate before running; see
+> `DATA_DICTIONARY.md` and `PROJECT_ROADMAP.md`): `Downloaded_Converted_Data.csv` (ID-converted
+> expression matrix, derived from `TICTOC_run1_filteredCounts_v3.csv`), `iDEP_core_functions.R`,
+> `Cotton__ghirsutum_eg_gene_GeneInfo.csv`, and `Cotton__ghirsutum_eg_gene.db` (iDEP species DB).
+```{r, message=FALSE  }
 inputFile <- 'Downloaded_Converted_Data.csv'  # Expression matrix
 sampleInfoFile <- 'TICTOC_target_v5.csv' # Experiment design file 
 geneInfoFile <- 'Cotton__ghirsutum_eg_gene_GeneInfo.csv' #Gene symbols, location etc. 
