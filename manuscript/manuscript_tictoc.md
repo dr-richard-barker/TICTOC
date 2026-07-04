@@ -72,9 +72,16 @@ asymmetry. [PLACEHOLDER numbers from the frozen DESeq2 model, roadmap §4.1].
 (CottonGen BLASTP crosswalk; enriched against the expressed-gene universe). [PLACEHOLDER top terms].
 
 ### R6. PhysioSpace stress-pattern decoding  → **Fig 6**, **Table 4**
-[STUB — from `physiospace/`] PhysioScores per genotype × tissue against the Arabidopsis stress spaces
-(`AT_Stress_Space` / `_Meta` / `_RNASeq`). Which known stress programs the spaceflight response
-resembles, and whether AVP-OX shifts them. [PLACEHOLDER].
+*(PRELIMINARY — from executed PhysioSpace run; VST group-mean input, `STATICResponse` scoring.)*
+Projecting the Flight−Ground contrasts onto the Arabidopsis stress reference spaces (Plant PhysioSpace;
+13,367 shared orthologs) showed that **spaceflight roots of all three genotypes engage a coordinated
+abiotic-stress / defence programme** — most strongly osmotic, drought, far-red/shade, genotoxic, and
+wounding axes — whereas the **shoot response was weaker and more heterogeneous**. Notably, the two
+**AVP-OX lines showed *attenuated* root stress-programme activation relative to wild type** (e.g. osmotic
+axis WT > A68 > D130; wounding axis WT 0.72 vs D130 0.44), a transcriptomic signature consistent with the
+engineered stress tolerance operating under spaceflight. [Descriptive; formal genotype contrast on
+PhysioScores + the frozen-model input pending. Root scores saturate under signed-p scoring — the bounded
+`STATICResponse` statistic is reported; see `../physiospace/README.md`.]
 
 ### R7. Integrative model  → **Fig 7**
 [STUB] Synthesis linking root-trait modules ↔ expression modules ↔ stress programs; a model for how (or

@@ -39,9 +39,25 @@ Override with `--spaces "A,B,C"`. Also available in the package: `*_Detailed` va
 non-Arabidopsis spaces `OS_Stress_Space` (rice), `GM_Stress_Space` (soybean), `TA_Stress_Space` (wheat).
 To use local copies instead, pass `--ref-dir /folder` of `<name>.rds` matrices.
 
+## Executed run (2026-07-04, R 4.6)
+Ran end-to-end. 59,918 genes → 6 Flight−Ground contrasts (WT/A68/D130 × root/shoot) → 14,790 Arabidopsis
+Entrez genes, ~13,367 shared with `AT_Stress_Space`. Outputs in `results/` (default signed-p) and
+`results_static/` (`--static TRUE`).
+
+> **Use `--static TRUE` for this dataset.** In default signed-p mode every **root** contrast saturates to
+> `±Inf` (p-value underflow — the root Flight response is very strong), so roots are unusable there.
+> `STATICResponse=TRUE` returns the bounded statistic (~−0.3…+0.8) and is fully interpretable.
+
+**Preliminary observations (descriptive; from `results_static/AT_Stress_Space`):**
+- Spaceflight **roots of all genotypes activate a coordinated abiotic/defence stress signature** —
+  Osmotic, Drought, FarRed, Genotoxic, Wounding, Drought.Light most strongly.
+- **Shoots are muted/mixed** (WT shoot: Salt, Hormone, UV, Biotic positive; A68/D130 shoots mostly negative).
+- The **AVP-OX roots show somewhat *lower* stress-program activation than WT** (e.g. Osmotic WT 0.78 >
+  A68 0.69 > D130 0.61; Wounding WT 0.72 > A68 0.51 > D130 0.44) — a possible transcriptomic correlate of
+  engineered stress tolerance. ⚠ modest, descriptive; needs a formal contrast + the frozen-model input.
+
 ## Caveats
-- Not yet executed against a live R install — validate the printed gene-mapping counts and the
-  "shared Entrez genes with input" line (expect a few thousand) before interpreting scores.
+- The `±Inf` saturation above: prefer `--static TRUE`, or cap infinities before plotting signed-p.
 - The cotton→Arabidopsis bridge is best-BLASTP-hit orthology (approximate); raise `--min-pid` for a
   stricter mapping. OSD-767 used Ensembl Compara 1:1 orthologs — expect somewhat noisier cotton scores.
 - Fold changes here are VST group-mean differences (blind VST). If you freeze a DESeq2 model

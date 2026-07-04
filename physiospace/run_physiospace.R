@@ -52,6 +52,7 @@ spaces_arg  <- getopt("--spaces",    "AT_Stress_Space,AT_Stress_Space_Meta,AT_St
 out_dir     <- getopt("--out",       file.path(HERE, "results"))
 min_pid     <- as.numeric(getopt("--min-pid", "30"))
 genes_ratio <- as.numeric(getopt("--genes-ratio", "0.05"))
+static_response <- toupper(getopt("--static", "FALSE")) == "TRUE"  # TRUE = bounded statistic (avoids Inf)
 dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
 
 need <- c("DESeq2", "org.At.tair.db", "PhysioSpaceMethods")
@@ -65,7 +66,8 @@ suppressmessages(library(DESeq2)); suppressmessages(library(org.At.tair.db)); su
 # ---- 1. counts -> sample table (parse group labels in the header) -----------
 cm <- read.csv(counts_path, row.names = 1, check.names = FALSE, stringsAsFactors = FALSE)
 cts <- as.matrix(cm); mode(cts) <- "integer"
-grp <- sub("[0-9]+$", "", colnames(cts))                       # A68RootFlight1 -> A68RootFlight
+grp <- sub("(__r[0-9]+|[0-9]+)$", "", colnames(cts))           # group label (before uniquifying)
+colnames(cts) <- make.unique(colnames(cts), sep = "__r")       # replicate cols share a label -> unique IDs
 parse1 <- function(g) {
   geno <- sub("(Root|Shoot).*", "", g)
   tis  <- sub(".*?(Root|Shoot).*", "\\1", g)
@@ -133,8 +135,14 @@ for (sp_name in space_names) {
   message("  shared Entrez genes with input: ", length(intersect(rownames(input), rownames(space))))
   scores <- tryCatch(
     calculatePhysioMap(InputData = input, Space = space,
-                       GenesRatio = genes_ratio, TTEST = FALSE, ImputationMethod = "PCA"),
+                       GenesRatio = genes_ratio, TTEST = FALSE,
+                       STATICResponse = static_response, ImputationMethod = "PCA"),
     error = function(e) { message("  calculatePhysioMap failed: ", conditionMessage(e)); NULL })
+  if (!is.null(scores)) {
+    ninf <- sum(is.infinite(scores))
+    if (ninf > 0) message(sprintf("  NOTE: %d/%d scores are +/-Inf (signed-p underflow); consider --static TRUE",
+                                   ninf, length(scores)))
+  }
   if (is.null(scores)) next
   write.csv(scores, file.path(out_dir, sprintf("PhysioScores_%s.csv", sp_name)))
   # prefer the package's own heatmap; fall back to pheatmap
