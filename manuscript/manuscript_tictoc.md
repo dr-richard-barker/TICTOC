@@ -47,9 +47,16 @@ crops for space agriculture.
 RNA-seq sample counts. Point to Table 1 (design) and the RSML QC (n = 53 plants, 44 full series).
 
 ### R2. Root architecture over days 3–6  → **Fig 2**, **Table S?**
-[STUB — from RSML morphometrics] Flight vs Ground trajectories of root traits (total length, diameter,
-growth rate…) per genotype. State whether AVP-OX lines diverge from WT under spaceflight. [PLACEHOLDER
-stats: mixed model, treatment × genotype × day; unbalanced design — see QC].
+*(PRELIMINARY — from executed RSML analysis; pending image-calibration verification, see Methods/caveat.)*
+Across days 3–6, traced root systems elongated markedly faster under spaceflight than in ground controls
+(linear mixed model on log total root length, plant random effect; day × condition interaction
+exp(coef) ≈ 1.65 per day, *P* ≈ [1.6×10⁻³¹]). Critically, the two **AVP-OX lines amplified this
+spaceflight response relative to wild type** (condition × genotype: A68 ×2.34, *P* = 0.032; D130 ×2.04,
+*P* = 0.037), consistent with the hypothesis that AVP1-driven root vigour is potentiated in microgravity.
+Ground plants remained largely single-primary while flight plants proliferated laterals by day 6 (Fig 2).
+[CAVEAT to resolve before final claim: verify Flight/Ground image scale and rule out a lateral-tracing
+depth artifact — the day×condition and genotype-interaction effects are robust to *uniform*
+miscalibration but not to a tracing-depth bias; see `../morphometrics/README.md`.]
 
 ### R3. Transcriptome landscape: light of the design  → **Fig 3**, **Table 2**
 [STUB] PCA; DEG counts per contrast (Flight vs Ground; genotype effects; root vs shoot); up/down
