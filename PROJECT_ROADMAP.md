@@ -26,9 +26,11 @@ Gilroy Lab, University of Wisconsin–Madison · CASIS grant UA-2018-276 · flow
   DEG reports and RSML QC ([`Data/RSML_QC_summary.md`](Data/RSML_QC_summary.md)), pinned genome versions.
 - ✅ Drafted the [`manuscript/`](manuscript/) skeleton (npj Microgravity): Results stubs Fig 1–7,
   concrete Methods, and a figure/table plan with draft legends.
-- ✅ **Extracted RSML morphometric traits** ([`morphometrics/`](morphometrics/)) — real per-plant-day
-  table (198 rows) + group means for all 3 genotypes × Flight/Ground × days 3–6. Descriptive pattern:
-  traced total length FL ≫ GC (AVP-OX ratio > WT) — ⚠ **flagged for calibration/artifact check before any claim.**
+- ✅ **Extracted RSML morphometric traits + ran the mixed model** ([`morphometrics/`](morphometrics/)) —
+  real per-plant-day table (198 rows) + group means, and a plant-random-effect model on log root length.
+  Traced-data result: Flight roots elongate faster (day×condition p≈1e-31) and **AVP-OX lines amplify the
+  flight response vs WT** (A68 ×2.34 p=0.032; D130 ×2.04 p=0.037) — the paper's thesis. Faster-growth and
+  AVP-OX effects are robust to *uniform* miscalibration; ⚠ still verify image scale + lateral-tracing artifact.
 
 **Still needs the maintainer:** a live R run of the GO + PhysioSpace scripts; OSDR accession; Zenodo DOI;
 author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the

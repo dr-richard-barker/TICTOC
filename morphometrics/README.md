@@ -41,3 +41,22 @@ stay largely single-primary (few laterals) while Flight plants develop many late
 
 Once calibration + stats are settled, `rsml_traits.csv` feeds Fig 2 and the module–trait correlations
 in Fig 4 (roadmap §4.3).
+
+## Statistical model (executed — `morphometric_stats.py`)
+Linear mixed model on `log(total_length_native)`, random intercept per plant (repeated days 3–6),
+Ground/WT as references. Outputs: `morphometric_stats_summary.txt`, `morphometric_stats_coefficients.csv`.
+Key fixed effects:
+
+| Effect | exp(coef) | p | Reading |
+|---|---|---|---|
+| `day × condition[FL]` | ×1.65 / day | ~1.6e-31 | **Flight roots elongate faster** over days 3–6 |
+| `condition[FL] × genotype[A68]` | ×2.34 | 0.032 | A68 flight response **larger than WT** |
+| `condition[FL] × genotype[D130]` | ×2.04 | 0.037 | D130 flight response **larger than WT** |
+
+> **Robustness vs the calibration caveat.** A *constant* Flight-image scale error loads onto the
+> `condition` main effect (a fixed log offset), **not** the `day × condition` slope or the
+> `condition × genotype` interaction — so the two headline effects (faster flight elongation; AVP-OX
+> amplification) are relatively robust to *uniform* miscalibration. They are **not** immune to a
+> tracing-depth artifact (finer laterals traceable in enhanced flight images): re-check with a
+> lateral-count sensitivity analysis and verify image scale before publishing. Stats quantify the
+> traced-data pattern only.
