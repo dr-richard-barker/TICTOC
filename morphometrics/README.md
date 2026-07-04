@@ -55,8 +55,22 @@ Key fixed effects:
 
 > **Robustness vs the calibration caveat.** A *constant* Flight-image scale error loads onto the
 > `condition` main effect (a fixed log offset), **not** the `day × condition` slope or the
-> `condition × genotype` interaction — so the two headline effects (faster flight elongation; AVP-OX
-> amplification) are relatively robust to *uniform* miscalibration. They are **not** immune to a
-> tracing-depth artifact (finer laterals traceable in enhanced flight images): re-check with a
-> lateral-count sensitivity analysis and verify image scale before publishing. Stats quantify the
-> traced-data pattern only.
+> `condition × genotype` interaction. Stats quantify the traced-data pattern only.
+
+## Sensitivity check — primary root only (`morphometric_stats.py --trait primary_length_native`)
+The **primary root** is thick and equally visible in flight and ground images, so it is **immune to the
+lateral-tracing-depth artifact**. Re-running the model on `primary_length_native` (outputs
+`primary_stats_*`) separates a robust result from a fragile one:
+
+| Effect | total length | **primary length** | Reading |
+|---|---|---|---|
+| `day × condition[FL]` | ×1.65/day (P≈1e-31) | **×0.95/day (P=0.009)** | The huge flight length gain is **lateral-driven**; primary elongation is *not* accelerated (slightly slower) |
+| `condition[FL] × A68` | ×2.34 (P=0.032) | **×1.84 (P=0.040)** | AVP-OX amplification of the flight response **holds on primary root** |
+| `condition[FL] × D130` | ×2.04 (P=0.037) | **×1.84 (P=0.017)** | …and is **robust to the tracing artifact** |
+
+**Conclusions:**
+1. ✅ **Robust:** the two AVP-OX lines mount a larger primary-root spaceflight response than WT — seen in
+   the primary root, which both image sets resolve equally, so *not* a tracing-depth artifact.
+2. ⚠ **Verify:** the large total-length flight increase is lateral-root proliferation. This is either a
+   real spaceflight phenotype **or** inflated by finer laterals being traceable in enhanced flight
+   images. Verify image scale and re-count laterals under a matched detection threshold before claiming it.

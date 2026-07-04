@@ -1,0 +1,29 @@
+TICTOC morphometric mixed model
+trait: primary_length_native (log scale)
+formula: logtrait ~ C(condition) * C(genotype) + day + day:C(condition)
+n_obs=198, n_plants=53
+
+                      Mixed Linear Model Regression Results
+=================================================================================
+Model:                     MixedLM          Dependent Variable:          logtrait
+No. Observations:          198              Method:                      REML    
+No. Groups:                53               Scale:                       0.0271  
+Min. group size:           1                Log-Likelihood:              -13.4491
+Max. group size:           4                Converged:                   Yes     
+Mean group size:           3.7                                                   
+---------------------------------------------------------------------------------
+                                       Coef.  Std.Err.   z    P>|z| [0.025 0.975]
+---------------------------------------------------------------------------------
+Intercept                               3.118    0.133 23.396 0.000  2.857  3.379
+C(condition)[T.FL]                      0.060    0.186  0.321 0.748 -0.305  0.424
+C(genotype)[T.A68]                     -0.048    0.212 -0.226 0.821 -0.464  0.368
+C(genotype)[T.D130]                    -0.012    0.163 -0.076 0.939 -0.332  0.307
+C(condition)[T.FL]:C(genotype)[T.A68]   0.610    0.298  2.050 0.040  0.027  1.194
+C(condition)[T.FL]:C(genotype)[T.D130]  0.607    0.255  2.382 0.017  0.107  1.107
+day                                     0.301    0.015 20.510 0.000  0.272  0.329
+day:C(condition)[T.FL]                 -0.056    0.021 -2.614 0.009 -0.098 -0.014
+Group Var                               0.151    0.229                           
+=================================================================================
+
+
+CAVEAT: does not resolve the Flight/Ground image-calibration confound (see README).

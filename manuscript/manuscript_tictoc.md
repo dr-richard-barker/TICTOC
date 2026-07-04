@@ -47,16 +47,17 @@ crops for space agriculture.
 RNA-seq sample counts. Point to Table 1 (design) and the RSML QC (n = 53 plants, 44 full series).
 
 ### R2. Root architecture over days 3–6  → **Fig 2**, **Table S?**
-*(PRELIMINARY — from executed RSML analysis; pending image-calibration verification, see Methods/caveat.)*
-Across days 3–6, traced root systems elongated markedly faster under spaceflight than in ground controls
-(linear mixed model on log total root length, plant random effect; day × condition interaction
-exp(coef) ≈ 1.65 per day, *P* ≈ [1.6×10⁻³¹]). Critically, the two **AVP-OX lines amplified this
-spaceflight response relative to wild type** (condition × genotype: A68 ×2.34, *P* = 0.032; D130 ×2.04,
-*P* = 0.037), consistent with the hypothesis that AVP1-driven root vigour is potentiated in microgravity.
-Ground plants remained largely single-primary while flight plants proliferated laterals by day 6 (Fig 2).
-[CAVEAT to resolve before final claim: verify Flight/Ground image scale and rule out a lateral-tracing
-depth artifact — the day×condition and genotype-interaction effects are robust to *uniform*
-miscalibration but not to a tracing-depth bias; see `../morphometrics/README.md`.]
+*(PRELIMINARY — from executed RSML analysis; total-length magnitude pending image-calibration check.)*
+Linear mixed models of root length (plant random effect; days 3–6) revealed a genotype-dependent
+spaceflight response. Both **AVP-OX lines mounted a larger primary-root spaceflight response than wild
+type** (condition × genotype on primary-root length: A68 ×1.84, *P* = 0.040; D130 ×1.84, *P* = 0.017) —
+an effect measured on the primary root, which is equally resolved in flight and ground images and is
+therefore robust to image artifacts. Total traced root length increased far more under spaceflight
+(day × condition ≈ 1.65×/day), driven by **lateral-root proliferation**: flight plants developed many
+laterals by day 6 while ground plants remained largely single-primary (Fig 2). Notably, primary-root
+elongation itself was *not* accelerated in flight (day × condition ×0.95, *P* = 0.009), localising the
+spaceflight length gain to lateral roots. [The magnitude of the lateral effect is reported pending
+verification of Flight/Ground image scale and lateral-detection thresholds; see `../morphometrics/README.md`.]
 
 ### R3. Transcriptome landscape: light of the design  → **Fig 3**, **Table 2**
 [STUB] PCA; DEG counts per contrast (Flight vs Ground; genotype effects; root vs shoot); up/down

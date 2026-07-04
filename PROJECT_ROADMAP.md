@@ -31,6 +31,9 @@ Gilroy Lab, University of Wisconsin–Madison · CASIS grant UA-2018-276 · flow
   Traced-data result: Flight roots elongate faster (day×condition p≈1e-31) and **AVP-OX lines amplify the
   flight response vs WT** (A68 ×2.34 p=0.032; D130 ×2.04 p=0.037) — the paper's thesis. Faster-growth and
   AVP-OX effects are robust to *uniform* miscalibration; ⚠ still verify image scale + lateral-tracing artifact.
+- ✅ **Sensitivity check (primary root only):** AVP-OX × flight interaction **holds on primary-root length**
+  (A68 ×1.84 P=0.04; D130 ×1.84 P=0.017) — robust, since the primary root is equally imaged in FL/GC. The
+  big total-length flight gain is **lateral-driven** (primary elongation not accelerated) → verify before claiming.
 
 **Still needs the maintainer:** a live R run of the GO + PhysioSpace scripts; OSDR accession; Zenodo DOI;
 author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the
