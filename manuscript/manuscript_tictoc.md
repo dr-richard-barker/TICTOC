@@ -68,8 +68,16 @@ asymmetry. [PLACEHOLDER numbers from the frozen DESeq2 model, roadmap §4.1].
 **root morphometric traits** (the RSML link). [PLACEHOLDER].
 
 ### R5. Functional enrichment of responsive modules  → **Fig 5**, **Table 3**
-[STUB — from `go_analysis/`] GO/KEGG enrichment per module/DEG set, ortholog-mapped to Arabidopsis
-(CottonGen BLASTP crosswalk; enriched against the expressed-gene universe). [PLACEHOLDER top terms].
+*(PRELIMINARY — from executed clusterProfiler run on the available interaction contrast; full set pending §4.1.)*
+GO/KEGG enrichment (ortholog-mapped to Arabidopsis; expressed-gene universe) of the **Light… Treatment ×
+Genotype(A68) interaction** — i.e. genes whose spaceflight response in the AVP-OX line A68 differs from
+wild type — revealed a **defence/jasmonate signature that is suppressed under spaceflight in A68**:
+down-regulated genes were strongly enriched for *response to wounding* (P.adj = 3.6×10⁻¹¹), *jasmonic-acid
+biosynthesis and metabolism*, *long-chain fatty-acid biosynthesis*, and *response to hypoxia/fungus*
+(KEGG: *α-linolenic-acid metabolism*, *plant–pathogen interaction*, P.adj = 5×10⁻⁴), while up-regulated
+genes were enriched for *negative regulation of defence and innate immune responses*. Thus AVP-OX
+attenuates the spaceflight jasmonate/defence programme relative to wild type — **converging with the
+independent PhysioSpace result (R6)** that AVP-OX roots show reduced stress-programme activation.
 
 ### R6. PhysioSpace stress-pattern decoding  → **Fig 6**, **Table 4**
 *(PRELIMINARY — from executed PhysioSpace run; VST group-mean input, `STATICResponse` scoring.)*

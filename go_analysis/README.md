@@ -37,6 +37,20 @@ install.packages("ggplot2")
 | `--min-pid` | `30` | drop crosswalk hits below this % identity |
 | `--kegg` | `TRUE` | KEGG needs internet; set `FALSE` for offline GO-only |
 
+## Executed run (2026-07-04, R 4.6)
+Ran over the two DEG tables currently in `../TICTOC_3_factor_model/` (mapping ~74% of DEGs to unique AT
+loci; e.g. interaction-down 353→253). Outputs (GO BP/MF/CC + KEGG CSVs and dotplots) in `results/`.
+
+**Headline — Flight × A68 interaction** (how the AVP-OX line A68's spaceflight response differs from WT):
+- **Down-regulated** (defense suppressed under flight in A68): *response to wounding* (p.adj = 3.6×10⁻¹¹),
+  *jasmonic-acid biosynthesis/metabolism*, *long-chain fatty-acid biosynthesis*, *response to hypoxia/fungus*;
+  KEGG *α-linolenic-acid metabolism* and *plant–pathogen interaction* (p.adj = 5×10⁻⁴).
+- **Up-regulated**: *negative regulation of defense response / innate immune response*.
+
+→ In A68 (AVP-OX), spaceflight **dampens the jasmonate/wounding/defense programme** relative to WT — the
+same direction as the PhysioSpace result (`../physiospace/`: AVP-OX roots show attenuated stress-program
+activation). Two independent methods converge. Full contrast set awaits the frozen DESeq2 model (roadmap §4.1).
+
 ## Caveats (also in the script header)
 - **Best-BLASTP-hit orthology is approximate.** Many Gohir → one AT (A/D homoeologs + paralogs), so
   gene counts collapse on mapping; enrichment is over *unique* AT loci. Raise `--min-pid` for a

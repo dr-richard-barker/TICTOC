@@ -1,0 +1,2 @@
+"ID","Description","GeneRatio","BgRatio","RichFactor","FoldEnrichment","zScore","pvalue","p.adjust","qvalue","geneID","Count"
+"GO:0043531","ADP binding","2/13","47/14665",0.0425531914893617,48.0032733224223,9.61352147358992,0.000766728774910512,0.0421700826200782,0.0217912388658777,"SUT1/NA",2
