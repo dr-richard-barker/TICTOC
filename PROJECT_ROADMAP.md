@@ -152,7 +152,9 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
         **Treatment × Tissue** (root- vs shoot-specific flight response).
 - [x] **4.2 Organ-specific DEG sets.** ✅ Root- and shoot-specific Flight-vs-Ground DEG tables per genotype
       written to `deseq2/contrasts/` (shrunken LFC + padj, tidy CSV per contrast). *(2026-07-04)*
-- [ ] **4.3 Tissue-specific clustering.** Cluster organ-specific DEGs (WGCNA is already started for
+- [x] **4.3 Tissue-specific clustering — EXECUTED.** Root WGCNA ([`wgcna/`](wgcna/)): 6 modules; turquoise
+      (flight r=+0.89, root-growth-coupled) / blue mirror; **brown flight-induced but down in AVP-OX** — module-level
+      correlate of the dampening. Fed manuscript R4/Fig4. *(2026-07-05)* | _legacy note:_ (WGCNA was already started for
       leaves; extend to root and to a joint set). Annotate modules by eigengene–trait correlation
       (Flight, genotype, and **root morphometric traits**). ✅ RSML traits now extracted to
       [`morphometrics/rsml_traits.csv`](morphometrics/rsml_traits.csv) (per plant-day) ready for the

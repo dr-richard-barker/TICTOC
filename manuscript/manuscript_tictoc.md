@@ -80,9 +80,18 @@ tissue (P ≈ 0) but **not by treatment** (P = 0.41), so the Flight-vs-Ground co
 depth-confounded. [Fig 3: PCA + DEG-count barplot; per-contrast tables in `../deseq2/contrasts/`,
 factorial model in `../deseq2/v4/`.]
 
-### R4. Tissue-specific DEG clusters and trait linkage  → **Fig 4**
-[STUB] Organ-specific clustering / WGCNA modules; correlate module eigengenes with Flight, genotype, and
-**root morphometric traits** (the RSML link). [PLACEHOLDER].
+### R4. Co-expression modules link the spaceflight transcriptome to root architecture  → **Fig 4**
+*(From the executed root WGCNA; module eigengenes vs treatment/genotype/RSML traits. Trait correlations are group-level — see caveat.)*
+Weighted co-expression network analysis of root samples resolved six modules, two of which formed a
+**flight-responsive, growth-coupled axis**. The *turquoise* module (1,963 genes) was strongly induced by
+spaceflight (module-eigengene r = +0.89 with Flight) and positively correlated with a larger, more-branched
+root system (total root length r = +0.86; lateral count r = +0.83), and was enriched for signalling and
+isoprenoid/terpenoid metabolism; the *blue* module was its suppressed mirror (Flight r = −0.83). Critically,
+the *brown* module was flight-induced (r = +0.66) yet **down-regulated in the AVP-OX lines** (r = −0.43),
+providing a module-level transcriptomic correlate of the attenuated defence/stress response seen
+independently by enrichment (R5) and PhysioSpace (R6). Thus a single co-expression structure ties the
+spaceflight response, the engineered-genotype effect, and the root-architecture phenotype together (Fig 4).
+[Caveat: 24 samples (exploratory); morphometric correlations are group-level and inherit the image-calibration caveat.]
 
 ### R5. Functional enrichment of the spaceflight response  → **Fig 5**, **Table 3**
 *(From the executed clusterProfiler run over all 10 DESeq2 contrasts; Arabidopsis-mapped, expressed-gene universe.)*
@@ -111,8 +120,19 @@ PhysioScores + the frozen-model input pending. Root scores saturate under signed
 `STATICResponse` statistic is reported; see `../physiospace/README.md`.]
 
 ### R7. Integrative model  → **Fig 7**
-[STUB] Synthesis linking root-trait modules ↔ expression modules ↔ stress programs; a model for how (or
-whether) AVP-OX engineering buffers the microgravity response.
+Across four independent analyses a single, consistent model emerges. Spaceflight elicits a strongly
+**tissue-specific** transcriptional response (Treatment × Tissue ≫ all other interactions; R3), which in
+roots is a canonical **hypoxia/wounding induction with translational suppression** (R5) that maps onto a
+coordinated **osmotic/drought/wounding stress programme** (R6) and a growth-coupled co-expression module
+(turquoise; R4). Against this shared wild-type response, the **AVP-OX engineering acts as an attenuator,
+not an amplifier, of stress signalling**: the genotype × treatment interaction is small and down-biased
+(R3), specifically suppressing the jasmonate/defence arm (R5), lowering PhysioSpace stress-programme
+activation (R6), and down-regulating the flight-induced *brown* module (R4). Yet at the organ level the
+AVP-OX lines mount a *larger* primary-root spaceflight response (R2). The coherent interpretation: **AVP-OX
+cotton experiences microgravity as less of a stress — mounting a calmer defence/stress transcriptional
+programme while sustaining stronger root growth** — a favourable phenotype for space agriculture, pending
+the calibration and full-replication checks noted throughout. [Fig 7: schematic integrating
+root-trait ↔ module ↔ stress-programme layers.]
 
 ---
 
