@@ -59,9 +59,17 @@ elongation itself was *not* accelerated in flight (day × condition ×0.95, *P* 
 spaceflight length gain to lateral roots. [The magnitude of the lateral effect is reported pending
 verification of Flight/Ground image scale and lateral-detection thresholds; see `../morphometrics/README.md`.]
 
-### R3. Transcriptome landscape: light of the design  → **Fig 3**, **Table 2**
-[STUB] PCA; DEG counts per contrast (Flight vs Ground; genotype effects; root vs shoot); up/down
-asymmetry. [PLACEHOLDER numbers from the frozen DESeq2 model, roadmap §4.1].
+### R3. Transcriptome landscape of the spaceflight response  → **Fig 3**, **Table 2**
+*(From the executed DESeq2 model over all 12 groups; DEGs at P.adj < 0.05, |log₂FC| ≥ 1, ashr-shrunk.)*
+The spaceflight (Flight vs Ground) response was **markedly stronger in root than shoot** across all
+genotypes. In roots, wild type showed 2,503 up / 578 down DEGs and the AVP-OX line A68 the largest
+response of all (2,806 up / 3,610 down), whereas D130 roots responded more modestly (420 / 299). Shoot
+responses were smaller and skewed toward down-regulation (e.g. D130 shoot 327 up / 890 down; A68 shoot
+79 / 419). The genotype × treatment **interaction contrasts — the AVP-OX flight response relative to wild
+type — were consistently down-biased** (A68-vs-WT root 55 down / 2 up; D130-vs-WT root 20 down / 0 up),
+i.e. the engineered lines *attenuate* rather than amplify the wild-type spaceflight transcriptional
+programme (Table 2), consistent with the dampened defence/stress signatures in R5–R6. [Fig 3: PCA +
+DEG-count barplot; per-contrast tables in `../deseq2/contrasts/`.]
 
 ### R4. Tissue-specific DEG clusters and trait linkage  → **Fig 4**
 [STUB] Organ-specific clustering / WGCNA modules; correlate module eigengenes with Flight, genotype, and

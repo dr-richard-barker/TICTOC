@@ -141,13 +141,17 @@ Legend: ✅ done · 🟡 partial · ⬜ not started
 Target endpoint: an integrated **root-architecture + transcriptome** story, decoded into stress
 programs — the same arc validated on the OSD-767 tomato paper, now applied to AVP-OX cotton.
 
-- [ ] **4.1 Freeze the DEG models.** Pick ONE canonical DESeq2 pipeline from the v2/v3/iDEP variants;
+- [x] **4.1 DEG model executed (2026-07-04).** Ran a single DESeq2 model (`~0+group`, 12 groups) over the
+      count matrix → [`deseq2/`](deseq2/): 10 contrasts (6 spaceflight + 4 AVP-OX interaction) with ashr
+      shrinkage + DEG-count summary. Root≫shoot; interactions down-biased (AVP-OX attenuates WT programme).
+      Supersedes the legacy iDEP tables for full coverage.
+- [~] **4.1b (legacy) Pick ONE canonical DESeq2 pipeline from the v2/v3/iDEP variants;
       archive the rest under `_archive/`. Export a documented design matrix and contrast list:
       - Main effects: Flight vs Ground; Genotype (A68, D130 vs WT); Root vs Shoot.
       - Interactions: **Treatment × Genotype** (does AVP-OX change the spaceflight response?) and
         **Treatment × Tissue** (root- vs shoot-specific flight response).
-- [ ] **4.2 Organ-specific DEG sets.** Derive root-only and shoot-only DEG lists per contrast, with
-      shrunken LFCs and padj, as tidy CSVs (one row per gene, columns per contrast).
+- [x] **4.2 Organ-specific DEG sets.** ✅ Root- and shoot-specific Flight-vs-Ground DEG tables per genotype
+      written to `deseq2/contrasts/` (shrunken LFC + padj, tidy CSV per contrast). *(2026-07-04)*
 - [ ] **4.3 Tissue-specific clustering.** Cluster organ-specific DEGs (WGCNA is already started for
       leaves; extend to root and to a joint set). Annotate modules by eigengene–trait correlation
       (Flight, genotype, and **root morphometric traits**). ✅ RSML traits now extracted to
