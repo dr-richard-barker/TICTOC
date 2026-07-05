@@ -49,7 +49,7 @@ loci; e.g. interaction-down 353→253). Outputs (GO BP/MF/CC + KEGG CSVs and dot
 
 → In A68 (AVP-OX), spaceflight **dampens the jasmonate/wounding/defense programme** relative to WT — the
 same direction as the PhysioSpace result (`../physiospace/`: AVP-OX roots show attenuated stress-program
-activation). Two independent methods converge. Full contrast set awaits the frozen DESeq2 model (roadmap §4.1).
+activation). Two independent methods converge. **Update (full run):** re-ran over all 10 DESeq2 contrasts (`../deseq2/contrasts/`, `results_full/`). WT root spaceflight: UP hypoxia/wounding (p.adj 7e-20), DOWN translation (p.adj 1.5e-22); A68 root shifts to defense/immunity; AVP-OX-vs-WT interaction down-regulates jasmonate/wounding. Converges with PhysioSpace.
 
 ## Caveats (also in the script header)
 - **Best-BLASTP-hit orthology is approximate.** Many Gohir → one AT (A/D homoeologs + paralogs), so

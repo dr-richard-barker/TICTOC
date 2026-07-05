@@ -1,0 +1,2 @@
+"category","subcategory","ID","Description","GeneRatio","BgRatio","RichFactor","FoldEnrichment","zScore","pvalue","p.adjust","qvalue","geneID","Count"
+"Metabolism","Biosynthesis of other secondary metabolites","ath00941","Flavonoid biosynthesis","6/57","16/3721",0.375,24.4802631578947,11.7381596075588,7.03093866542484e-08,3.65608810602092e-06,1.19917781211215e-06,"AT5G42800/AT5G05270/AT5G13930/AT3G51240/AT1G61720/AT4G22880",6

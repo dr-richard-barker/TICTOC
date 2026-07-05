@@ -1,0 +1,2 @@
+"ID","Description","GeneRatio","BgRatio","RichFactor","FoldEnrichment","zScore","pvalue","p.adjust","qvalue","geneID","Count"
+"GO:0016758","hexosyltransferase activity","6/45","245/14665",0.0244897959183673,7.98095238095238,6.11327431803435,9.65180599596343e-05,0.00897617957624599,0.00761984683891849,"XXT3/EMB2797/NA/EXGT-A4/AtIPCS1/ATCSLC12",6

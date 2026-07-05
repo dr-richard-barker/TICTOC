@@ -1,0 +1,3 @@
+"category","subcategory","ID","Description","GeneRatio","BgRatio","RichFactor","FoldEnrichment","zScore","pvalue","p.adjust","qvalue","geneID","Count"
+"Metabolism","Biosynthesis of other secondary metabolites","ath00941","Flavonoid biosynthesis","7/70","16/3721",0.4375,23.25625,12.3518625334644,6.15149179755156e-09,4.05998458638403e-07,3.75564762376832e-07,"AT5G42800/AT4G34050/AT3G51240/AT1G61720/AT4G22880/AT5G07990/AT5G13930",7
+"Metabolism","Biosynthesis of other secondary metabolites","ath00940","Phenylpropanoid biosynthesis","9/70","81/3721",0.111111111111111,5.90634920634921,6.18108686171308,1.54999264525903e-05,0.000511497572935479,0.000473155649605388,"AT1G65060/AT5G06720/AT2G37040/AT5G42180/AT2G37130/AT2G41480/AT4G34050/AT5G05340/AT1G05260",9

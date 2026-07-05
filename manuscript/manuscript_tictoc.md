@@ -75,17 +75,19 @@ DEG-count barplot; per-contrast tables in `../deseq2/contrasts/`.]
 [STUB] Organ-specific clustering / WGCNA modules; correlate module eigengenes with Flight, genotype, and
 **root morphometric traits** (the RSML link). [PLACEHOLDER].
 
-### R5. Functional enrichment of responsive modules  → **Fig 5**, **Table 3**
-*(PRELIMINARY — from executed clusterProfiler run on the available interaction contrast; full set pending §4.1.)*
-GO/KEGG enrichment (ortholog-mapped to Arabidopsis; expressed-gene universe) of the **Light… Treatment ×
-Genotype(A68) interaction** — i.e. genes whose spaceflight response in the AVP-OX line A68 differs from
-wild type — revealed a **defence/jasmonate signature that is suppressed under spaceflight in A68**:
-down-regulated genes were strongly enriched for *response to wounding* (P.adj = 3.6×10⁻¹¹), *jasmonic-acid
-biosynthesis and metabolism*, *long-chain fatty-acid biosynthesis*, and *response to hypoxia/fungus*
-(KEGG: *α-linolenic-acid metabolism*, *plant–pathogen interaction*, P.adj = 5×10⁻⁴), while up-regulated
-genes were enriched for *negative regulation of defence and innate immune responses*. Thus AVP-OX
-attenuates the spaceflight jasmonate/defence programme relative to wild type — **converging with the
-independent PhysioSpace result (R6)** that AVP-OX roots show reduced stress-programme activation.
+### R5. Functional enrichment of the spaceflight response  → **Fig 5**, **Table 3**
+*(From the executed clusterProfiler run over all 10 DESeq2 contrasts; Arabidopsis-mapped, expressed-gene universe.)*
+In **wild-type roots**, spaceflight up-regulated a canonical low-oxygen/mechanical-stress programme —
+*cellular response to hypoxia / decreased oxygen* (P.adj = 7.3×10⁻²⁰) and *response to wounding* — while
+down-regulating *translation* (P.adj = 1.5×10⁻²²), *ribosome biogenesis*, and *rRNA processing*,
+indicating suppression of growth-associated protein synthesis. The AVP-OX line **A68 shifted this response
+toward defence/immunity** (up-regulated *defence response to bacterium*, *immune response*), and D130 showed
+the same themes more weakly. Directly contrasting each AVP-OX line's flight response with wild type
+(interaction), the genes **specifically down-regulated in AVP-OX were enriched for jasmonic-acid
+biosynthesis/metabolism and response to wounding** (A68-vs-WT root P.adj = 3.8×10⁻⁴; KEGG *α-linolenic-acid
+metabolism*, *plant–pathogen interaction*), with up-regulation of *negative regulators of defence*. Thus,
+against a shared hypoxia/wounding spaceflight signature, the engineered lines **attenuate the jasmonate/
+defence arm** — **converging with the independent PhysioSpace result (R6)**.
 
 ### R6. PhysioSpace stress-pattern decoding  → **Fig 6**, **Table 4**
 *(PRELIMINARY — from executed PhysioSpace run; VST group-mean input, `STATICResponse` scoring.)*

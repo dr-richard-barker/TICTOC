@@ -1,0 +1,2 @@
+"category","subcategory","ID","Description","GeneRatio","BgRatio","RichFactor","FoldEnrichment","zScore","pvalue","p.adjust","qvalue","geneID","Count"
+"Metabolism","Lipid metabolism","ath00592","alpha-Linolenic acid metabolism","2/6","27/3721",0.0740740740740741,45.9382716049383,9.41710661728492,0.000747183656450851,0.00448310193870511,0.00393254556026764,"AT1G13280/AT5G42650",2
