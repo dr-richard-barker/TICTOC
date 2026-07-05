@@ -198,7 +198,7 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [ ] Keep RSML as-is (open XML standard) — good; just document which tracer/version produced them.
 
 **Reusable**
-- [ ] Add an **environment spec** (`renv.lock` or `sessionInfo.txt` + R version) for the pipeline.
+- [x] **Environment spec** [`ENVIRONMENT.txt`](ENVIRONMENT.txt) — R 4.6.0 + pinned versions (DESeq2 1.52, clusterProfiler 4.20, PhysioSpaceMethods 0.99.77, PlantPhysioSpace 0.9.14, ashr). *(2026-07-05)*
 - [x] De-hard-code paths: removed the absolute `setwd('/Users/drbhomeoffice/...')` from
       `TICTOC_markdown_evolved_v2.Rmd` (R Markdown knits from the file's own dir) and documented the
       external inputs it needs (`Downloaded_Converted_Data.csv`, `iDEP_core_functions.R`,

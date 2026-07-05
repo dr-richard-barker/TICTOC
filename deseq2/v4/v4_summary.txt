@@ -1,0 +1,23 @@
+TICTOC V4 factorial model — ~ Treatment*Genotype*Tissue (refs Ground/WT/Root)
+
+Depth-vs-factor QC (Kruskal p; low p = read-depth confound):
+Treatment  Genotype    Tissue 
+   0.4095    0.9807    0.0000 
+
+Interaction-term DEG counts (padj<0.05, |LFC|>=1):
+                                     term   up down total
+              TreatmentFlight.TissueShoot 1670 1704  3374
+              TreatmentFlight.GenotypeA68    2   60    62
+             TreatmentFlight.GenotypeD130    0   20    20
+                 GenotypeD130.TissueShoot    1    4     5
+                  GenotypeA68.TissueShoot    1    0     1
+  TreatmentFlight.GenotypeA68.TissueShoot    0    1     1
+ TreatmentFlight.GenotypeD130.TissueShoot    1    0     1
+
+PC-factor correlation (Kruskal p):
+  PC pct_var  p_Treatment p_Genotype     p_Tissue
+ PC1    92.5 5.259305e-02  0.8983973 2.877120e-09
+ PC2     1.7 6.310679e-06  0.9166280 8.366374e-01
+ PC3     1.0 3.411603e-03  0.5388578 7.570973e-01
+ PC4     0.6 7.965859e-02  0.7059476 6.062097e-01
+ PC5     0.5 1.801552e-01  0.1765105 3.025490e-01

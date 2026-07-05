@@ -68,8 +68,17 @@ responses were smaller and skewed toward down-regulation (e.g. D130 shoot 327 up
 79 / 419). The genotype × treatment **interaction contrasts — the AVP-OX flight response relative to wild
 type — were consistently down-biased** (A68-vs-WT root 55 down / 2 up; D130-vs-WT root 20 down / 0 up),
 i.e. the engineered lines *attenuate* rather than amplify the wild-type spaceflight transcriptional
-programme (Table 2), consistent with the dampened defence/stress signatures in R5–R6. [Fig 3: PCA +
-DEG-count barplot; per-contrast tables in `../deseq2/contrasts/`.]
+programme (Table 2), consistent with the dampened defence/stress signatures in R5–R6.
+
+Principal-component analysis placed **tissue as the dominant transcriptomic axis** (PC1, 92.5% of
+variance, associated with tissue at P = 2.9×10⁻⁹) and **spaceflight as the second** (PC2, associated with
+treatment at P = 6.3×10⁻⁶; Fig 3a). A full factorial model (Treatment × Genotype × Tissue) confirmed that
+the spaceflight response is overwhelmingly **tissue-specific**: the Treatment × Tissue interaction
+comprised 3,374 DEGs — far larger than the Treatment × Genotype (AVP-OX) interactions (A68 62, D130 20;
+both down-biased) or the negligible genotype × tissue and three-way terms. Total read depth differed by
+tissue (P ≈ 0) but **not by treatment** (P = 0.41), so the Flight-vs-Ground comparisons are not
+depth-confounded. [Fig 3: PCA + DEG-count barplot; per-contrast tables in `../deseq2/contrasts/`,
+factorial model in `../deseq2/v4/`.]
 
 ### R4. Tissue-specific DEG clusters and trait linkage  → **Fig 4**
 [STUB] Organ-specific clustering / WGCNA modules; correlate module eigengenes with Flight, genotype, and
@@ -131,8 +140,7 @@ treatment × genotype × day fixed effects].
 
 **RNA-seq & differential expression.** Root and shoot RNA-seq, WT/A68/D130 × Flight/Ground, 4
 replicates. Reads processed [pipeline], quantified against *G. hirsutum* **UTX-TM1 v2.1**
-(Phytozome Ghirsutum_527_v2.1; `Gohir` IDs). Filtered counts (~59.9k genes × 48) analysed with
-**DESeq2** using a Treatment × Genotype × Tissue model; contrasts and shrinkage per roadmap §4.1.
+(Phytozome Ghirsutum_527_v2.1; `Gohir` IDs). Filtered counts (~59.9k genes × 48) analysed with **DESeq2** using a Treatment × Genotype × Tissue model (references Ground/WT/Root; ashr LFC shrinkage). Both per-group Flight−Ground contrasts (`deseq2/contrasts/`) and the factorial interaction model (`deseq2/v4/`) were fit. Read depth differed by tissue but not treatment, so size-factor normalisation is not confounded with the spaceflight comparison. Package versions in `ENVIRONMENT.txt`.
 
 **Ortholog mapping.** `Gohir` genes mapped to *Arabidopsis thaliana* by CottonGen BLASTP best-hit
 (`../crosswalk/`; 92.3% of expressed genes mapped).
