@@ -1,0 +1,37 @@
+contrast,direction,term,p_adjust,count
+WT_Root_FL-GC,up,cellular response to hypoxia,7.29e-20,58
+WT_Root_FL-GC,up,cellular response to decreased oxygen levels,7.29e-20,58
+WT_Root_FL-GC,up,cellular response to oxygen levels,7.29e-20,58
+WT_Root_FL-GC,down,translation,1.53e-22,58
+WT_Root_FL-GC,down,ribosome biogenesis,4.72e-10,33
+WT_Root_FL-GC,down,ribonucleoprotein complex biogenesis,2.19e-09,35
+A68_Root_FL-GC,up,defense response to other organism,2.09e-08,68
+A68_Root_FL-GC,up,response to bacterium,4.41e-08,81
+A68_Root_FL-GC,up,defense response to bacterium,9.90e-08,69
+A68_Root_FL-GC,down,translation,3.00e-34,144
+A68_Root_FL-GC,down,protein folding,1.04e-07,44
+A68_Root_FL-GC,down,cytoplasmic translation,1.04e-07,26
+D130_Root_FL-GC,up,regulation of hormone levels,2.89e-02,13
+D130_Root_FL-GC,up,immune response,2.89e-02,14
+D130_Root_FL-GC,up,immune system process,2.89e-02,14
+D130_Root_FL-GC,down,cell wall organization or biogenesis,1.41e-06,23
+D130_Root_FL-GC,down,polysaccharide metabolic process,1.78e-03,15
+D130_Root_FL-GC,down,cell wall organization,1.81e-03,13
+WT_Shoot_FL-GC,up,response to hypoxia,7.21e-04,13
+WT_Shoot_FL-GC,up,response to decreased oxygen levels,7.21e-04,13
+WT_Shoot_FL-GC,up,response to oxygen levels,7.21e-04,13
+WT_Shoot_FL-GC,down,flavonoid biosynthetic process,1.04e-05,9
+WT_Shoot_FL-GC,down,flavonoid metabolic process,6.12e-05,9
+WT_Shoot_FL-GC,down,secondary metabolic process,1.49e-04,12
+A68_Shoot_FL-GC,up,cellular response to hypoxia,9.96e-06,9
+A68_Shoot_FL-GC,up,cellular response to decreased oxygen levels,9.96e-06,9
+A68_Shoot_FL-GC,up,cellular response to oxygen levels,9.96e-06,9
+A68_Shoot_FL-GC,down,phenylpropanoid metabolic process,2.86e-13,22
+A68_Shoot_FL-GC,down,cell wall organization or biogenesis,2.86e-13,37
+A68_Shoot_FL-GC,down,plant-type cell wall organization or biogenesis,9.22e-13,30
+D130_Shoot_FL-GC,up,cellular response to hypoxia,1.48e-03,13
+D130_Shoot_FL-GC,up,cellular response to decreased oxygen levels,1.48e-03,13
+D130_Shoot_FL-GC,up,cellular response to oxygen levels,1.48e-03,13
+D130_Shoot_FL-GC,down,cell wall organization or biogenesis,1.69e-10,50
+D130_Shoot_FL-GC,down,plant-type cell wall organization or biogenesis,3.80e-08,36
+D130_Shoot_FL-GC,down,cell wall biogenesis,2.30e-07,28

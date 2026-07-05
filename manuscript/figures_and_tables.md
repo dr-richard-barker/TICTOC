@@ -21,7 +21,7 @@ trajectories (e.g. total root length, mean diameter) across days 3–6 for Fligh
 points = plants, lines = model fits. Statistics: [mixed model]; unbalanced n per QC.*
 
 **Fig 3 — Transcriptome overview.** *(PCA + DEG counts)*
-Source: `TICTOC_3_factor_model/` (frozen DESeq2 model, roadmap §4.1).
+Source: `../deseq2/` (executed model). ✅ **PCA panel generated: `Fig3_PCA.pdf`** (PC1=96%=tissue); DEG counts in `../deseq2/contrasts/DEG_counts_summary.csv`.
 Legend (draft): *Spaceflight transcriptomic response. (a) PCA of VST-transformed counts by
 tissue/treatment/genotype. (b) DEG counts per contrast (Flight vs Ground; genotype; root vs shoot) with
 up/down split. (c) Root vs shoot comparison of the flight response.*
@@ -50,7 +50,7 @@ summarising how AVP-OX engineering modulates the cotton spaceflight response.*
 ## Main tables
 - **T1 — Sample/design summary** (genotype × treatment × tissue × reps; plant/day counts). Source: `TICTOC_target_v5.csv`, RSML QC.
 - **T2 — DEG counts per contrast** (up/down, thresholds). Source: frozen DESeq2 model.
-- **T3 — Top enriched GO/KEGG terms** per key module/contrast. Source: `go_analysis/results/`.
+- **T3 — Top enriched GO/KEGG terms** per contrast. ✅ **generated: `Table3_top_GO_terms.csv`** (from `../go_analysis/results_full/`).
 - **T4 — PhysioScores** per genotype × tissue × stress axis. Source: `physiospace/results/`.
 
 ## Supplementary (roadmap §7)
