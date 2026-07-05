@@ -43,8 +43,14 @@ crops for space agriculture.
 ## Results
 
 ### R1. Experimental design and dataset overview  → **Fig 1**, **Table 1**
-[STUB] Describe the flown material (WT, A68, D130), Flight/Ground, root/shoot, day-3–6 imaging, and the
-RNA-seq sample counts. Point to Table 1 (design) and the RSML QC (n = 53 plants, 44 full series).
+Wild-type cotton and two independent AVP1-overexpressing lines (A68, D130) were grown aboard the ISS
+(SpaceX CRS-22) alongside matched ground controls, in a full factorial **Treatment (Flight/Ground) ×
+Genotype (WT/A68/D130) × Tissue (root/shoot)** design with four replicates per group (**48 RNA-seq
+libraries**; Table 1). Root systems were imaged daily on days 3–6 and traced (SmartRoot → RSML), yielding
+198 curated tracings from 53 plants, 44 with the complete four-day series (Fig 1; `../Data/RSML_QC_summary.md`).
+Transcriptomes were quantified against the *G. hirsutum* UTX-TM1 v2.1 assembly (59,918 expressed genes).
+Together these provide paired **root-architecture and transcriptomic** readouts of the spaceflight response
+across genotypes and tissues.
 
 ### R2. Root architecture over days 3–6  → **Fig 2**, **Table S?**
 *(PRELIMINARY — from executed RSML analysis; total-length magnitude pending image-calibration check.)*
