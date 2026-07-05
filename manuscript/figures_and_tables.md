@@ -26,8 +26,8 @@ Legend (draft): *Spaceflight transcriptomic response. (a) PCA of VST-transformed
 tissue/treatment/genotype. (b) DEG counts per contrast (Flight vs Ground; genotype; root vs shoot) with
 up/down split. (c) Root vs shoot comparison of the flight response.*
 
-**Fig 4 — Tissue-specific DEG clusters ↔ traits.** *(clustering / WGCNA)*
-Source: WGCNA (`Leaves/…WGCNA_modules.csv`, extend to root) + RSML traits.
+**Fig 4 — Root co-expression modules ↔ traits.** *(WGCNA)* ✅ **generated: `Fig4_module_trait_named.pdf`**
+Source: `../wgcna/` + `../integration/`; modules named by GO (`../wgcna/results/module_names.csv`).
 Legend (draft): *Co-expression modules and their trait associations. Module eigengene–trait correlations
 for Flight, genotype, and root morphometric traits; heatmap of representative module expression.*
 

@@ -42,6 +42,13 @@ spaceflight jasmonate/defense + osmotic/wounding stress response vs WT.** Real o
 **morphometric mixed model** (AVP-OX amplifies the primary-root flight response). Remaining analysis:
 freeze the full DESeq2 contrast set (§4.1) to extend GO/PhysioSpace to all genotypes × tissues.
 
+**2026-07-05 — module naming + transcriptome↔architecture integration:** ✅ Named every WGCNA module by
+GO (turquoise=signalling & isoprenoid metab.; blue=translation & ribosome; brown=defence & ubiquitin;
+yellow=metal/phenylpropanoid; green=photosynthesis; grey=unassigned). Built [`integration/`](integration/)
+(WGCNA GS/MM framework): turquoise↑/blue↓ track root growth, brown = AVP-OX-attenuated defence; candidate
+mechanism = isoprenoid→growth-hormone precursor metabolism. ⚠ group-level (n=6), Flight/growth collinear →
+correlational, not causal. Named Fig 4, updated R4/R7/Methods/Discussion.
+
 **Still needs the maintainer:** verify FL/GC root-image calibration; OSDR accession; Zenodo DOI;
 author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the
 scientific call on canonical DEG contrasts (§4.1) + whether `A68_2A/2B` belong in the analysis.

@@ -41,3 +41,6 @@ group-level day-6 RSML traits (total length, primary length, lateral count).
 - Morphometric correlations are **group-level** (6 genotype × treatment groups drive them) and inherit the
   FL/GC image-calibration caveat (see `../morphometrics/README.md`): they show that flight-responsive
   modules co-vary with the *traced* root phenotype, not an individual-plant match.
+
+## Module names (from GO BP/MF/CC — `results/module_names.csv`)
+turquoise = **Signalling & isoprenoid metabolism** · blue = **Translation & ribosome biogenesis** · brown = **Defence & ubiquitin signalling** · yellow = **Metal transport & phenylpropanoid metabolism** · green = **Photosynthesis (light reactions)** · grey = Unassigned. Per-module GO tables: `results/GO_*_module_*.csv`; integrated model + limitations: `../integration/README.md`.

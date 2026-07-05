@@ -1,0 +1,19 @@
+[blue] n=1767, mapped=1005
+    BP: translation; cellular component organization or biogenesis; cellular component biogenesis
+    MF: structural molecule activity; RNA binding; structural constituent of ribosome
+    CC: ribosome; cytosolic ribosome; ribonucleoprotein complex
+[brown] n=1046, mapped=556
+    BP: cellular response to stimulus; defense response; cellular response to chemical stimulus
+    MF: ubiquitin protein ligase activity; ubiquitin-like protein ligase activity; DNA-binding transcription factor activity
+[green] n=38, mapped=27
+    BP: photosynthesis; photosynthesis, light reaction; photosynthesis, light harvesting
+    MF: RNA binding; mRNA binding; tetrapyrrole binding
+    CC: thylakoid; photosynthetic membrane; chloroplast thylakoid membrane
+[grey] n=118, mapped=88
+    (no significant GO enrichment)
+[turquoise] n=1963, mapped=1067
+    BP: cell communication; signaling; isoprenoid metabolic process
+    MF: DNA-binding transcription factor activity; transcription regulator activity; kinase activity
+[yellow] n=68, mapped=48
+    BP: transition metal ion transport; phenylpropanoid metabolic process; response to metal ion
+    MF: transition metal ion transmembrane transporter activity; oxidoreductase activity; monoatomic cation transmembrane transporter activity

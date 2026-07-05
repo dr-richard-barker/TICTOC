@@ -88,16 +88,18 @@ factorial model in `../deseq2/v4/`.]
 
 ### R4. Co-expression modules link the spaceflight transcriptome to root architecture  → **Fig 4**
 *(From the executed root WGCNA; module eigengenes vs treatment/genotype/RSML traits. Trait correlations are group-level — see caveat.)*
-Weighted co-expression network analysis of root samples resolved six modules, two of which formed a
-**flight-responsive, growth-coupled axis**. The *turquoise* module (1,963 genes) was strongly induced by
-spaceflight (module-eigengene r = +0.89 with Flight) and positively correlated with a larger, more-branched
-root system (total root length r = +0.86; lateral count r = +0.83), and was enriched for signalling and
-isoprenoid/terpenoid metabolism; the *blue* module was its suppressed mirror (Flight r = −0.83). Critically,
-the *brown* module was flight-induced (r = +0.66) yet **down-regulated in the AVP-OX lines** (r = −0.43),
-providing a module-level transcriptomic correlate of the attenuated defence/stress response seen
-independently by enrichment (R5) and PhysioSpace (R6). Thus a single co-expression structure ties the
-spaceflight response, the engineered-genotype effect, and the root-architecture phenotype together (Fig 4).
-[Caveat: 24 samples (exploratory); morphometric correlations are group-level and inherit the image-calibration caveat.]
+Weighted co-expression network analysis of root samples resolved six modules, named here by their GO
+enrichment (BP/MF/CC): **turquoise — *signalling & isoprenoid metabolism*** (1,963 genes),
+**blue — *translation & ribosome biogenesis*** (1,767), **brown — *defence & ubiquitin signalling***
+(1,046), **yellow — *metal transport & phenylpropanoid metabolism*** (68), **green — *photosynthesis
+(light reactions)*** (38) and an unassigned grey module. Two formed a **flight-responsive, growth-coupled
+axis**: turquoise was strongly induced by spaceflight and positively correlated with a larger, more-branched
+root system (module-eigengene r with Flight/total-length/lateral-count = +0.89/+0.86/+0.83), and blue was
+its suppressed mirror (Flight r = −0.83). Critically, the **defence & ubiquitin (brown) module** was
+flight-induced yet **down-regulated in the AVP-OX lines** (r = −0.43), providing a module-level
+transcriptomic correlate of the attenuated defence/stress response seen independently by enrichment (R5)
+and PhysioSpace (R6). Thus a single, interpretable co-expression structure ties the spaceflight response,
+the engineered-genotype effect, and the root-architecture phenotype together (Fig 4).
 
 ### R5. Functional enrichment of the spaceflight response  → **Fig 5**, **Table 3**
 *(From the executed clusterProfiler run over all 10 DESeq2 contrasts; Arabidopsis-mapped, expressed-gene universe.)*
@@ -140,12 +142,32 @@ programme while sustaining stronger root growth** — a favourable phenotype for
 the calibration and full-replication checks noted throughout. [Fig 7: schematic integrating
 root-trait ↔ module ↔ stress-programme layers.]
 
+To connect expression to the growth phenotype explicitly, we correlated module eigengenes and genes with
+root-architecture traits (group level) and ranked genes by module membership and gene significance for
+total root length. The growth phenotype co-occurred with induction of the **signalling & isoprenoid-metabolism
+(turquoise)** module and suppression of the **translation & ribosome (blue)** module (1,678 and 1,444
+hub-and-growth genes). Because isoprenoid/terpenoid metabolism supplies precursors for growth hormones
+(gibberellins, brassinosteroids, strigolactones), this nominates **hormone-precursor metabolism as a
+testable candidate route** from the spaceflight signal to altered root growth. *Statistical limitation:*
+RNA-seq libraries are not individually paired to imaged plants, so the integration is group-level (n = 6),
+and across those groups spaceflight and traced root growth are **collinear** — it identifies pathways
+*consistent with* driving growth but cannot separate growth-driving from flight-responsive effects. A causal
+model (paired multi-omics/DIABLO or Treatment→expression→trait mediation) is proposed for follow-up
+(see `../integration/README.md`).
+
 ---
 
 ## Discussion
 - Interpret the architecture ↔ transcriptome ↔ stress-program integration. [PLACEHOLDER]
 - AVP-OX in space: buffering vs amplification; auxin/gravitropism and cell-wall themes. [PLACEHOLDER]
-- Limitations: best-hit orthology (approximate); unbalanced morphometric design; single mission.
+- **Named co-expression modules** (turquoise = signalling & isoprenoid metabolism; blue = translation &
+  ribosome; brown = defence & ubiquitin; yellow = metal/phenylpropanoid; green = photosynthesis) give an
+  interpretable middle layer linking the spaceflight signal to root growth; isoprenoid → growth-hormone
+  precursor metabolism is the leading mechanistic hypothesis.
+- Limitations: best-hit orthology (approximate); unbalanced morphometric design; single mission;
+  **RNA-seq and imaging are not individually paired, so transcriptome↔architecture integration is
+  group-level (n=6) and Flight/growth are collinear — correlational, not causal.** A paired multi-omics
+  design (or mediation model) is needed to test the isoprenoid-hormone route directly.
 - Implications for engineering crops for spaceflight agriculture.
 
 ---
@@ -175,7 +197,12 @@ replicates. Reads processed [pipeline], quantified against *G. hirsutum* **UTX-T
 **clusterProfiler**, against the universe of AT loci reachable from expressed cotton genes
 (`../go_analysis/`).
 
-**Co-expression.** WGCNA modules [params]; module–trait correlation to Flight, genotype, and RSML traits.
+**Co-expression & integration.** Signed WGCNA on the top 5,000 variable root genes (soft power 12,
+minModuleSize 30) gave six modules, named by GO (BP/MF/CC) enrichment. Module eigengenes were correlated
+with Flight, genotype and group-level day-6 RSML root traits; within growth-associated modules, genes were
+ranked by module membership and gene significance for total root length (`integration/`). Because RNA-seq
+libraries are not individually paired to imaged plants, expression–trait correlations are computed on the
+six genotype × treatment group means (hypothesis-generating; Flight and traced growth are collinear at this level).
 
 **PhysioSpace.** Per-(genotype × tissue) Flight−Ground VST fold changes were re-indexed to Arabidopsis
 Entrez and projected onto the Arabidopsis stress reference spaces with **PhysioSpaceMethods**
