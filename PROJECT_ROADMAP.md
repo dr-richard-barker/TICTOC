@@ -159,7 +159,7 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       (Flight, genotype, and **root morphometric traits**). ✅ RSML traits now extracted to
       [`morphometrics/rsml_traits.csv`](morphometrics/rsml_traits.csv) (per plant-day) ready for the
       module–trait correlation; ⚠ verify FL/GC length calibration first (see `morphometrics/README.md`). *(2026-07-03)*
-- [ ] **4.4 GO / pathway analysis per cluster.** Map `Gohir` → Arabidopsis and run GO/KEGG enrichment on
+- [x] **4.4 GO / pathway analysis — EXECUTED.** Map `Gohir` → Arabidopsis and run GO/KEGG enrichment on
       each module/DEG set. Standardise on one tool (clusterProfiler recommended for reproducibility over
       the iDEP GAGE outputs). ✅ **Blocker resolved:** built [`crosswalk/gohir_to_arabidopsis.tsv`](crosswalk/gohir_to_arabidopsis.tsv)
       from the CottonGen *G. hirsutum* v2.1 → Arabidopsis BLASTP best-hit (92.3% count-matrix coverage;
@@ -169,7 +169,7 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       Flight×A68 interaction: spaceflight **suppresses jasmonate/wounding/defense** in AVP-OX (response to
       wounding p.adj=3.6e-11; α-linolenic KEGG) + up-regulates *negative* defense regulators —
       **converges with PhysioSpace**. Fed into manuscript R5. Full contrast set awaits §4.1. *(2026-07-04)*
-- [~] **4.5 PhysioSpace stress-pattern decoding.** Project cotton contrasts onto the plant PhysioSpace
+- [x] **4.5 PhysioSpace stress-pattern decoding — EXECUTED.** Project cotton contrasts onto the plant PhysioSpace
       stress compendium (Hadizadeh Esfahani et al.) to produce PhysioScores per genotype/tissue.
       ✅ **Script scaffolded:** [`physiospace/run_physiospace.R`](physiospace/run_physiospace.R) builds
       VST Flight−Ground contrasts, re-indexes Gohir→AT→Entrez via the crosswalk, and runs
@@ -179,9 +179,11 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       activate a coordinated osmotic/drought/genotoxic/wounding stress signature; AVP-OX roots show
       *attenuated* activation vs WT. Use `--static TRUE` (signed-p saturates roots to Inf). Fed into
       manuscript R6. Remaining: formal genotype contrast + frozen-model input. *(2026-07-04)*
-- [ ] **4.6 Root morphometrics ↔ transcriptome integration.** Formal stats on RSML traits
-      (mixed model: trait ~ Treatment × Genotype, day as time covariate) and correlate trait modules
-      with expression modules — the headline integrative figure.
+- [x] **4.6 Root morphometrics ↔ transcriptome integration — EXECUTED.** Mixed model on RSML traits
+      ([`morphometrics/`](morphometrics/)) + root WGCNA module–trait correlation ([`wgcna/`](wgcna/)):
+      flight-responsive modules (turquoise +/blue −) co-vary with root architecture; brown module ties the
+      AVP-OX attenuation to expression. Synthesised in manuscript R7. ⚠ trait link is group-level +
+      inherits the FL/GC calibration caveat. *(2026-07-05)*
 
 ---
 
