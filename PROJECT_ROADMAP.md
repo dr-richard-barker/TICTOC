@@ -267,13 +267,13 @@ engage? Integrates morphometrics (RSML) + transcriptome (DEG→cluster→GO→Ph
       Figure/table plan with draft legends in [`manuscript/figures_and_tables.md`](manuscript/figures_and_tables.md). *(2026-07-03)*
 - [ ] **Outline & authorship** — author list, affiliations, ORCIDs, contributions, corresponding author.
 - [ ] **Figures** (draft list — refine as analysis lands):
-  - [ ] F1. Experiment overview + design schematic (genotype × treatment × tissue × time).
-  - [ ] F2. Root architecture over days 3–6: RSML traits, Flight vs Ground × genotype.
-  - [ ] F3. Transcriptome overview: PCA, DEG counts per contrast, root vs shoot.
-  - [ ] F4. Tissue-specific DEG clusters / WGCNA modules ↔ traits.
-  - [ ] F5. GO/pathway enrichment per module (ortholog-mapped).
-  - [ ] F6. PhysioSpace stress-pattern decoding across genotype × tissue.
-  - [ ] F7. Integrative model: root-trait modules ↔ expression modules ↔ stress programs.
+  - [x] F1. Design schematic ✅ `manuscript/figures/Fig1_design.pdf`
+  - [x] F2. Root architecture ✅ `Fig2_root_architecture.pdf`
+  - [x] F3. PCA + DEG counts ✅ `Fig3_PCA.pdf` + `Fig3b_DEG_counts.pdf`
+  - [x] F4. Named WGCNA module–trait heatmap ✅ `Fig4_module_trait_named.pdf`
+  - [x] F5. GO dotplots ✅ `go_analysis/results_full/GO_*.pdf`
+  - [x] F6. PhysioScore heatmap ✅ `physiospace/results_static/`
+  - [x] F7. Integrative model ✅ `Fig7_integrative_model.pdf`
 - [ ] **Tables:** T1 sample/design summary; T2 DEG counts per contrast; T3 top enriched terms; T4 PhysioScores.
 - [ ] **Figure legends** — write one per figure/table (self-contained, methods-cited).
 - [ ] **Supplementary:** full DEG tables, GO/KEGG tables, PhysioScore matrices, RSML raw traits, QC/MultiQC.

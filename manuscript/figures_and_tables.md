@@ -7,8 +7,8 @@ from executed outputs. npj spec: TIFF, ≥300 dpi (roadmap §7).
 
 ## Main figures
 
-**Fig 1 — Experiment overview & design.** *(schematic + summary)*
-Source: hand-drawn schematic + `TICTOC_target_v5.csv`, `Data/RSML_QC_summary.md`.
+**Fig 1 — Experiment overview & design.** *(schematic)* ✅ **generated: `figures/Fig1_design.pdf`**
+Source: matplotlib schematic (factorial design + workflow + imaging timeline).
 Legend (draft): *TIC-TOC experimental design. (a) Wild-type and two AVP1-overexpressing cotton lines
 (A68, D130) were grown aboard the ISS (SpaceX CRS-22) alongside ground controls. (b) Root systems were
 imaged on days 3–6 and traced (RSML); root and shoot tissues were profiled by RNA-seq in a full
@@ -41,8 +41,8 @@ Legend (draft): *PhysioSpace stress-pattern decoding. PhysioScores (signed −lo
 genotype × tissue Flight−Ground contrast across Arabidopsis stress axes (AT_Stress_Space); positive =
 activation of that stress program. Compares WT vs AVP-OX programs.*
 
-**Fig 7 — Integrative model.** *(synthesis schematic)*
-Source: hand-drawn from R2–R6 results.
+**Fig 7 — Integrative model.** *(synthesis schematic)* ✅ **generated: `figures/Fig7_integrative_model.pdf`**
+Source: matplotlib schematic synthesising R2–R6 + the AVP-OX attenuator model.
 Legend (draft): *Integrative model linking root-trait modules, expression modules, and stress programs,
 summarising how AVP-OX engineering modulates the cotton spaceflight response.*
 
