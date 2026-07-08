@@ -197,7 +197,7 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 ## 5. FAIR & repository hygiene
 
 **Findable / Accessible**
-- [ ] Add this roadmap link + a one-paragraph "repo contents" section to the public `README.md`.
+- [x] Roadmap link + "repo contents" section added to public `README.md`. *(done)*
 - [ ] Reserve a **Zenodo DOI** and add the badge to `README.md` once minted (§6).
 - [ ] Record the OSDR/GeneLab accession number(s) and cross-link both ways.
 
@@ -205,8 +205,8 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [x] Add a **data dictionary** ([`DATA_DICTIONARY.md`](DATA_DICTIONARY.md)): column-level docs for the
       design/count/DEG/enrichment/WGCNA tables, RSML trait schema, imagery naming, ortholog map, and the
       sample-ID grammar (`{Genotype}_{plate}{well}_{FL|GC}_{day}`). *(2026-07-02)*
-- [ ] State genome build/annotation version for `Gohir` IDs and the BioMart release used for orthologs.
-- [ ] Keep RSML as-is (open XML standard) — good; just document which tracer/version produced them.
+- [x] Genome build/annotation + ortholog source stated in `DATA_DICTIONARY.md` §10 (UTX-TM1 v2.1; CottonGen BLASTP). *(done)*
+- [x] RSML kept as-is; tracer documented (SmartRoot; `DATA_DICTIONARY.md` §7). *(done)*
 
 **Reusable**
 - [x] **Environment spec** [`ENVIRONMENT.txt`](ENVIRONMENT.txt) — R 4.6.0 + pinned versions (DESeq2 1.52, clusterProfiler 4.20, PhysioSpaceMethods 0.99.77, PlantPhysioSpace 0.9.14, ashr). *(2026-07-05)*
