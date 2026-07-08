@@ -16,8 +16,12 @@ genotype × treatment groups**. Two consequences:
    the FL/GC image-calibration caveat — see `../morphometrics/README.md`.)
 
 A causal integrated model (multi-block sPLS/DIABLO, or a mediation model Treatment → expression → trait)
-would require **individually-paired expression + imaging**, or more groups/timepoints. Recommended for a
-follow-up design.
+would require **individually-paired expression + imaging**, or more groups/timepoints.
+
+> **Can we pair them?** The RNA-seq libraries currently carry no plant ID, so pairing needs one extra
+> file (a library→plant manifest). See [`PAIRING_WHATS_NEEDED.md`](PAIRING_WHATS_NEEDED.md) for the exact
+> ask to send collaborators, and [`pair_rnaseq_to_images.py`](pair_rnaseq_to_images.py) — a ready-to-run
+> join that produces an individual-level (n≈24) table the moment a manifest arrives.
 
 ## Model (WGCNA gene-significance / module-membership framework)
 `integrate_root_expression.R`:
