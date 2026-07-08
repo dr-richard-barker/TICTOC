@@ -215,7 +215,7 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
       external inputs it needs (`Downloaded_Converted_Data.csv`, `iDEP_core_functions.R`,
       `Cotton__ghirsutum_eg_gene_GeneInfo.csv`, `Cotton__ghirsutum_eg_gene.db`). Still to do: commit or
       link those missing input files. *(2026-07-02)*
-- [ ] Clarify licensing: `LICENSE` is CC0. Confirm CC0 (data) + a code license (e.g. MIT) split, or state CC0 covers all.
+- [x] Licensing split set up: data CC0 (`LICENSE`) + code MIT (`LICENSE-CODE`); maintainer to confirm. *(2026-07-08)*
 
 **Cleanup (the "lots of folders/code/graphs" pass)**
 - [~] Consolidate DEG models → keep one, archive the rest (§4.1). ✅ Documented in
@@ -236,8 +236,7 @@ programs — the same arc validated on the OSD-767 tomato paper, now applied to 
 - [~] Move the large rendered `*.html` reports + slide-deck PDFs to the Zenodo release or Git LFS;
       **added a `.gitignore`** (2026-07-02) for OS/R/Python cruft, with commented patterns ready to
       enable once the existing rendered reports are relocated. Relocation still pending.
-- [ ] Replace dead/edit-only Google Slides links in `README.md`/`data-1.md`/`Figures/readme.md` with
-      exported static figures committed to `Figures/`.
+- [~] `Figures/readme.md` now points at the committed reproducible manuscript figures (Slides link kept, flagged legacy). README/data-1 Slides links remain (need your exports).
 
 ---
 

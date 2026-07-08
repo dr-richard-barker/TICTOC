@@ -1,5 +1,11 @@
 # SVT Root Results
 
+> **Reproducible manuscript figures** (generated from committed scripts/data, not slide exports) live in
+> [`../manuscript/figures/`](../manuscript/figures/): Fig 1 (design), Fig 2 (root architecture),
+> Fig 3 (PCA + DEG counts), Fig 4 (named module–trait heatmap), Fig 7 (integrative model); GO dotplots in
+> `../go_analysis/results_full/` and PhysioScore heatmaps in `../physiospace/results_static/`. The Google
+> Slides link below is edit-only (legacy) — prefer the committed figures for the manuscript.
+
 ### Root Results!
 
 [Link to edit presentation ](https://docs.google.com/presentation/d/1XD-nu5kzFT2Zps5kdvEDr5t\_\_-0yMr9lBTJ1Wucxha4/edit?usp=sharing)

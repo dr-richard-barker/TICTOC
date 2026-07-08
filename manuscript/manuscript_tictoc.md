@@ -189,13 +189,17 @@ lines (A68, D130). Grown aboard the ISS (SpaceX CRS-22, Expedition 65) with matc
 
 **Root imaging & morphometrics.** Time-series photographs (grayscale, 300 dpi; flight frames
 clarity-enhanced) were traced in **SmartRoot** and exported as **RSML**. Traits (root length, diameter,
-angle, insertion; see `../DATA_DICTIONARY.md` §7) were extracted per plant/day. Curated set: 198
-tracings, 53 plants (44 with the full day-3–6 series). Because the design is unbalanced across
-genotype × condition, traits were modelled with [linear mixed models, plant as random effect;
-treatment × genotype × day fixed effects].
+angle, insertion; see `../DATA_DICTIONARY.md` §7) were extracted per plant/day with a stdlib parser
+(`../morphometrics/extract_rsml_traits.py`). Curated set: 198 tracings, 53 plants (44 with the full
+day-3–6 series). Because the design is unbalanced across genotype × condition, log-transformed total and
+primary root length were modelled with **linear mixed models** (`statsmodels`; random intercept per
+plant; fixed effects condition × genotype + day + day:condition, Ground/WT references). A primary-root
+sensitivity analysis (immune to lateral-tracing depth) tested robustness of the genotype × condition
+effects. *[Growth medium, planting density, harvest day, and image spatial calibration to add from the
+flight protocol.]*
 
 **RNA-seq & differential expression.** Root and shoot RNA-seq, WT/A68/D130 × Flight/Ground, 4
-replicates. Reads processed [pipeline], quantified against *G. hirsutum* **UTX-TM1 v2.1**
+replicates. Reads *[processing/aligner/quantifier to add from the run-1 pipeline]*, quantified against *G. hirsutum* **UTX-TM1 v2.1**
 (Phytozome Ghirsutum_527_v2.1; `Gohir` IDs). Filtered counts (~59.9k genes × 48) analysed with **DESeq2** using a Treatment × Genotype × Tissue model (references Ground/WT/Root; ashr LFC shrinkage). Both per-group Flight−Ground contrasts (`deseq2/contrasts/`) and the factorial interaction model (`deseq2/v4/`) were fit. Read depth differed by tissue but not treatment, so size-factor normalisation is not confounded with the spaceflight comparison. Package versions in `ENVIRONMENT.txt`.
 
 **Ortholog mapping.** `Gohir` genes mapped to *Arabidopsis thaliana* by CottonGen BLASTP best-hit
@@ -217,18 +221,62 @@ Entrez and projected onto the Arabidopsis stress reference spaces with **PhysioS
 (`calculatePhysioMap`, GenesRatio = 0.05, TTEST = FALSE, ImputationMethod = "PCA") using the
 **PlantPhysioSpace** data package (`../physiospace/`). Refs: Lenz et al. 2013; Hadizadeh Esfahani et al. 2021.
 
-**Statistics.** [Thresholds: padj < 0.05, |LFC| ≥ 1 for DEGs; enrichment BH q < 0.05; morphometric model
-details]. Software versions in `sessionInfo` (`../DATA_DICTIONARY.md` §10).
+**Statistics.** DEGs: BH-adjusted *P* < 0.05 and |log₂FC| ≥ 1 (ashr-shrunk). GO/KEGG: BH *q* < 0.05
+against the expressed-gene universe. PC–factor and module–trait associations: Kruskal–Wallis / Pearson.
+Morphometrics: linear mixed models (above). Exact package versions in `../ENVIRONMENT.txt`.
+
+---
+
+## Figure & table legends
+
+**Figure 1. Experimental design and analysis workflow.** Wild-type and two AVP1-overexpressing cotton
+lines (A68, D130) were grown aboard the ISS (SpaceX CRS-22) with matched ground controls in a full
+factorial Treatment × Genotype × Tissue design (4 replicates/group; 48 RNA-seq libraries). Root systems
+were imaged on days 3–6 and traced (SmartRoot → RSML); root and shoot were profiled by RNA-seq. The
+analysis pipeline (DESeq2 → *Gohir*→Arabidopsis crosswalk → GO/KEGG → PhysioSpace → WGCNA → integration)
+is shown.
+
+**Figure 2. Root architecture over days 3–6.** Group mean ± SE of total root length (top) and primary
+root length (bottom) for Flight (orange) vs Ground (blue), per genotype (native RSML units; day-6 n per
+group in Table 1). Total length diverges strongly under spaceflight whereas primary-root length differs
+little, localising the flight effect to lateral roots. *Absolute magnitude pending Flight/Ground image-scale calibration.*
+
+**Figure 3. Transcriptomic landscape.** (a) PCA of VST-transformed counts — PC1 (92.5% variance)
+separates tissue, PC2 separates treatment. (b) Differentially expressed genes per Flight-vs-Ground
+contrast (P.adj < 0.05, |log₂FC| ≥ 1), up in Flight (orange) vs down (blue), by genotype × tissue.
+
+**Figure 4. Root co-expression modules linked to Flight, genotype and root architecture.** Correlations
+between WGCNA module eigengenes (rows, named by GO enrichment) and Flight, AVP-OX and day-6 RSML root
+traits (columns), at group level (n = 6). Turquoise (signalling & isoprenoid) tracks Flight and root
+growth; brown (defence & ubiquitin) is down-regulated in AVP-OX.
+
+**Figure 5. Functional enrichment.** GO/KEGG dot-/bar-plots of spaceflight-responsive gene sets,
+ortholog-mapped to Arabidopsis, per contrast (`../go_analysis/results_full/`).
+
+**Figure 6. PhysioSpace stress-pattern decoding.** PhysioScores (bounded `STATICResponse`) for each
+genotype × tissue Flight−Ground contrast across Arabidopsis stress axes; AVP-OX roots show attenuated
+osmotic/wounding activation vs WT.
+
+**Figure 7. Integrative model.** Spaceflight elicits a tissue-specific hypoxia/wounding response with
+translational suppression; AVP-OX attenuates the defence/stress arm while sustaining stronger root growth.
+
+**Table 1.** Sample/design summary. **Table 2.** DEG counts per contrast (up/down). **Table 3.** Top
+enriched GO/KEGG terms per contrast. **Table 4.** PhysioScores per genotype × tissue × stress axis.
+See `Supplementary_index.md` for all supplementary items.
 
 ---
 
 ## Data & code availability
 Raw reads, count matrices, root images, and RSML tracings: NASA OSDR/GeneLab **OSD-XXX** (released on
-publication). Analysis code and derived tables: Zenodo **DOI 10.5281/zenodo.XXXXXXX** and
-https://github.com/dr-richard-barker/TICTOC.
+publication). Analysis code and derived tables: Zenodo **DOI 10.5281/zenodo.XXXXXXX** (`v1.0.0` release)
+and https://github.com/dr-richard-barker/TICTOC. Data under CC0-1.0; analysis code under MIT.
 
 ## Author contributions / Acknowledgements / Competing interests
-[TODO]
+*[Author contributions per CRediT — to complete.]* Supported by CASIS UA-2018-276; conducted in the
+Gilroy Life Science Lab, University of Wisconsin–Madison. The authors declare no competing interests.
+*[Confirm.]*
 
 ## References
-[TODO — numbered Vancouver, npj style]
+*[To compile — numbered Vancouver, npj style. Key anchors: Park et al. 2005 (AVP1); Lenz et al. 2013 &
+Hadizadeh Esfahani et al. 2021 (PhysioSpace); WGCNA (Langfelder & Horvath 2008); DESeq2 (Love et al.
+2014); clusterProfiler (Wu et al. 2021).]*
