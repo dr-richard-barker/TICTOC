@@ -50,7 +50,7 @@ mechanism = isoprenoid→growth-hormone precursor metabolism. ⚠ group-level (n
 correlational, not causal. Named Fig 4, updated R4/R7/Methods/Discussion.
 
 **Still needs the maintainer:** a **library→plant manifest** to pair RNA-seq to imaged plants (unlocks individual-level integration, n≈24 — see [`integration/PAIRING_WHATS_NEEDED.md`](integration/PAIRING_WHATS_NEEDED.md)); verify FL/GC root-image calibration; OSDR accession; Zenodo DOI;
-author ORCIDs / co-authors; `sessionInfo`; static figure exports for the dead Slides links; and the
+author ORCIDs / co-authors; the **RNA-seq read-processing pipeline** (trimmer/aligner/quantifier + versions — not in repo); static figure exports for the dead Slides links; and the
 scientific call on canonical DEG contrasts (§4.1) + whether `A68_2A/2B` belong in the analysis.
 
 ---

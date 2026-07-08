@@ -38,7 +38,7 @@ These results have implications for engineering crops for spaceflight environmen
 ## Introduction
 - Roots, gravity, and cotton productivity; auxin-directed root system architecture. [refs]
 - AVP1/AVP-OX technology: vacuolar H⁺-PPase overexpression → salt/drought tolerance, larger root
-  systems, +fiber yield under stress (Park et al. 2005). [refs]
+  systems, +20% fibre yield under field stress in cotton (Pasapula et al. 2011¹; Arabidopsis origin Park et al. 2005²).
 - Spaceflight remodels plant roots and transcriptomes; microgravity disrupts gravitropic auxin
   transport and cytoskeletal/cell-wall processes. [refs]
 - Gap: whether stress-tolerance engineering changes the *spaceflight* response has not been tested in a
@@ -183,9 +183,16 @@ model (paired multi-omics/DIABLO or Treatment→expression→trait mediation) is
 ## Methods
 *(Concrete — fill bracketed hardware/version specifics.)*
 
-**Plant material & spaceflight.** Cotton (*Gossypium hirsutum*): wild type and two AVP1-overexpressing
-lines (A68, D130). Grown aboard the ISS (SpaceX CRS-22, Expedition 65) with matched ground controls in
-[hardware]. Root systems imaged on days 3–6.
+**Plant material & spaceflight.** Cotton (*Gossypium hirsutum*): wild type and two independent
+AVP1-overexpressing lines (A68, D130; AVP1 confers drought/salt tolerance and increased fibre yield¹).
+Plants were grown aboard the ISS (SpaceX CRS-22, launched 3 June 2021; Expedition 65) in the **Vegetable
+Production System (Veggie)** facility, in custom-designed **Target Veggie Chambers** (≈10 × 3 in, clear
+plastic with a translucent gel substrate in place of soil so roots were visible for imaging). Fifteen
+seed samples were launched and twelve grown; crew captured high-resolution images over the ≈6-day
+experiment (days 3–6 analysed here). Matched ground controls were grown in identical Veggie hardware at
+NASA Kennedy Space Center within the ISS Environmental Simulator (matched temperature, CO₂ and O₂), on a
+48-h offset. Sponsored by the ISS National Laboratory (CASIS UA-2018-276) with support from the Target
+Corporation.
 
 **Root imaging & morphometrics.** Time-series photographs (grayscale, 300 dpi; flight frames
 clarity-enhanced) were traced in **SmartRoot** and exported as **RSML**. Traits (root length, diameter,
@@ -199,8 +206,10 @@ effects. *[Growth medium, planting density, harvest day, and image spatial calib
 flight protocol.]*
 
 **RNA-seq & differential expression.** Root and shoot RNA-seq, WT/A68/D130 × Flight/Ground, 4
-replicates. Reads *[processing/aligner/quantifier to add from the run-1 pipeline]*, quantified against *G. hirsutum* **UTX-TM1 v2.1**
-(Phytozome Ghirsutum_527_v2.1; `Gohir` IDs). Filtered counts (~59.9k genes × 48) analysed with **DESeq2** using a Treatment × Genotype × Tissue model (references Ground/WT/Root; ashr LFC shrinkage). Both per-group Flight−Ground contrasts (`deseq2/contrasts/`) and the factorial interaction model (`deseq2/v4/`) were fit. Read depth differed by tissue but not treatment, so size-factor normalisation is not confounded with the spaceflight comparison. Package versions in `ENVIRONMENT.txt`.
+replicates. Reads *[quality-trimming, aligner and quantifier to add from the run-1 processing pipeline —
+the exact tools/versions are needed from the sequencing/bioinformatics collaborators or the OSDR
+processed-data record]*, quantified against the *G. hirsutum* accession TM-1 **UTX-TM1 v2.1** reference
+genome³ (CottonGen/Phytozome Ghirsutum_527_v2.1; `Gohir` IDs). Filtered counts (~59.9k genes × 48) analysed with **DESeq2** using a Treatment × Genotype × Tissue model (references Ground/WT/Root; ashr LFC shrinkage). Both per-group Flight−Ground contrasts (`deseq2/contrasts/`) and the factorial interaction model (`deseq2/v4/`) were fit. Read depth differed by tissue but not treatment, so size-factor normalisation is not confounded with the spaceflight comparison. Package versions in `ENVIRONMENT.txt`.
 
 **Ortholog mapping.** `Gohir` genes mapped to *Arabidopsis thaliana* by CottonGen BLASTP best-hit
 (`../crosswalk/`; 92.3% of expressed genes mapped).
@@ -277,6 +286,33 @@ Gilroy Life Science Lab, University of Wisconsin–Madison. The authors declare 
 *[Confirm.]*
 
 ## References
-*[To compile — numbered Vancouver, npj style. Key anchors: Park et al. 2005 (AVP1); Lenz et al. 2013 &
-Hadizadeh Esfahani et al. 2021 (PhysioSpace); WGCNA (Langfelder & Horvath 2008); DESeq2 (Love et al.
-2014); clusterProfiler (Wu et al. 2021).]*
+*(Method/anchor citations — verified where noted; confirm exact page numbers in your reference manager,
+and add spaceflight-plant-biology background refs for the Introduction/Discussion.)*
+
+1. Pasapula V, Shen G, Kuppu S, *et al.* Expression of an Arabidopsis vacuolar H⁺-pyrophosphatase gene
+   (*AVP1*) in cotton improves drought- and salt tolerance and increases fibre yield in the field.
+   *Plant Biotechnol J.* 2011;9(1):88–99. doi:10.1111/j.1467-7652.2010.00535.x  *(cotton AVP1 — verified)*
+2. Park S, Li J, Pittman JK, *et al.* Up-regulation of a H⁺-pyrophosphatase (*AVP1*) as a strategy to
+   engineer drought-resistant crop plants. *Proc Natl Acad Sci USA.* 2005;102(52):18830–18835.
+3. Hu Y, Chen J, Fang L, *et al.* *Gossypium barbadense* and *Gossypium hirsutum* genomes provide
+   insights into the origin and evolution of allotetraploid cotton. *Nat Genet.* 2019;51(4):739–748.
+   *(TM-1 UTX reference genome — verified)*
+4. Yu J, Jung S, Cheng CH, *et al.* CottonGen: a genomics, genetics and breeding database for cotton
+   research. *Nucleic Acids Res.* 2014;42(D1):D1229–D1236.
+5. Love MI, Huber W, Anders S. Moderated estimation of fold change and dispersion for RNA-seq data with
+   DESeq2. *Genome Biol.* 2014;15(12):550.
+6. Stephens M. False discovery rates: a new deal. *Biostatistics.* 2017;18(2):275–294. *(ashr)*
+7. Wu T, Hu E, Xu S, *et al.* clusterProfiler 4.0: a universal enrichment tool for interpreting omics
+   data. *Innovation (Camb).* 2021;2(3):100141.
+8. Langfelder P, Horvath S. WGCNA: an R package for weighted correlation network analysis.
+   *BMC Bioinformatics.* 2008;9:559.
+9. Lenz M, Müller FJ, Zenke M, Schuppert A. PhysioSpace: relating gene expression experiments from
+   heterogeneous sources using shared physiological processes. *PLoS ONE.* 2013;8(10):e77627.
+10. Hadizadeh Esfahani A, *et al.* Plant PhysioSpace: a robust tool to compare stress response across
+    plant species. *Plant Physiol.* 2021;187(3):1795–1809.
+11. Lobet G, Pagès L, Draye X. A novel image-analysis toolbox enabling quantitative analysis of root
+    system architecture. *Plant Physiol.* 2011;157(1):29–39. *(SmartRoot)*
+12. Lobet G, Pound MP, Diener J, *et al.* Root System Markup Language: toward a unified root architecture
+    description language. *Plant Physiol.* 2015;167(3):617–627. *(RSML)*
+13. Massa GD, Dufour NF, Crabb VA, *et al.* VEG-01: Veggie hardware validation testing on the
+    International Space Station. *Open Agric.* 2017;2(1):33–41. *(Veggie facility)*
