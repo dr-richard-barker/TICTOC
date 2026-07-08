@@ -1,0 +1,7 @@
+Factor,Levels,Notes
+Treatment,"Flight (ISS), Ground control","SpaceX CRS-22, ISS Expedition 65"
+Genotype,"WT, A68 (AVP-OX), D130 (AVP-OX)",AVP1-overexpressing lines
+Tissue,"Root, Shoot",bulk RNA-seq
+Replicates,4 per group,48 RNA-seq libraries total
+Genome,G. hirsutum UTX-TM1 v2.1,"59,918 expressed genes"
+Root imaging,days 3–6,"198 RSML tracings, 53 plants, 44 full 4-day series"

@@ -20,10 +20,18 @@ Background: roots drive cotton yield and stress resilience; AVP1-overexpressing 
 enhanced salt/drought tolerance and larger root systems, but how this engineering behaves in
 microgravity is unknown. We flew wild-type and two AVP-OX cotton lines (A68, D130) on the ISS with
 matched ground controls, and profiled **root architecture** (time-series imaging → RSML tracing) and the
-**root + shoot transcriptome** (RNA-seq, full Treatment × Genotype × Tissue design). [KEY RESULT 1 —
-morphometrics]. [KEY RESULT 2 — DEG/tissue pattern]. [KEY RESULT 3 — GO/PhysioSpace stress programs].
-[INTERPRETATION — does AVP-OX buffer or amplify the spaceflight response]. Implications for engineering
-crops for space agriculture.
+**root + shoot transcriptome** (RNA-seq, full Treatment × Genotype × Tissue design). Spaceflight roots
+proliferated lateral roots, and both AVP-OX lines mounted a larger primary-root spaceflight response than
+wild type (P ≤ 0.04). The transcriptomic response was strongly **tissue-specific** (Treatment × Tissue the
+dominant interaction; root ≫ shoot), and in wild-type roots comprised a canonical hypoxia/wounding
+induction with translational suppression. Across three independent methods — differential-expression
+interaction tests, ortholog-mapped GO/KEGG, and PhysioSpace stress-pattern decoding — the AVP-OX
+engineering **attenuated** rather than amplified the spaceflight defence/stress programme (suppressed
+jasmonate/wounding signalling; lower osmotic/wounding PhysioScores). Co-expression analysis tied a
+signalling/isoprenoid-metabolism module to the root-growth phenotype and a defence module to the AVP-OX
+effect. Thus AVP-OX cotton appears to experience microgravity as **less stressful while sustaining stronger
+root growth** — a favourable trait for space agriculture, pending image-calibration and replication checks.
+These results have implications for engineering crops for spaceflight environments.
 
 ---
 

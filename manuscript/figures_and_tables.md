@@ -14,17 +14,16 @@ Legend (draft): *TIC-TOC experimental design. (a) Wild-type and two AVP1-overexp
 imaged on days 3–6 and traced (RSML); root and shoot tissues were profiled by RNA-seq in a full
 Treatment × Genotype × Tissue design (n = 4/group). (c) Sample and plant counts per group.*
 
-**Fig 2 — Root architecture over days 3–6.** *(RSML morphometrics)*
-Source: RSML traits from `Data/Final_RSML_format/` (extraction script TBD) + morphometric model.
+**Fig 2 — Root architecture over days 3–6.** *(RSML morphometrics)* ✅ **generated: `figures/Fig2_root_architecture.pdf`**
+Source: `../morphometrics/rsml_traits.csv`. Total length (top) vs primary length (bottom) × genotype; Flight/Ground ± SE.
 Legend (draft): *Root-system architecture of AVP-OX vs wild-type cotton under spaceflight. Trait
 trajectories (e.g. total root length, mean diameter) across days 3–6 for Flight vs Ground, by genotype;
 points = plants, lines = model fits. Statistics: [mixed model]; unbalanced n per QC.*
 
 **Fig 3 — Transcriptome overview.** *(PCA + DEG counts)*
 Source: `../deseq2/` (executed model). ✅ **PCA panel generated: `Fig3_PCA.pdf`** (PC1=96%=tissue); DEG counts in `../deseq2/contrasts/DEG_counts_summary.csv`.
-Legend (draft): *Spaceflight transcriptomic response. (a) PCA of VST-transformed counts by
-tissue/treatment/genotype. (b) DEG counts per contrast (Flight vs Ground; genotype; root vs shoot) with
-up/down split. (c) Root vs shoot comparison of the flight response.*
+✅ **Fig 3b generated: `figures/Fig3b_DEG_counts.pdf`** (diverging up/down bars per genotype×tissue).
+Legend (draft): *Spaceflight transcriptome. (a) PCA (PC1=tissue, PC2=treatment). (b) DEG counts per genotype×tissue, up (orange) vs down (blue).*
 
 **Fig 4 — Root co-expression modules ↔ traits.** *(WGCNA)* ✅ **generated: `Fig4_module_trait_named.pdf`**
 Source: `../wgcna/` + `../integration/`; modules named by GO (`../wgcna/results/module_names.csv`).
