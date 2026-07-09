@@ -58,6 +58,8 @@ const FIGS = [
   ["Figure 5", `${REPO}/manuscript/figures/Fig5_GO_enrichment.png`, "GO biological-process enrichment across key contrasts."],
   ["Figure 6", `${REPO}/manuscript/figures/Fig6_physioscores.png`, "PhysioSpace stress-pattern decoding (stress axis × genotype × tissue)."],
   ["Figure 7", `${REPO}/manuscript/figures/Fig7_integrative_model.png`, "Integrative model — AVP-OX as a stress attenuator."],
+  ["Figure 8", `${REPO}/manuscript/figures/Fig8_program_atlas.png`, "Autoencoder expression-program atlas (bulk RNA-seq; programs, not cells)."],
+  ["Figure 9", `${REPO}/manuscript/figures/Fig9_program_stress_WTvsAVPOX.png`, "Program stress response, WT vs AVP-OX."],
 ];
 const figEls = [new Paragraph({ children: [new PageBreak()] }),
   new Paragraph({ heading: HeadingLevel.HEADING_1, children: [new TextRun("Figures")] })];

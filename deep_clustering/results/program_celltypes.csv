@@ -1,0 +1,13 @@
+program,n_marker_hits,top_celltype,cell_type_markers
+0,2,Guard cell,Guard cell (MYB60); Epidermis (non-hair) (WER)
+1,9,Endodermis,"Endodermis (MYB36,SCR); Endodermis/Casparian (CASP1); Stele/vascular (SHR)"
+2,0,,(no panel markers)
+3,1,Epidermis (non-hair),Epidermis (non-hair) (WER)
+4,0,,(no panel markers)
+5,1,Trichome,Trichome (GL3)
+6,1,Endodermis,Endodermis (SCR)
+7,0,,(no panel markers)
+8,0,,(no panel markers)
+9,1,Trichome,Trichome (GL3)
+10,12,Mesophyll,"Mesophyll (CAB1,RBCS1B); Guard cell (FAMA,KAT1)"
+11,0,,(no panel markers)

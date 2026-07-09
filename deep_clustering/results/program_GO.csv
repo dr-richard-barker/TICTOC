@@ -1,0 +1,13 @@
+"program","n_at","top_GO","top1","top1_padj"
+0,490,"response to oxygen-containing compound; response to osmotic stress; response to acid chemical","response to oxygen-containing compound",0.000174
+1,844,"lignin biosynthetic process; lignin metabolic process; root system development","lignin biosynthetic process",0.00145
+2,151,"cellular response to chemical stimulus; response to external biotic stimulus; biological process involved in interspecies interaction between organisms","cellular response to chemical stimulus",2.35e-06
+3,99,"(none)","",NA
+4,221,"plant-type secondary cell wall biogenesis; cell wall organization or biogenesis; cell wall macromolecule metabolic process","plant-type secondary cell wall biogenesis",4.93e-13
+5,288,"cell cycle; cell cycle process; mitotic cell cycle","cell cycle",4.39e-74
+6,710,"intracellular chemical homeostasis; transport; intracellular monoatomic cation homeostasis","intracellular chemical homeostasis",0.00387
+7,424,"(none)","",NA
+8,50,"(none)","",NA
+9,375,"purine nucleoside triphosphate metabolic process; purine ribonucleoside triphosphate metabolic process; nucleoside triphosphate metabolic process","purine nucleoside triphosphate metabolic process",8.13e-05
+10,1177,"photosynthesis; photosynthesis, light reaction; generation of precursor metabolites and energy","photosynthesis",1.45e-31
+11,103,"response to external biotic stimulus; biological process involved in interspecies interaction between organisms; response to other organism","response to external biotic stimulus",6.76e-10

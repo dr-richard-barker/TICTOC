@@ -42,6 +42,11 @@ spaceflight jasmonate/defense + osmotic/wounding stress response vs WT.** Real o
 **morphometric mixed model** (AVP-OX amplifies the primary-root flight response). Remaining analysis:
 freeze the full DESeq2 contrast set (§4.1) to extend GO/PhysioSpace to all genotypes × tissues.
 
+**2026-07-09 — deep-learning expression programs (R8, Fig 8–9):** ✅ Autoencoder (PyTorch) clusters genes
+into 12 co-expression **programs** (bulk data → programs, not cells; honest framing throughout). GO + curated
+AT cell-type markers + per-program PhysioSpace-style stress scoring, WT vs AVP-OX. Result localises the thesis:
+AVP-OX attenuates stress/defence programs (P2/P11/P4) while sustaining growth programs (P5/P9). [`deep_clustering/`](deep_clustering/); manuscript R8 + Methods + Fig 8/9 legends; docx (9 figs) + site updated.
+
 **2026-07-08/09 — figure set completed + site:** ✅ Built clean single-panel **Fig 5** (GO dotplot) and
 **Fig 6** (PhysioScore heatmap); wrote Discussion prose; deployed the public GitHub Pages site
 (https://dr-richard-barker.github.io/TICTOC/) via Actions. *Fig 5/6 built from committed data.*

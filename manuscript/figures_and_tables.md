@@ -46,6 +46,12 @@ Source: matplotlib schematic synthesising R2–R6 + the AVP-OX attenuator model.
 Legend (draft): *Integrative model linking root-trait modules, expression modules, and stress programs,
 summarising how AVP-OX engineering modulates the cotton spaceflight response.*
 
+**Fig 8 — Autoencoder expression-program atlas.** *(deep learning)* ✅ **generated: `figures/Fig8_program_atlas.pdf`**
+Source: `../deep_clustering/` — gene UMAP by program + program × group-mean heatmap with GO/cell-type labels.
+
+**Fig 9 — Program stress response, WT vs AVP-OX.** *(deep learning)* ✅ **generated: `figures/Fig9_program_stress_WTvsAVPOX.pdf`**
+Source: `../deep_clustering/` — program × stress axes (WT) + AVP-OX−WT delta (attenuated vs sustained programs).
+
 ## Main tables
 - **T1 — Sample/design summary** (genotype × treatment × tissue × reps; plant/day counts). Source: `TICTOC_target_v5.csv`, RSML QC.
 - **T2 — DEG counts per contrast** (up/down, thresholds). Source: frozen DESeq2 model.

@@ -182,6 +182,28 @@ model (paired multi-omics/DIABLO or Treatment→expression→trait mediation) is
 
 ---
 
+### R8. Expression-program analysis pinpoints the functional programs behind the AVP-OX effect  → **Fig 8, Fig 9**
+*(Bulk RNA-seq: an autoencoder clusters genes into co-expression PROGRAMS — a neural analogue of WGCNA — not single cells; cell-type labels are marker-based associations.)*
+To resolve *which* functional programs drive the genotype difference, we trained an autoencoder on the
+expression matrix and clustered genes into 12 co-expression programs. The programs were strongly
+**tissue-partitioned** (Fig 8): root programs included lignin-biosynthesis/root-development (P1),
+cell-cycle (P5), ion-homeostasis (P6), a chemical-defence program (P2) and secondary-cell-wall biogenesis
+(P4); shoot programs included photosynthesis (P10) and an osmotic-stress program (P0). Several carried
+canonical Arabidopsis **cell-type marker signatures** — P1 endodermis/vascular (*SCR*, *MYB36*, *CASP1*,
+*SHR*), P10 mesophyll (*CAB1*, *RBCS*), P0 guard cell (*MYB60*) — providing an interpretable, marker-based
+cell-type association (not a single-cell identity).
+
+Scoring each program's Flight−Ground response against the Arabidopsis PhysioSpace stress axes and
+contrasting genotypes (Fig 9) recapitulated the whole-transcriptome result **at program resolution and
+localised it**: the AVP-OX lines specifically **attenuated the stress/defence programs** (chemical-defence
+P2, biotic P11, secondary-cell-wall P4, and the shoot osmotic/hormone programs; AVP-OX − WT Δ negative)
+while **sustaining or increasing growth/metabolic programs** (cell-cycle P5, nucleotide-metabolism P9; Δ
+positive). Thus the "less stress, more growth" phenotype is not a diffuse shift but is carried by a defined
+set of functional programs — a defence/stress module that AVP-OX dampens and a growth/cell-cycle module it
+preserves.
+
+---
+
 ## Discussion
 
 Spaceflight remodelled the cotton root far more than the shoot, and in wild-type roots the response was a
@@ -261,6 +283,17 @@ ranked by module membership and gene significance for total root length (`integr
 libraries are not individually paired to imaged plants, expression–trait correlations are computed on the
 six genotype × treatment group means (hypothesis-generating; Flight and traced growth are collinear at this level).
 
+**Expression-program (autoencoder) analysis.** *(`deep_clustering/`.)* The top 8,000 most-variable genes
+(log₂-CPM, per-gene z-scored across the 48 libraries) were embedded with an autoencoder
+(48→32→12→32→48; PyTorch, Adam, 400 epochs, MSE loss; seed fixed) and the 12-dimensional latent codes
+clustered into 12 gene programs by *k*-means; UMAP was used for visualisation. **This is bulk RNA-seq —
+programs are gene co-expression clusters, not single cells.** Each program was annotated by GO (BP;
+clusterProfiler, ortholog-mapped) and by a curated panel of canonical Arabidopsis root/leaf cell-type
+marker genes (a marker-overlap association, not single-cell identity). Each program's spaceflight response
+was scored against the Arabidopsis PhysioSpace stress axes as the Pearson correlation between the program
+genes' Flight−Ground log₂ fold change (in the program's dominant tissue, Gohir→AT→Entrez) and each axis's
+gene weights over shared genes (≥ 15), then contrasted between wild type and the AVP-OX lines.
+
 **PhysioSpace.** Per-(genotype × tissue) Flight−Ground VST fold changes were re-indexed to Arabidopsis
 Entrez and projected onto the Arabidopsis stress reference spaces with **PhysioSpaceMethods**
 (`calculatePhysioMap`, GenesRatio = 0.05, TTEST = FALSE, ImputationMethod = "PCA") using the
@@ -304,6 +337,16 @@ osmotic/wounding activation vs WT.
 
 **Figure 7. Integrative model.** Spaceflight elicits a tissue-specific hypoxia/wounding response with
 translational suppression; AVP-OX attenuates the defence/stress arm while sustaining stronger root growth.
+
+**Figure 8. Autoencoder expression-program atlas.** (a) Program mean expression (z-score) across
+genotype × tissue × treatment, with each program's top GO function and, where applicable, its
+marker-associated cell type; programs partition strongly by tissue. (b) UMAP of the autoencoder gene
+embedding, coloured by program. Bulk RNA-seq — programs are gene co-expression clusters, not single cells.
+
+**Figure 9. Program-level stress response, WT vs AVP-OX.** (a) PhysioSpace-style score of each program's
+Flight−Ground response against Arabidopsis stress axes in wild type. (b) AVP-OX − WT difference: the
+engineered lines attenuate the stress/defence programs (orange) while sustaining growth/metabolic
+programs (purple), localising the whole-transcriptome effect to specific functional programs.
 
 **Table 1.** Sample/design summary. **Table 2.** DEG counts per contrast (up/down). **Table 3.** Top
 enriched GO/KEGG terms per contrast. **Table 4.** PhysioScores per genotype × tissue × stress axis.
