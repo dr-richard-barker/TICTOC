@@ -42,6 +42,10 @@ spaceflight jasmonate/defense + osmotic/wounding stress response vs WT.** Real o
 **morphometric mixed model** (AVP-OX amplifies the primary-root flight response). Remaining analysis:
 freeze the full DESeq2 contrast set (§4.1) to extend GO/PhysioSpace to all genotypes × tissues.
 
+**2026-07-08/09 — figure set completed + site:** ✅ Built clean single-panel **Fig 5** (GO dotplot) and
+**Fig 6** (PhysioScore heatmap); wrote Discussion prose; deployed the public GitHub Pages site
+(https://dr-richard-barker.github.io/TICTOC/) via Actions. *Fig 5/6 built from committed data.*
+
 **2026-07-05 — module naming + transcriptome↔architecture integration:** ✅ Named every WGCNA module by
 GO (turquoise=signalling & isoprenoid metab.; blue=translation & ribosome; brown=defence & ubiquitin;
 yellow=metal/phenylpropanoid; green=photosynthesis; grey=unassigned). Built [`integration/`](integration/)

@@ -166,8 +166,27 @@ model (paired multi-omics/DIABLO or Treatment→expression→trait mediation) is
 ---
 
 ## Discussion
-- Interpret the architecture ↔ transcriptome ↔ stress-program integration. [PLACEHOLDER]
-- AVP-OX in space: buffering vs amplification; auxin/gravitropism and cell-wall themes. [PLACEHOLDER]
+
+Spaceflight remodelled the cotton root far more than the shoot, and in wild-type roots the response was a
+recognisable low-oxygen/mechanical-stress programme — induction of hypoxia and wounding genes with
+concomitant suppression of translation and ribosome biogenesis. A hypoxic root signature is a recurrent
+feature of spaceflight plant biology and is consistent with altered water and gas movement around roots in
+microgravity; its pairing here with translational shutdown suggests a shift away from growth-associated
+biosynthesis. That the response is overwhelmingly tissue-specific (the Treatment × Tissue interaction
+dominated all others) argues that spaceflight acts on organs through their distinct physiologies rather
+than as a single systemic stress, and cautions against pooling tissues in spaceflight transcriptomics.
+
+The central result is that engineering cotton for terrestrial stress tolerance did not simply amplify or
+blunt this response uniformly: the AVP-OX lines **attenuated the defence/stress arm specifically** — a
+small, down-biased genotype × treatment interaction that GO resolved as suppressed jasmonate/wounding
+signalling, PhysioSpace read as lower osmotic/wounding stress activation, and WGCNA localised to a
+down-regulated defence-and-ubiquitin module — **while mounting a larger primary-root spaceflight
+response** than wild type. The coherent interpretation across four methods is that AVP-OX cotton
+experiences microgravity as *less* of a stress while sustaining more root growth. Mechanistically,
+AVP1 (a vacuolar H⁺-pyrophosphatase) increases auxin transport and root proliferation on Earth, which
+plausibly underlies the enhanced primary-root response; how that intersects with the dampened defence
+programme in microgravity is an open and testable question.
+
 - **Named co-expression modules** (turquoise = signalling & isoprenoid metabolism; blue = translation &
   ribosome; brown = defence & ubiquitin; yellow = metal/phenylpropanoid; green = photosynthesis) give an
   interpretable middle layer linking the spaceflight signal to root growth; isoprenoid → growth-hormone

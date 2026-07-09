@@ -30,13 +30,13 @@ Source: `../wgcna/` + `../integration/`; modules named by GO (`../wgcna/results/
 Legend (draft): *Co-expression modules and their trait associations. Module eigengene–trait correlations
 for Flight, genotype, and root morphometric traits; heatmap of representative module expression.*
 
-**Fig 5 — Functional enrichment.** *(GO/KEGG per module)*
-Source: `go_analysis/run_go_clusterprofiler.R` (dotplots).
+**Fig 5 — Functional enrichment.** *(GO dotplot)* ✅ **generated: `figures/Fig5_GO_enrichment.pdf`**
+Source: `../go_analysis/results_full/` — curated BP terms × key contrasts (dot size=gene count, colour=−log₁₀ P.adj).
 Legend (draft): *GO/KEGG enrichment of spaceflight-responsive gene sets, ortholog-mapped to Arabidopsis
 (CottonGen BLASTP; enriched against the expressed-gene universe). Dot size = gene count, colour = q-value.*
 
-**Fig 6 — PhysioSpace stress decoding.** *(PhysioScore heatmap)*
-Source: `physiospace/run_physiospace.R` (`PhysioHeatmap`).
+**Fig 6 — PhysioSpace stress decoding.** *(heatmap)* ✅ **generated: `figures/Fig6_physioscores.pdf`**
+Source: `../physiospace/results_static/` — PhysioScores, stress axes × genotype×tissue (roots ≫ shoots).
 Legend (draft): *PhysioSpace stress-pattern decoding. PhysioScores (signed −log₁₀ p) for each
 genotype × tissue Flight−Ground contrast across Arabidopsis stress axes (AT_Stress_Space); positive =
 activation of that stress program. Compares WT vs AVP-OX programs.*
