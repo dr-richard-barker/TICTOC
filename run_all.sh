@@ -22,6 +22,12 @@ log "7/9 WGCNA";                     "$RS" wgcna/run_wgcna_root.R
                                      "$RS" wgcna/annotate_modules_go.R
 log "8/9 integration";              "$RS" integration/integrate_root_expression.R
                                      "$RS" integration/make_named_heatmap.R
-log "9/9 figures";                   "$RS" deseq2/make_pca.R
+log "9/10 figures";                  "$RS" deseq2/make_pca.R
                                      "$PY" manuscript/figures/make_figures.py
+log "10/10 deep-learning programs (R8, Fig 8-9)"
+                                     "$PY" deep_clustering/01_autoencoder_programs.py
+                                     "$PY" deep_clustering/02_celltype_markers.py
+                                     "$RS" deep_clustering/03_program_go_export.R
+                                     "$PY" deep_clustering/04_program_stress.py
+                                     "$PY" deep_clustering/05_figures.py
 log "DONE — outputs under each stage's results/ folder; figures in manuscript/figures/"
