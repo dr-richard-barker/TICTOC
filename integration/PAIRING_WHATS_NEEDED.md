@@ -19,6 +19,21 @@ Because of this, the current expression↔growth integration is **group-level (n
 and root growth are collinear — so we can say a pathway is *consistent with* driving growth but can't
 separate that from the flight response.
 
+## Update (2026-07): RNA-seq sample metadata received — what it does and doesn't give
+
+The TIC-TOC "from biotech" sample sheet ([`../metadata/TICTOC_rnaseq_sample_metadata.csv`](../metadata/TICTOC_rnaseq_sample_metadata.csv))
+**confirms the sample structure and gives every library a definitive ID** (e.g. `A68R-F1_S5_L004` =
+A68, Root, Flight, replicate 1), and its order **exactly matches the count-matrix columns** — so each of
+the 48 count columns is now labelled ([`../deseq2/sample_sheet.csv`](../deseq2/sample_sheet.csv)).
+**However it contains no well/position column** — the replicate number (1–4) is an ordinal, not a
+documented location. So it does not, by itself, link a library to an imaged plant.
+
+**The gap is now a single, tight lookup:** for each of the 48 libraries (or at least the 24 root ones),
+**which well/plant (`a12`, `b2`, …) — or which row (a/b/c/d) — was it extracted from?** That is the RNA
+extraction / planting-map log. With it, `pair_by_location.py` (row level) or `pair_rnaseq_to_images.py`
+(well level) joins immediately. If replicates were simply taken in row order, telling us "rep 1=row a … rep
+4=row d" is enough.
+
 ## The two questions we need answered
 
 1. **Were the sequenced plants the same individuals that were imaged?** (i.e. each plant imaged days 3–6,

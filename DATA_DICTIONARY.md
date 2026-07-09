@@ -35,6 +35,9 @@ Flight image labels embed the ISS downlink frame ID, e.g. `iss065e092623` (ISS E
 
 ## 2. RNA-seq — design / sample tables
 
+**`metadata/TICTOC_rnaseq_sample_metadata.csv`** — the sequencing-provider sample sheet (48 libraries; organism *G. hirsutum* cv. Coker 32; genotype/tissue/treatment/replicate; HiSeq6000). **`deseq2/sample_sheet.csv`** maps each count-matrix column → library ID + replicate. No well/position field (see `integration/PAIRING_WHATS_NEEDED.md`).
+
+
 **`TICTOC_target_v5.csv`** — full design (48 samples, root + shoot). Transposed layout: first row =
 sample names (repeated per replicate), then one row per factor.
 

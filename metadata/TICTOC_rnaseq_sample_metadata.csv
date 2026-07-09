@@ -1,0 +1,49 @@
+File name,Geno-Treatment1-Tissue,Main Treatment,Gravity group,Radiation group,Geno-Tissue,Genotype,Material type,Organism,Strain,Genetic modification,Protocol ref,Sample preservation method,Sample storage temperature,Unit,Sequencing platform
+A68R-F1_S5_L004,A68R_Flight,Flight,uG,LEO on ISS,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-F2_S6_L004,A68R_Flight,Flight,uG,LEO on ISS,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-F3_S7_L004,A68R_Flight,Flight,uG,LEO on ISS,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-F4_S8_L004,A68R_Flight,Flight,uG,LEO on ISS,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-G1_S9_L004,A68R_Ground,Ground,1G,Ground,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-G2_S10_L004,A68R_Ground,Ground,1G,Ground,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-G3_S11_L004,A68R_Ground,Ground,1G,Ground,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68R-G4_S12_L004,A68R_Ground,Ground,1G,Ground,A68_Root,A68,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-F1_S13_L004,A68S_Flight,Flight,uG,LEO on ISS,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-F2_S14_L004,A68S_Flight,Flight,uG,LEO on ISS,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-F3_S15_L004,A68S_Flight,Flight,uG,LEO on ISS,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-F4_S16_L004,A68S_Flight,Flight,uG,LEO on ISS,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-G1_S17_L004,A68S_Ground,Ground,1G,Ground,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-G2_S18_L004,A68S_Ground,Ground,1G,Ground,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-G3_S19_L004,A68S_Ground,Ground,1G,Ground,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+A68S-G4_S20_L004,A68S_Ground,Ground,1G,Ground,A68_Shoot,A68,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-F1_S21_L004,D130R_Flight,Flight,uG,LEO on ISS,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-F2_S22_L004,D130R_Flight,Flight,uG,LEO on ISS,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-F3_S23_L004,D130R_Flight,Flight,uG,LEO on ISS,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-F4_S24_L004,D130R_Flight,Flight,uG,LEO on ISS,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-G1_S25_L004,D130R_Ground,Ground,1G,Ground,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-G2_S26_L004,D130R_Ground,Ground,1G,Ground,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-G3_S27_L004,D130R_Ground,Ground,1G,Ground,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130R-G4_S28_L004,D130R_Ground,Ground,1G,Ground,D130_Root,D130,Root,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-F1_S29_L004,D130S_Flight,Flight,uG,LEO on ISS,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-F2_S30_L004,D130S_Flight,Flight,uG,LEO on ISS,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-F3_S31_L004,D130S_Flight,Flight,uG,LEO on ISS,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-F4_S32_L004,D130S_Flight,Flight,uG,LEO on ISS,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-G1_S33_L004,D130S_Ground,Ground,1G,Ground,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-G2_S34_L004,D130S_Ground,Ground,1G,Ground,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-G3_S35_L004,D130S_Ground,Ground,1G,Ground,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+D130S-G4_S36_L004,D130S_Ground,Ground,1G,Ground,D130_Shoot,D130,Shoot,Gossypium hirsutum,Coker 32,AVP-OX,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-F1_S37_L004,WTR_Flight,Flight,uG,LEO on ISS,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-F2_S38_L004,WTR_Flight,Flight,uG,LEO on ISS,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-F3_S39_L004,WTR_Flight,Flight,uG,LEO on ISS,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-F4_S40_L004,WTR_Flight,Flight,uG,LEO on ISS,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-G1_S41_L004,WTR_Ground,Ground,1G,Ground,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-G2_S42_L004,WTR_Ground,Ground,1G,Ground,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-G3_S43_L004,WTR_Ground,Ground,1G,Ground,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTR-G4_S44_L004,WTR_Ground,Ground,1G,Ground,WT_Root,WT,Root,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-F1_S45_L004,WTS_Flight,Flight,uG,LEO on ISS,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-F2_S46_L004,WTS_Flight,Flight,uG,LEO on ISS,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-F3_S47_L004,WTS_Flight,Flight,uG,LEO on ISS,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-F4_S48_L004,WTS_Flight,Flight,uG,LEO on ISS,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-G1_S49_L004,WTS_Ground,Ground,1G,Ground,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-G2_S50_L004,WTS_Ground,Ground,1G,Ground,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-G3_S51_L004,WTS_Ground,Ground,1G,Ground,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
+WTS-G4_S52_L004,WTS_Ground,Ground,1G,Ground,WT_Shoot,WT,Shoot,Gossypium hirsutum,Coker 32,NA,sample collection,FlashFreeze,-70,C,Illumina HiSeq6000
