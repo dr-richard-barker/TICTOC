@@ -55,6 +55,15 @@ scientific call on canonical DEG contrasts (§4.1) + whether `A68_2A/2B` belong 
 
 ---
 
+## 0b. Public website (GitHub Pages)
+
+A self-contained landing site lives in [`docs/`](docs/) (`index.html` + `assets/` figures, `.nojekyll` to
+bypass Jekyll so the GitBook README can't break the build). **To publish:** GitHub → *Settings → Pages →
+Source: Deploy from a branch → `main` / `docs`*. Site URL: `https://dr-richard-barker.github.io/TICTOC/`.
+Regenerate figures then re-copy PNGs into `docs/assets/` if results change.
+
+---
+
 ## 1. What this experiment is
 
 Cotton (*Gossypium hirsutum*, `Gohir` genome) was grown on the ISS and on the ground to test whether

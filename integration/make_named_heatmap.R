@@ -33,11 +33,13 @@ tr <- data.frame(row.names = rownames(ME_g),
 mt <- cor(ME_g, tr, use = "pairwise.complete.obs"); mtp <- corPvalueStudent(mt, nrow(ME_g))
 lab <- paste0(sub("^ME", "", rownames(mt)), " — ", names_lut[sub("^ME", "", rownames(mt))])
 ord <- order(-mt[, "Flight"])
-pdf(file.path(HERE, "..", "manuscript", "Fig4_module_trait_named.pdf"), width = 8.5, height = 5.5)
-par(mar = c(7, 13, 3, 1))
-labeledHeatmap(Matrix = mt[ord, ], xLabels = colnames(tr), yLabels = lab[ord],
-               colors = blueWhiteRed(50), textMatrix = paste0(round(mt[ord, ], 2)),
-               setStdMargins = FALSE, cex.text = 0.7, cex.lab = 0.8, zlim = c(-1, 1),
-               main = "Root co-expression modules vs Flight, AVP-OX and root architecture (group-level, n=6)")
-dev.off()
+draw_hm <- function() {
+  par(mar = c(7, 13, 3, 1))
+  labeledHeatmap(Matrix = mt[ord, ], xLabels = colnames(tr), yLabels = lab[ord],
+                 colors = blueWhiteRed(50), textMatrix = paste0(round(mt[ord, ], 2)),
+                 setStdMargins = FALSE, cex.text = 0.7, cex.lab = 0.8, zlim = c(-1, 1),
+                 main = "Root co-expression modules vs Flight, AVP-OX and root architecture (group-level, n=6)")
+}
+pdf(file.path(HERE, "..", "manuscript", "Fig4_module_trait_named.pdf"), width = 8.5, height = 5.5); draw_hm(); dev.off()
+png(file.path(HERE, "..", "manuscript", "Fig4_module_trait_named.png"), width = 8.5, height = 5.5, units = "in", res = 140); draw_hm(); dev.off()
 cat("wrote Fig4_module_trait_named.pdf + module_names.csv\n")
