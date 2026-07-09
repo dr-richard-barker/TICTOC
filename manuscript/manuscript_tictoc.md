@@ -236,6 +236,21 @@ programme in microgravity is an open and testable question.
   design (or mediation model) is needed to test the isoprenoid-hormone route directly.
 - Implications for engineering crops for spaceflight agriculture.
 
+**Future directions.** Two extensions would convert the present correlational, bulk-level findings into
+mechanistic ones. First, **individually pairing RNA-seq to imaged plants** (a library→plant manifest;
+Methods) would break the group-level Flight/growth collinearity and permit a causal test — a mediation
+model (Treatment → expression → root trait) or multi-block integration (sPLS/DIABLO) at n ≈ 24 — of
+whether the signalling/isoprenoid programme actually drives the root-growth phenotype, with
+hormone-precursor metabolism (gibberellins, brassinosteroids, strigolactones) the leading candidate to
+target with metabolite assays. Second, **single-nucleus or spatial transcriptomics** of spaceflight roots
+would replace the bulk expression *programs* (R8) with genuine cell types: the autoencoder → program →
+GO/PhysioSpace pipeline developed here (`deep_clustering/`) applies directly to single-cell data, so the
+same framework would reveal *which cell types* mount, or dampen, the spaceflight stress response — and
+whether the AVP-OX attenuation is uniform across the radial root axis or concentrated in specific layers
+(e.g. the endodermis/vascular and cortex programs flagged here). Confirming the root-growth magnitude also
+requires **calibrated imaging** (a scale reference per Flight/Ground image set) and independent flights to
+establish reproducibility.
+
 ---
 
 ## Methods
