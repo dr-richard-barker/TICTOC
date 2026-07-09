@@ -31,3 +31,5 @@ env/
 # regenerable reference exports (GPL PlantPhysioSpace / org.At.tair.db) — rebuilt by 03_program_go_export.R
 deep_clustering/results/AT_Stress_Space.csv
 deep_clustering/results/at_to_entrez.csv
+integration/results/paired_by_location.csv
+interation/results/paired_rnaseq_rsml.csv

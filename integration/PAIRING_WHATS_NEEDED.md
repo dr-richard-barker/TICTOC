@@ -29,7 +29,22 @@ separate that from the flight response.
 - **Different plants, or pooled libraries →** per-plant pairing is impossible in principle; please just
   send the pooling scheme so we can document it. Only group-level integration remains valid.
 
-## What to send (if recoverable)
+## ⭐ Easier alternative — pair by LOCATION (row block), not exact plant
+
+We don't strictly need the exact plant. The experiment has spatial **locations** (well = row-letter a–d +
+number). At **row** level, most genotype × condition cells hold **2–4 imaged plants**, which we average as
+**technical replicates** (`location_traits.py` → `results/location_mean_traits.csv`; 23 location cells,
+14 with ≥2 plants — ~3.8× finer than the 6 group means). Because RNA-seq has **4 replicates** per
+genotype × tissue × treatment and imaging has **4 rows (a–d)**, they plausibly correspond (a common block
+design).
+
+**So the minimal ask is just:** *do the 4 RNA-seq replicates correspond to the 4 rows a, b, c, d — and in
+what order?* That single answer (or a `library_id → row` CSV) lets us join RNA-seq to row-mean traits at
+~23-cell resolution via `pair_by_location.py`. (We can preview it now under the assumption "reps = rows
+a,b,c,d in column order" with `python integration/pair_by_location.py --rows-in-order`, but that assumption
+must be confirmed before the result is trusted.) This is much easier to recover than exact-plant identity.
+
+## What to send for exact-plant (1:1) pairing (if available)
 
 A single **library → plant manifest**: one row per RNA-seq library mapping it to the plate+well of the
 plant it came from. Any of these sources likely contains it:

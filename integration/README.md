@@ -22,6 +22,7 @@ would require **individually-paired expression + imaging**, or more groups/timep
 > file (a library→plant manifest). See [`PAIRING_WHATS_NEEDED.md`](PAIRING_WHATS_NEEDED.md) for the exact
 > ask to send collaborators, and [`pair_rnaseq_to_images.py`](pair_rnaseq_to_images.py) — a ready-to-run
 > join that produces an individual-level (n≈24) table the moment a manifest arrives.
+> **Easier path:** pair by LOCATION (row block) — `location_traits.py` averages imaged plants per row as technical reps (23 cells), and `pair_by_location.py` joins libraries to rows once the replicate↔row order is confirmed (see PAIRING_WHATS_NEEDED.md).
 
 ## Model (WGCNA gene-significance / module-membership framework)
 `integrate_root_expression.R`:
