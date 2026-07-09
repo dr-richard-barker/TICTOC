@@ -36,15 +36,30 @@ These results have implications for engineering crops for spaceflight environmen
 ---
 
 ## Introduction
-- Roots, gravity, and cotton productivity; auxin-directed root system architecture. [refs]
-- AVP1/AVP-OX technology: vacuolar H⁺-PPase overexpression → salt/drought tolerance, larger root
-  systems, +20% fibre yield under field stress in cotton (Pasapula et al. 2011¹; Arabidopsis origin Park et al. 2005²).
-- Spaceflight remodels plant roots and transcriptomes; microgravity disrupts gravitropic auxin
-  transport and cytoskeletal/cell-wall processes. [refs]
-- Gap: whether stress-tolerance engineering changes the *spaceflight* response has not been tested in a
-  crop, at the intersection of architecture and transcriptome.
-- This study: WT vs AVP-OX cotton, Flight vs Ground, root vs shoot, days 3–6 → morphometrics +
-  transcriptome, decoded into stress programs via ortholog-mapped GO and PhysioSpace.
+
+Root systems determine how efficiently a crop captures water and nutrients, and their architecture is
+shaped by gravity through auxin-directed growth of the primary and lateral roots. In cotton — a globally
+important but water-demanding fibre crop — improving root vigour and stress resilience is a long-standing
+breeding goal. Overexpression of the *Arabidopsis* vacuolar H⁺-pyrophosphatase gene *AVP1* enhances auxin
+transport and root proliferation and confers drought and salt tolerance; in cotton it increases fibre
+yield by more than 20% under field stress conditions (Pasapula et al. 2011¹; *AVP1* function first
+established in *Arabidopsis*, Park et al. 2005²). AVP-OX cotton is therefore an attractive line for
+environments where water is scarce — including, potentially, spaceflight.
+
+Spaceflight imposes a distinctive combination of stresses on plants: microgravity removes the gravity
+vector that normally guides root growth, and alters water and gas movement around roots, while also
+perturbing cytoskeletal organisation and cell-wall remodelling *[spaceflight-root-biology refs to add]*.
+These conditions reshape root architecture and elicit broad transcriptional reprogramming. Yet whether a
+crop **engineered for terrestrial stress tolerance** behaves differently under spaceflight — retaining a
+benefit, or being overwhelmed by the novel stress — has not been tested at the intersection of root
+architecture and the transcriptome.
+
+Here we address that gap using the TIC-TOC experiment, in which wild-type cotton and two independent
+AVP-OX lines (A68, D130) were grown aboard the ISS alongside matched ground controls. We pair time-series
+root-architecture imaging (days 3–6, traced as RSML) with root and shoot RNA-seq in a full
+Treatment × Genotype × Tissue design, and decode the transcriptome into stress programmes using
+ortholog-mapped GO/KEGG enrichment, PhysioSpace stress-pattern analysis, and co-expression network
+analysis — asking specifically how the AVP-OX engineering modulates the cotton spaceflight response.
 
 ---
 
