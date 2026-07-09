@@ -17,3 +17,6 @@ Fig 3/Table 2 ← the frozen DESeq2 model (roadmap §4.1), Fig 2 ← RSML morpho
 
 Still needed from the maintainer: author list/ORCIDs, OSDR accession, Zenodo DOI, and the executed
 analysis outputs. Convert to `.docx`/`.pdf` for submission once text is stable.
+
+## Assembled Word draft
+`TICTOC_manuscript_draft.docx` — the full manuscript (Abstract→References) with all 7 figures embedded and the DEG-count table, for circulating to co-authors. Rebuild: `npm install docx` then `node build_docx.js` (parses `manuscript_tictoc.md`, embeds `figures/*.png`). Still carries the bracketed maintainer TODOs (author block, some refs, read-processing tools).

@@ -1,7 +1,9 @@
 <!--
-  TICTOC — npj Microgravity manuscript SKELETON (draft, 2026-07-03).
-  STATUS: structure + Methods are drafted; Results are STUBS with [PLACEHOLDER] markers.
-  Do NOT treat any number here as real — fill Results only from executed analysis outputs.
+  TICTOC — npj Microgravity manuscript DRAFT (updated 2026-07-09).
+  STATUS: Abstract, Introduction, Results R1–R7, Discussion, Methods, figure legends and references are
+  drafted from EXECUTED analyses (all numbers trace to committed outputs). Figures F1–F7 + Tables T1–T4
+  generated. Remaining bracketed items need the maintainer: author block/CRediT, spaceflight-biology
+  background refs, RNA-seq read-processing tools, image calibration, OSDR accession, Zenodo DOI.
   Figure/table numbering matches figures_and_tables.md and roadmap §7.
 -->
 
